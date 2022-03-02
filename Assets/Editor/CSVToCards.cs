@@ -41,6 +41,7 @@ public class CSVToCards
             newCard.ManaCost = int.Parse(variables[1]);
             newCard.Attack = int.Parse(variables[2]);
             newCard.Health = int.Parse(variables[3]);
+            newCard.CardImage = Resources.Load<Sprite>("Sprites/CardSprites/" + variables[4]);
             
             AssetDatabase.CreateAsset(newCard, $"Assets/Resources/Cards/{newCard.CardName}.asset");
         }

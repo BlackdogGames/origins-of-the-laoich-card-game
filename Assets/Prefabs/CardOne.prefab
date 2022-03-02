@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2305077394232504666}
   - component: {fileID: 4423044380085750905}
   - component: {fileID: 1835637286020695094}
+  - component: {fileID: -8131168089735743147}
   - component: {fileID: 3555824932705623313}
   - component: {fileID: 4751563756640624498}
   - component: {fileID: 8715870325124993046}
@@ -79,6 +80,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-8131168089735743147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638656579416893456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c15c1c79239f54fa5924e96f93b995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
 --- !u!114 &3555824932705623313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e530272590491f4da7813a089ec6644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
 --- !u!114 &4751563756640624498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +135,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: -8131168089735743147}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: HoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 14
     callback:
       m_PersistentCalls:
@@ -127,6 +154,38 @@ MonoBehaviour:
         - m_Target: {fileID: 3555824932705623313}
           m_TargetAssemblyTypeName: DragDrop, Assembly-CSharp
           m_MethodName: EndDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -8131168089735743147}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: HoverOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -8131168089735743147}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: HoverExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

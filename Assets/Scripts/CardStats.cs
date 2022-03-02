@@ -15,11 +15,14 @@ public class CardStats : MonoBehaviour
     public Text AttackText;
     public Text HealthText;
 
+    public Image CardImage;
+
     void Start()
     {
         ManaCost = CardAsset.ManaCost;
         Attack = CardAsset.Attack;
         Health = CardAsset.Health;
+        CardImage.sprite = CardAsset.CardImage;
 
         ManaCostText.text = ManaCost.ToString();
         AttackText.text = Attack.ToString();

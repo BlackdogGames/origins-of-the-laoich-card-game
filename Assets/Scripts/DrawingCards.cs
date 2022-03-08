@@ -6,19 +6,20 @@ public class DrawingCards : MonoBehaviour
 {
     //
     public GameObject CardOne;
-    public GameObject CardTwo;
     public GameObject PlayerArea;
     public GameObject OpponentArea;
+    public GameObject Player;
+    public GameObject Opponent;
+
+    PlayerStats _playerStats;
+    OpponentStats _oppStats;
     //
-
-    List<GameObject> _cards = new List<GameObject>();
-
 
     //
     void Start()
     {
-        _cards.Add(CardOne);
-        _cards.Add(CardTwo);
+        _playerStats = Player.GetComponent<PlayerStats>();
+        _oppStats = Opponent.GetComponent<OpponentStats>();
     }
     //
 
@@ -27,15 +28,15 @@ public class DrawingCards : MonoBehaviour
     {
         for(int i = 0; i < 5; i++)
         {
-            GameObject playerCard = Instantiate(_cards[Random.Range(0, _cards.Count)], new Vector3(0, 0, 0), Quaternion.identity); //  where a random card is instantiated from the list
-            playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
+            GameObject _playerCard = Instantiate(CardOne, new Vector3(0, 0, 0), Quaternion.identity); //  where a random card is instantiated from the list
+            _playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
+            _playerStats.PlayerCards.Add(_playerCard);
 
-            GameObject enemyCard = Instantiate(_cards[Random.Range(0, _cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
-            enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
+            GameObject _enemyCard = Instantiate(CardOne, new Vector3(0, 0, 0), Quaternion.identity);
+            _enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
+            _oppStats.OpponentCards.Add(_enemyCard);
+
         }
-        
-
     }
     //
-
 }

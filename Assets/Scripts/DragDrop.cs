@@ -12,12 +12,14 @@ public class DragDrop : MonoBehaviour
     private GameObject _dropZone;
     private GameObject _startParent;
 
+    private GameManager _gameManager;
     //
 
     //
     private void Awake()
     {
         Canvas = GameObject.Find("Main Canvas");
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     //
 
@@ -64,6 +66,9 @@ public class DragDrop : MonoBehaviour
         if (_isOverDropZone)
         {
             transform.SetParent(_dropZone.transform, false);
+            //this would also be the time to change player mana/opponent health
+
+            _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // Swap turns
 
         }
         else

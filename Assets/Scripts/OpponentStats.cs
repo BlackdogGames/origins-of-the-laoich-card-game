@@ -6,6 +6,7 @@ public class OpponentStats : MonoBehaviour
 {
 	public int OpponentHealth;
 	public int OpponentMana;
+	public int OpponentMaxMana;
 
 	public List<GameObject> OpponentCards = new List<GameObject>();
 }

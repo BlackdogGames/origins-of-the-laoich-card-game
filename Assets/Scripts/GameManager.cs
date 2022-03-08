@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void ManaDecrease(GameObject PlacedCard, GameObject CardPlayer, GameObject Opp)
     {
+       // Subtracts the played cards mana cost from the player
        CardStats _placedCard = PlacedCard.GetComponent<CardStats>();
         _playerStats = CardPlayer.GetComponent<PlayerStats>();
         _playerStats.PlayerMana -= _placedCard.ManaCost;
@@ -92,13 +93,15 @@ public class GameManager : MonoBehaviour
 
     public void ManaIncrease(GameObject Player, GameObject Opponent)
     {
+        
         _playerStats = Player.GetComponent<PlayerStats>();
-        _playerStats.PlayerMana += 1;
+        _playerStats.PlayerMaxMana += 1;    // Increment max mana by 1 every round.
+        _playerStats.PlayerMana = _playerStats.PlayerMaxMana;   // Set mana to the new max at the start of the new round
 
         _oppStats = Opponent.GetComponent<OpponentStats>();
-        _oppStats.OpponentMana += 1;
+        _oppStats.OpponentMaxMana += 1;
+        _oppStats.OpponentMana = _oppStats.OpponentMaxMana;
     }
-
 
     // Update is called once per frame
     void Update()

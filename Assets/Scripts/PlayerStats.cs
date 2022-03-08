@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
 	public int PlayerHealth;
 	public int PlayerMana;
+	public int PlayerMaxMana;
 
 	public List<GameObject> PlayerCards = new List<GameObject>();
 

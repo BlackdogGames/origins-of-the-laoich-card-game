@@ -531,6 +531,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f1c651f15d67f8644ad2d96af001e39e, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f1c651f15d67f8644ad2d96af001e39e, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 7107778094463872314, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
       propertyPath: m_Name
       value: Player

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,7 +14,10 @@ public class GameManager : MonoBehaviour
     PlayerStats _playerStats;
     OpponentStats _oppStats;
 
-    public void TurnLogic()
+    CardStats _attackingCard;
+    CardStats _defendingCard;
+
+    void TurnLogic()
     {
         _oppStats = Opponent.GetComponent<OpponentStats>();
         _playerStats = Player.GetComponent<PlayerStats>();
@@ -29,7 +33,6 @@ public class GameManager : MonoBehaviour
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
             }
-
         }
         else
         {
@@ -47,6 +50,54 @@ public class GameManager : MonoBehaviour
         //PlayersTurn = !PlayersTurn; // Swap between Player/Opponent turns
     }
 
+    public void CardAttackCard(GameObject AttackingCard, GameObject DefendingCard)
+    {
+        //check if input gameobjects are cards by checking if GetComponent<CardStats>() returns null
+
+        // Subtracts the attacking cards attack damage from the defending cards health
+        _attackingCard = AttackingCard.GetComponent<CardStats>();
+        _defendingCard = DefendingCard.GetComponent<CardStats>();
+        _defendingCard.Health -= _attackingCard.Attack;
+
+        // Check for death of cards, delete from scene if dead
+        if (_defendingCard.Health <= 0)
+        {
+            Destroy(_defendingCard);
+        }
+    }
+
+    public void CardAttackPlayer(GameObject AttackingCard, GameObject DefendingPlayer)
+    {
+        // Subracts the cards attack damage from the player health
+        _attackingCard = AttackingCard.GetComponent<CardStats>();
+        _playerStats = Player.GetComponent<PlayerStats>();
+        _playerStats.PlayerHealth -= _attackingCard.Attack;
+
+        // If player dies, reset scene
+        if (_playerStats.PlayerHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    public void ManaDecrease(GameObject PlacedCard, GameObject CardPlayer, GameObject Opp)
+    {
+       CardStats _placedCard = PlacedCard.GetComponent<CardStats>();
+        _playerStats = CardPlayer.GetComponent<PlayerStats>();
+        _playerStats.PlayerMana -= _placedCard.ManaCost;
+
+        _oppStats = Opp.GetComponent<OpponentStats>();
+        _oppStats.OpponentMana -= _placedCard.ManaCost;
+    }
+
+    public void ManaIncrease(GameObject Player, GameObject Opponent)
+    {
+        _playerStats = Player.GetComponent<PlayerStats>();
+        _playerStats.PlayerMana += 1;
+
+        _oppStats = Opponent.GetComponent<OpponentStats>();
+        _oppStats.OpponentMana += 1;
+    }
 
 
     // Update is called once per frame

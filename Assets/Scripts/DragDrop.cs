@@ -9,6 +9,7 @@ public class DragDrop : MonoBehaviour
     public GameObject Canvas;
     public GameObject PlayerDropZone;
     public GameObject OpponentDropZone;
+    [SerializeField]
     private bool _isDragging = false;
     private Vector2 _startPosition;
     private bool _isOverDropZone = false;
@@ -136,7 +137,7 @@ public class DragDrop : MonoBehaviour
         }
         
         Debug.Log(CardList.Count.ToString());
-        Debug.Log(CardList[0].name + " - " + CardList[1].name);
+       // Debug.Log(CardList[0].name + " - " + CardList[1].name);
 
     }
 
@@ -158,13 +159,13 @@ public class DragDrop : MonoBehaviour
     {
         _isDragging = false;
 
-        if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Denary statement: just as shorthand If statement
+        if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Ternary statement: shorthand If statement. If it is the players turn use playerstats, else use oppstats
         {
             transform.SetParent(_dropZone.transform, false);    // Place card in play area
 
             // TODO: card interaction here, CardAttackCard(), CardAttackPlayer(), ManaDecrease()
 
-            _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // Swap turns
+           // _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // Swap turns
         }
         else
         {

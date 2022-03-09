@@ -27,11 +27,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        PlayersTurn = true;
+
         OppStatsInstance = Opponent.GetComponent<PlayerStats>();
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
-
-
-        OppStatsInstance = Opponent.GetComponent<PlayerStats>();
 
         PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
         OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
@@ -41,8 +40,9 @@ public class GameManager : MonoBehaviour
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
     }
 
-    void TurnLogic()
+    public void TurnLogic()
     {
+        Debug.Log(PlayersTurn);
         if (PlayersTurn)
         {
             //players turn
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
             }  
             foreach (var card in PlayerStatsInstance.Cards)
             {
+                print("Disabling dragging");
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
         }
@@ -75,8 +76,9 @@ public class GameManager : MonoBehaviour
     public bool IsCardPlayable(GameObject attackingCard, PlayerStats cardPlayer)
     {
         _attackingCard = attackingCard.GetComponent<CardStats>();
+        
 
-        if (PlayerStatsInstance.Mana < _attackingCard.ManaCost)
+        if (cardPlayer.Mana < _attackingCard.ManaCost)
         {
             return false;
         }

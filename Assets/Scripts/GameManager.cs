@@ -11,27 +11,25 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public GameObject Opponent;
 
-    PlayerStats _playerStats;
-    PlayerStats _oppStats;
+    public PlayerStats PlayerStatsInstance;
+    public PlayerStats OppStatsInstance;
 
     CardStats _attackingCard;
     CardStats _defendingCard;
 
     void TurnLogic()
     {
-
-
-        _oppStats = Opponent.GetComponent<PlayerStats>();
-        _playerStats = Player.GetComponent<PlayerStats>();
+        OppStatsInstance = Opponent.GetComponent<PlayerStats>();
+        PlayerStatsInstance = Player.GetComponent<PlayerStats>();
         if (PlayersTurn)
         {
             //players turn
             //only access player cards
-            foreach (var card in _oppStats.Cards)   // For each card in the players deck
+            foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
             {
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Opponents Cards
             }
-            foreach (var card in _playerStats.Cards)
+            foreach (var card in PlayerStatsInstance.Cards)
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
             }
@@ -40,16 +38,30 @@ public class GameManager : MonoBehaviour
         {
             //opponents turn
             //only access opponent cards
-            foreach (var card in _oppStats.Cards)   // For each card in the opponents deck
+            foreach (var card in OppStatsInstance.Cards)   // For each card in the opponents deck
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Opponents Cards
             }  
-            foreach (var card in _playerStats.Cards)
+            foreach (var card in PlayerStatsInstance.Cards)
             {
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
         }
-        //PlayersTurn = !PlayersTurn; // Swap between Player/Opponent turns
+    }
+
+
+    public bool IsCardPlayable(GameObject attackingCard, PlayerStats cardPlayer)
+    {
+        _attackingCard = attackingCard.GetComponent<CardStats>();
+
+        if (PlayerStatsInstance.Mana < _attackingCard.ManaCost)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void CardAttackCard(GameObject attackingCard, GameObject defendingCard)
@@ -72,11 +84,11 @@ public class GameManager : MonoBehaviour
     {
         // Subracts the cards attack damage from the player health
         _attackingCard = attackingCard.GetComponent<CardStats>();
-        _playerStats = defendingPlayer.GetComponent<PlayerStats>();
-        _playerStats.Health -= _attackingCard.Attack;
+        PlayerStatsInstance = defendingPlayer.GetComponent<PlayerStats>();
+        PlayerStatsInstance.Health -= _attackingCard.Attack;
 
         // If player dies, reset scene
-        if (_playerStats.Health <= 0)
+        if (PlayerStatsInstance.Health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -92,9 +104,9 @@ public class GameManager : MonoBehaviour
 
     public void ManaIncrease(GameObject player)
     {
-        _playerStats = player.GetComponent<PlayerStats>();
-        _playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
-        _playerStats.Mana = _playerStats.MaxMana;   // Set mana to the new max at the start of the new round
+        PlayerStatsInstance = player.GetComponent<PlayerStats>();
+        PlayerStatsInstance.MaxMana += 1;    // Increment max mana by 1 every round.
+        PlayerStatsInstance.Mana = PlayerStatsInstance.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
     // Update is called once per frame

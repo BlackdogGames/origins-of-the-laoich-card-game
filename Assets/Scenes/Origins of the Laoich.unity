@@ -309,12 +309,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: Deck.Array.size
-      value: 11
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: Deck.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: f1c651f15d67f8644ad2d96af001e39e, type: 2}
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: Deck.Array.data[1]
       value: 
@@ -322,39 +322,15 @@ PrefabInstance:
     - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: Deck.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: Deck.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: Deck.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
-    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
-      propertyPath: Deck.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
-    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
-      propertyPath: Deck.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
-    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
-      propertyPath: Deck.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
-    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
-      propertyPath: Deck.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
-    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
-      propertyPath: Deck.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
-    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
-      propertyPath: Deck.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 5892133183396400697, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: m_Name
       value: Opponent

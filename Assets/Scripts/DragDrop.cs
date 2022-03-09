@@ -16,15 +16,15 @@ public class DragDrop : MonoBehaviour
     private GameObject _startParent;
 
     private GameManager _gameManager;
-
+    private GameObject _player;
+    private GameManager _opponent;
 
     public GameObject AttackingCard;
     public GameObject CardToAttack;
 
 
-    List<GameObject> CardList;  // name for testing TODO change name
-
-
+    static List<GameObject> CardList;  
+    
     //
 
     //
@@ -36,10 +36,12 @@ public class DragDrop : MonoBehaviour
         OpponentDropZone = GameObject.Find("OpponentDropZone");
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+       
 
-        CardList = new List<GameObject>();
+        if (CardList == null)
+            CardList = new List<GameObject>();
 
-
+        
     }
     //
 
@@ -123,17 +125,18 @@ public class DragDrop : MonoBehaviour
             if (CardList.Count < 2)
             {
                 CardList.Add(gameObject);
+                Debug.Log("Card added to list");
             }
-            else if (CardList.Count >= 2)
+            if (CardList.Count >= 2)
             {
                 _gameManager.CardAttackCard(CardList[0], CardList[1]);
                 CardList.Clear();
+                Debug.Log("Card attack occured, list cleared");
             }
         }
         
-
         Debug.Log(CardList.Count.ToString());
-
+        Debug.Log(CardList[0].name + " - " + CardList[1].name);
 
     }
 

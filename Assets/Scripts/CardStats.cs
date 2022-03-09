@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class CardStats : MonoBehaviour
 {
     public Card CardAsset;
@@ -28,6 +29,13 @@ public class CardStats : MonoBehaviour
 
         // name
         // image
+        ManaCostText.text = ManaCost.ToString();
+        AttackText.text = Attack.ToString();
+        HealthText.text = Health.ToString();
+    }
+
+    private void Update()
+    {
         ManaCostText.text = ManaCost.ToString();
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();

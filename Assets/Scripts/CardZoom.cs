@@ -18,6 +18,8 @@ public class CardZoom : MonoBehaviour
 
     public void HoverOver()
     {
+        gameObject.GetComponent<Outline>().enabled = true;
+
         Vector2 cardPosition = RectTransformUtility.PixelAdjustRect(GetComponent<RectTransform>(), Canvas.GetComponent<Canvas>()).position;
         cardPosition = GetComponent<RectTransform>().anchoredPosition;
 

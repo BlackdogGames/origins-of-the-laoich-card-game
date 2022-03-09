@@ -10,11 +10,5 @@ public class PlayerStats : MonoBehaviour
 
 	public List<GameObject> PlayerCards = new List<GameObject>();
 
-
 	public List<Card> Deck = new List<Card>();
-
-
-
-
-
 }

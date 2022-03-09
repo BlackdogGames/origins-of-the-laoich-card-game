@@ -307,6 +307,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+      propertyPath: Deck.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+      propertyPath: Deck.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+      propertyPath: Deck.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+      propertyPath: Deck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+      propertyPath: Deck.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+      propertyPath: Deck.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 5892133183396400697, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
       propertyPath: m_Name
       value: Opponent
@@ -806,12 +830,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: IsLocalPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
       propertyPath: Health
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
       propertyPath: Deck.Array.size
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
       propertyPath: Deck.Array.data[0]
@@ -823,6 +851,30 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f1c651f15d67f8644ad2d96af001e39e, type: 2}
     - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
       propertyPath: Deck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
+    - target: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+      propertyPath: Deck.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: c2a5777b3dccb4a4bb0a916a3cdc96c5, type: 2}
     - target: {fileID: 7107778094463872314, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
@@ -982,6 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3504f6cb6002c418ebfcc4fb756592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneGameManager: {fileID: 0}
   CardOne: {fileID: 8638656579416893456, guid: b2a95eb304a8b844f8b39f9301519a3d, type: 3}
   PlayerArea: {fileID: 1493307509}
   OpponentArea: {fileID: 1835987412}
@@ -1019,6 +1072,9 @@ MonoBehaviour:
   PlayersTurn: 0
   Player: {fileID: 1533412565}
   Opponent: {fileID: 436977974}
+  CardPrefab: {fileID: 8638656579416893456, guid: b2a95eb304a8b844f8b39f9301519a3d, type: 3}
+  PlayerArea: {fileID: 1493307509}
+  OpponentArea: {fileID: 1835987412}
 --- !u!4 &1620199647
 Transform:
   m_ObjectHideFlags: 0

@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+	public bool IsLocalPlayer;
+
 	public int Health;
 	public int Mana;
 	public int MaxMana;
 
 	public List<GameObject> Cards = new List<GameObject>();
 
-
 	public List<Card> Deck = new List<Card>();
-
-
-
-
-
 }

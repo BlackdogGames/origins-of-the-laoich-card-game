@@ -16,6 +16,15 @@ public class DragDrop : MonoBehaviour
     private GameObject _startParent;
 
     private GameManager _gameManager;
+
+
+    public GameObject AttackingCard;
+    public GameObject CardToAttack;
+
+
+    List<GameObject> CardList;  // name for testing TODO change name
+
+
     //
 
     //
@@ -28,7 +37,9 @@ public class DragDrop : MonoBehaviour
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        
+        CardList = new List<GameObject>();
+
+
     }
     //
 
@@ -46,12 +57,6 @@ public class DragDrop : MonoBehaviour
     //
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
-        //{
-        //    _isOverDropZone = true;
-        //    _dropZone = collision.gameObject;
-        //}
-
 
         switch (_gameManager.PlayersTurn)
         {
@@ -84,11 +89,6 @@ public class DragDrop : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        //if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
-        //{
-        //    _isOverDropZone = false;
-        //    _dropZone = null;
-        //}
 
         switch (_gameManager.PlayersTurn)
         {
@@ -114,13 +114,38 @@ public class DragDrop : MonoBehaviour
 
         }
     }
+    //
+
+    public void OnSelection()
+    {
+        if (_isOverDropZone && !_isDragging)
+        {
+            if (CardList.Count < 2)
+            {
+                CardList.Add(gameObject);
+            }
+            else if (CardList.Count >= 2)
+            {
+                _gameManager.CardAttackCard(CardList[0], CardList[1]);
+                CardList.Clear();
+            }
+        }
+        
+
+        Debug.Log(CardList.Count.ToString());
+
+
+    }
 
     //
     public void StartDrag()
     {
-        _startParent = transform.parent.gameObject;
-        _startPosition = transform.position; // logs the start position (where the card would spawn)
-        _isDragging = true;
+        if (!_isOverDropZone)
+        {
+            _startParent = transform.parent.gameObject;
+            _startPosition = transform.position; // logs the start position (where the card would spawn)
+            _isDragging = true;
+        }
         
     }
     //

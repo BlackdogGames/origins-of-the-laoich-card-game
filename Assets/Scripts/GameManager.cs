@@ -77,7 +77,8 @@ public class GameManager : MonoBehaviour
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)
         {
-            Destroy(_defendingCard);
+            Destroy(defendingCard);
+            Debug.Log("dead");
         }
     }
 

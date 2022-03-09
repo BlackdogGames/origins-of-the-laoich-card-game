@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public GameObject Opponent;
 
-    PlayerStats _playerStats;
-    PlayerStats _oppStats;
+    public PlayerStats PlayerStatsInstance;
+    public PlayerStats OppStatsInstance;
 
     CardStats _attackingCard;
     CardStats _defendingCard;
@@ -27,17 +27,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        OppStatsInstance = Opponent.GetComponent<PlayerStats>();
+        PlayerStatsInstance = Player.GetComponent<PlayerStats>();
 
 
-        _oppStats = Opponent.GetComponent<PlayerStats>();
-        _playerStats = Player.GetComponent<PlayerStats>();
+        OppStatsInstance = Opponent.GetComponent<PlayerStats>();
 
-        _playerStats.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
-        _oppStats.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
 
         // Randomise player deck order
-        _playerStats.Deck = _playerStats.Deck.OrderBy(card => _rng.Next()).ToList();
-        _oppStats.Deck = _oppStats.Deck.OrderBy(card => _rng.Next()).ToList();
+        PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
+        OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
     }
 
     void TurnLogic()
@@ -46,11 +47,11 @@ public class GameManager : MonoBehaviour
         {
             //players turn
             //only access player cards
-            foreach (var card in _oppStats.Cards)   // For each card in the players deck
+            foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
             {
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Opponents Cards
             }
-            foreach (var card in _playerStats.Cards)
+            foreach (var card in PlayerStatsInstance.Cards)
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
             }
@@ -59,16 +60,30 @@ public class GameManager : MonoBehaviour
         {
             //opponents turn
             //only access opponent cards
-            foreach (var card in _oppStats.Cards)   // For each card in the opponents deck
+            foreach (var card in OppStatsInstance.Cards)   // For each card in the opponents deck
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Opponents Cards
             }  
-            foreach (var card in _playerStats.Cards)
+            foreach (var card in PlayerStatsInstance.Cards)
             {
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
         }
-        //PlayersTurn = !PlayersTurn; // Swap between Player/Opponent turns
+    }
+
+
+    public bool IsCardPlayable(GameObject attackingCard, PlayerStats cardPlayer)
+    {
+        _attackingCard = attackingCard.GetComponent<CardStats>();
+
+        if (PlayerStatsInstance.Mana < _attackingCard.ManaCost)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void CardAttackCard(GameObject attackingCard, GameObject defendingCard)
@@ -92,11 +107,11 @@ public class GameManager : MonoBehaviour
     {
         // Subracts the cards attack damage from the player health
         _attackingCard = attackingCard.GetComponent<CardStats>();
-        _playerStats = defendingPlayer.GetComponent<PlayerStats>();
-        _playerStats.Health -= _attackingCard.Attack;
+        PlayerStatsInstance = defendingPlayer.GetComponent<PlayerStats>();
+        PlayerStatsInstance.Health -= _attackingCard.Attack;
 
         // If player dies, reset scene
-        if (_playerStats.Health <= 0)
+        if (PlayerStatsInstance.Health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -112,9 +127,9 @@ public class GameManager : MonoBehaviour
 
     public void ManaIncrease(GameObject player)
     {
-        _playerStats = player.GetComponent<PlayerStats>();
-        _playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
-        _playerStats.Mana = _playerStats.MaxMana;   // Set mana to the new max at the start of the new round
+        PlayerStatsInstance = player.GetComponent<PlayerStats>();
+        PlayerStatsInstance.MaxMana += 1;    // Increment max mana by 1 every round.
+        PlayerStatsInstance.Mana = PlayerStatsInstance.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
     public void DrawCard(GameObject player)
@@ -124,7 +139,7 @@ public class GameManager : MonoBehaviour
         if (playerStats.Deck.Count > 0 && playerStats.IsLocalPlayer)
         {
             GameObject playerCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity); //  where a random card is instantiated from the list
-            playerCard.GetComponent<CardStats>().CardAsset = _playerStats.Deck[0];
+            playerCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
             playerStats.Deck.RemoveAt(0);
             playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
             playerStats.Cards.Add(playerCard);
@@ -133,10 +148,10 @@ public class GameManager : MonoBehaviour
         } else if (playerStats.Deck.Count > 0 && !playerStats.IsLocalPlayer)
         {
             GameObject enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            enemyCard.GetComponent<CardStats>().CardAsset = _playerStats.Deck[0];
+            enemyCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
             playerStats.Deck.RemoveAt(0);
             enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
-            _oppStats.Cards.Add(enemyCard);
+            OppStatsInstance.Cards.Add(enemyCard);
 
             enemyCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
         }

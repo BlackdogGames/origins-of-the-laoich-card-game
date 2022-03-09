@@ -158,7 +158,7 @@ public class DragDrop : MonoBehaviour
     {
         _isDragging = false;
 
-        if (_isOverDropZone)
+        if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Denary statement: just as shorthand If statement
         {
             transform.SetParent(_dropZone.transform, false);    // Place card in play area
 

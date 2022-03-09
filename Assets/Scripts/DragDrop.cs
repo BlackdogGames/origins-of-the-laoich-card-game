@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class DragDrop : MonoBehaviour
         OpponentDropZone = GameObject.Find("OpponentDropZone");
 
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        
     }
     //
 
@@ -43,20 +46,72 @@ public class DragDrop : MonoBehaviour
     //
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
+        //if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
+        //{
+        //    _isOverDropZone = true;
+        //    _dropZone = collision.gameObject;
+        //}
+
+
+        switch (_gameManager.PlayersTurn)
         {
-            _isOverDropZone = true;
-            _dropZone = collision.gameObject;
+
+            case (false): // opponents turn
+
+                if (collision.gameObject.name == "OpponentDropZone" ) // if they are over the opponent's drop zone, drop the card in
+                {
+                    _isOverDropZone = true;
+                    _dropZone = collision.gameObject;
+                }
+
+                break;
+
+
+            case (true): // local player's turn
+                if (collision.gameObject.name == "DropZone") // if they are over the players drop zone, drop the card in
+                {
+                    _isOverDropZone = true;
+                    _dropZone = collision.gameObject;
+                }
+
+                break;
+
+
         }
+
     }
     //
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
+        //if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
+        //{
+        //    _isOverDropZone = false;
+        //    _dropZone = null;
+        //}
+
+        switch (_gameManager.PlayersTurn)
         {
-            _isOverDropZone = false;
-            _dropZone = null;
+
+            case (false): // opponents turn
+
+                if (collision.gameObject.name == "OpponentDropZone") // if theyre no longer in the drop zone snap them back to opponents hand
+                {
+                    _isOverDropZone = false;
+                    _dropZone = null;
+                }
+
+                break;
+
+
+            case (true): // local player's turn
+                if (collision.gameObject.name == "DropZone") // if theyre no longer in the drop zone snap them back to players hand
+                {
+                    _isOverDropZone = false;
+                    _dropZone = null;
+                }
+                break;
+
         }
     }
 

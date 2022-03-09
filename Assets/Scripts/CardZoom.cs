@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardZoom : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class CardZoom : MonoBehaviour
     public void Awake()
     {
         Canvas = GameObject.Find("Main Canvas");
+        gameObject.GetComponent<Outline>().enabled = false;
     }
 
     public void HoverOver()
     {
+        gameObject.GetComponent<Outline>().enabled = true;
         _zoomCard = Instantiate(gameObject, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         _zoomCard.transform.SetParent(Canvas.transform, false);
         _zoomCard.layer = LayerMask.NameToLayer("Zoom"); // puts the new zoomed card to a seperate layer
@@ -26,6 +29,7 @@ public class CardZoom : MonoBehaviour
 
     public void HoverExit()
     {
+        gameObject.GetComponent<Outline>().enabled = false;
         Destroy(_zoomCard);
     }
 }

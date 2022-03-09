@@ -10,6 +10,8 @@ public class CardStats : MonoBehaviour
     public int Attack;
     public int Health;
 
+    public bool BelongsToLocalPlayer;
+
     // Assigned through the inspector
     public Text ManaCostText;
     public Text AttackText;
@@ -24,6 +26,8 @@ public class CardStats : MonoBehaviour
         Health = CardAsset.Health;
         CardImage.sprite = CardAsset.CardImage;
 
+        // name
+        // image
         ManaCostText.text = ManaCost.ToString();
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();

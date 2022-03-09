@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257786380524656965}
-  - component: {fileID: 8628040522996956780}
+  - component: {fileID: 1961121707952055142}
   m_Layer: 0
   m_Name: Opponent
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8628040522996956780
+--- !u!114 &1961121707952055142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5892133183396400697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de31e410cb1b50439cb20f11c670b08, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d8b9555353d5ee47b3de1cbec475fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHealth: 0
+  PlayerMana: 0
+  PlayerMaxMana: 0
+  PlayerCards: []
+  Deck: []

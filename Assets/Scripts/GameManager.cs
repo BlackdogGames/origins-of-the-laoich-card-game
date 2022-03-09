@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject Opponent;
 
     PlayerStats _playerStats;
-    OpponentStats _oppStats;
+    PlayerStats _oppStats;
 
     CardStats _attackingCard;
     CardStats _defendingCard;
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _oppStats = Opponent.GetComponent<OpponentStats>();
+        _oppStats = Opponent.GetComponent<PlayerStats>();
         _playerStats = Player.GetComponent<PlayerStats>();
 
         // Randomise player deck order
@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
         {
             //players turn
             //only access player cards
-            foreach (var card in _oppStats.OpponentCards)   // For each card in the players deck
+            foreach (var card in _oppStats.Cards)   // For each card in the players deck
             {
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Opponents Cards
             }
-            foreach (var card in _playerStats.PlayerCards)
+            foreach (var card in _playerStats.Cards)
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
             }
@@ -53,11 +53,11 @@ public class GameManager : MonoBehaviour
         {
             //opponents turn
             //only access opponent cards
-            foreach (var card in _oppStats.OpponentCards)   // For each card in the opponents deck
+            foreach (var card in _oppStats.Cards)   // For each card in the opponents deck
             {
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Opponents Cards
             }  
-            foreach (var card in _playerStats.PlayerCards)
+            foreach (var card in _playerStats.Cards)
             {
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
@@ -85,37 +85,29 @@ public class GameManager : MonoBehaviour
     {
         // Subracts the cards attack damage from the player health
         _attackingCard = attackingCard.GetComponent<CardStats>();
-        _playerStats = Player.GetComponent<PlayerStats>();
-        _playerStats.PlayerHealth -= _attackingCard.Attack;
+        _playerStats = defendingPlayer.GetComponent<PlayerStats>();
+        _playerStats.Health -= _attackingCard.Attack;
 
         // If player dies, reset scene
-        if (_playerStats.PlayerHealth <= 0)
+        if (_playerStats.Health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
-    public void ManaDecrease(GameObject placedCard, GameObject cardPlayer, GameObject opp)
+    public void ManaDecrease(GameObject placedCard, GameObject cardPlayer, PlayerStats _cardPlayerStats)
     {
         // Subtracts the played cards mana cost from the player
         CardStats placedCardStats = placedCard.GetComponent<CardStats>();
-        _playerStats = cardPlayer.GetComponent<PlayerStats>();
-        _playerStats.PlayerMana -= placedCardStats.ManaCost;
-
-        _oppStats = opp.GetComponent<OpponentStats>();
-        _oppStats.OpponentMana -= placedCardStats.ManaCost;
+        _cardPlayerStats = cardPlayer.GetComponent<PlayerStats>();
+        _cardPlayerStats.Mana -= placedCardStats.ManaCost;
     }
 
-    public void ManaIncrease(GameObject player, GameObject opponent)
+    public void ManaIncrease(GameObject player)
     {
-
         _playerStats = player.GetComponent<PlayerStats>();
-        _playerStats.PlayerMaxMana += 1;    // Increment max mana by 1 every round.
-        _playerStats.PlayerMana = _playerStats.PlayerMaxMana;   // Set mana to the new max at the start of the new round
-
-        _oppStats = opponent.GetComponent<OpponentStats>();
-        _oppStats.OpponentMaxMana += 1;
-        _oppStats.OpponentMana = _oppStats.OpponentMaxMana;
+        _playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
+        _playerStats.Mana = _playerStats.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
     public void DrawCard()

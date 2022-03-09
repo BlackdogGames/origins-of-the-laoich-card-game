@@ -10,11 +10,12 @@ public class DrawingCards : MonoBehaviour
     public GameObject CardOne;
     public GameObject PlayerArea;
     public GameObject OpponentArea;
+
     public GameObject Player;
     public GameObject Opponent;
 
     PlayerStats _playerStats;
-    OpponentStats _oppStats;
+    PlayerStats _oppStats;
     //
 
     //
@@ -23,7 +24,7 @@ public class DrawingCards : MonoBehaviour
         SceneGameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         _playerStats = Player.GetComponent<PlayerStats>();
-        _oppStats = Opponent.GetComponent<OpponentStats>();
+        _oppStats = Opponent.GetComponent<PlayerStats>();
     }
     //
 

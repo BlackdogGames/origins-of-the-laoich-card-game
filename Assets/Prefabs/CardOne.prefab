@@ -704,6 +704,7 @@ GameObject:
   - component: {fileID: 8715870325124993046}
   - component: {fileID: 3341440265347781210}
   - component: {fileID: 7949973896154394668}
+  - component: {fileID: -8389175650262524535}
   m_Layer: 6
   m_Name: CardOne
   m_TagString: Untagged
@@ -803,6 +804,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
+  PlayerDropZone: {fileID: 0}
+  OpponentDropZone: {fileID: 0}
+  AttackingCard: {fileID: 0}
+  CardToAttack: {fileID: 0}
 --- !u!114 &4751563756640624498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -892,6 +897,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 16
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -8131168089735743147}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: HoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3555824932705623313}
+          m_TargetAssemblyTypeName: DragDrop, Assembly-CSharp
+          m_MethodName: OnSelection
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!61 &8715870325124993046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -951,11 +988,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bc6ac922cf71c4ab46c07d17d8fe3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardAsset: {fileID: 11400000, guid: 6e662f1a122622d46bbc4b28f31a1378, type: 2}
+  CardAsset: {fileID: 0}
   ManaCost: 0
   Attack: 0
   Health: 0
+  BelongsToLocalPlayer: 0
   ManaCostText: {fileID: 4939757885359903284}
   AttackText: {fileID: 7440499992363834005}
   HealthText: {fileID: 130801067718666177}
   CardImage: {fileID: 149687993726956949}
+--- !u!114 &-8389175650262524535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638656579416893456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.1327753, g: 0, b: 1, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 0

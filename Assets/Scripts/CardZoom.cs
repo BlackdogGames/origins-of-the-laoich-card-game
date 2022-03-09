@@ -13,10 +13,13 @@ public class CardZoom : MonoBehaviour
     public void Awake()
     {
         Canvas = GameObject.Find("Main Canvas");
+        gameObject.GetComponent<Outline>().enabled = false;
     }
 
     public void HoverOver()
     {
+        gameObject.GetComponent<Outline>().enabled = true;
+
         Vector2 cardPosition = RectTransformUtility.PixelAdjustRect(GetComponent<RectTransform>(), Canvas.GetComponent<Canvas>()).position;
         cardPosition = GetComponent<RectTransform>().anchoredPosition;
 
@@ -35,6 +38,7 @@ public class CardZoom : MonoBehaviour
 
     public void HoverExit()
     {
+        gameObject.GetComponent<Outline>().enabled = false;
         Destroy(_zoomCard);
     }
 }

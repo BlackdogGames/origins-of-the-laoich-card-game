@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviour
         //PlayersTurn = !PlayersTurn; // Swap between Player/Opponent turns
     }
 
-    public void CardAttackCard(GameObject AttackingCard, GameObject DefendingCard)
+    public void CardAttackCard(GameObject attackingCard, GameObject defendingCard)
     {
         //check if input gameobjects are cards by checking if GetComponent<CardStats>() returns null
 
         // Subtracts the attacking cards attack damage from the defending cards health
-        _attackingCard = AttackingCard.GetComponent<CardStats>();
-        _defendingCard = DefendingCard.GetComponent<CardStats>();
+        _attackingCard = attackingCard.GetComponent<CardStats>();
+        _defendingCard = defendingCard.GetComponent<CardStats>();
         _defendingCard.Health -= _attackingCard.Attack;
 
         // Check for death of cards, delete from scene if dead
@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CardAttackPlayer(GameObject AttackingCard, GameObject DefendingPlayer)
+    public void CardAttackPlayer(GameObject attackingCard, GameObject defendingPlayer)
     {
         // Subracts the cards attack damage from the player health
-        _attackingCard = AttackingCard.GetComponent<CardStats>();
+        _attackingCard = attackingCard.GetComponent<CardStats>();
         _playerStats = Player.GetComponent<PlayerStats>();
         _playerStats.PlayerHealth -= _attackingCard.Attack;
 
@@ -80,25 +80,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ManaDecrease(GameObject PlacedCard, GameObject CardPlayer, GameObject Opp)
+    public void ManaDecrease(GameObject placedCard, GameObject cardPlayer, GameObject opp)
     {
-       // Subtracts the played cards mana cost from the player
-       CardStats _placedCard = PlacedCard.GetComponent<CardStats>();
-        _playerStats = CardPlayer.GetComponent<PlayerStats>();
-        _playerStats.PlayerMana -= _placedCard.ManaCost;
+        // Subtracts the played cards mana cost from the player
+        CardStats placedCardStats = placedCard.GetComponent<CardStats>();
+        _playerStats = cardPlayer.GetComponent<PlayerStats>();
+        _playerStats.PlayerMana -= placedCardStats.ManaCost;
 
-        _oppStats = Opp.GetComponent<OpponentStats>();
-        _oppStats.OpponentMana -= _placedCard.ManaCost;
+        _oppStats = opp.GetComponent<OpponentStats>();
+        _oppStats.OpponentMana -= placedCardStats.ManaCost;
     }
 
-    public void ManaIncrease(GameObject Player, GameObject Opponent)
+    public void ManaIncrease(GameObject player, GameObject opponent)
     {
         
-        _playerStats = Player.GetComponent<PlayerStats>();
+        _playerStats = player.GetComponent<PlayerStats>();
         _playerStats.PlayerMaxMana += 1;    // Increment max mana by 1 every round.
         _playerStats.PlayerMana = _playerStats.PlayerMaxMana;   // Set mana to the new max at the start of the new round
 
-        _oppStats = Opponent.GetComponent<OpponentStats>();
+        _oppStats = opponent.GetComponent<OpponentStats>();
         _oppStats.OpponentMaxMana += 1;
         _oppStats.OpponentMana = _oppStats.OpponentMaxMana;
     }

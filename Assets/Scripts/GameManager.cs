@@ -110,20 +110,30 @@ public class GameManager : MonoBehaviour
         _playerStats.Mana = _playerStats.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
-    public void DrawCard()
+    public void DrawCard(GameObject player)
     {
-        if (_playerStats.Deck.Count > 0)
+        PlayerStats playerStats = player.GetComponent<PlayerStats>();
+
+        if (playerStats.Deck.Count > 0 && playerStats.IsLocalPlayer)
         {
-            GameObject _playerCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity); //  where a random card is instantiated from the list
-            _playerCard.GetComponent<CardStats>().CardAsset = _playerStats.Deck[0]; 
-            _playerStats.Deck.RemoveAt(0);
-            _playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
-            _playerStats.PlayerCards.Add(_playerCard);
+            GameObject playerCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity); //  where a random card is instantiated from the list
+            playerCard.GetComponent<CardStats>().CardAsset = _playerStats.Deck[0];
+            playerStats.Deck.RemoveAt(0);
+            playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
+            playerStats.Cards.Add(playerCard);
+
+            playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+        } else if (playerStats.Deck.Count > 0 && !playerStats.IsLocalPlayer)
+        {
+            GameObject enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            enemyCard.GetComponent<CardStats>().CardAsset = _playerStats.Deck[0];
+            playerStats.Deck.RemoveAt(0);
+            enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
+            _oppStats.Cards.Add(enemyCard);
+
+            enemyCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
         }
 
-        GameObject _enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        _enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
-        _oppStats.OpponentCards.Add(_enemyCard);
     }
 
     // Update is called once per frame

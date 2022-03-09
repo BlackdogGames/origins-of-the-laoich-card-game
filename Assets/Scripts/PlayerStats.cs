@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+	public bool IsLocalPlayer;
+
 	public int Health;
 	public int Mana;
 	public int MaxMana;

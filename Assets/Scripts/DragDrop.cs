@@ -6,6 +6,8 @@ public class DragDrop : MonoBehaviour
 {
     //
     public GameObject Canvas;
+    public GameObject PlayerDropZone;
+    public GameObject OpponentDropZone;
     private bool _isDragging = false;
     private Vector2 _startPosition;
     private bool _isOverDropZone = false;
@@ -19,6 +21,10 @@ public class DragDrop : MonoBehaviour
     private void Awake()
     {
         Canvas = GameObject.Find("Main Canvas");
+
+        PlayerDropZone = GameObject.Find("DropZone");
+        OpponentDropZone = GameObject.Find("OpponentDropZone");
+
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     //
@@ -37,15 +43,21 @@ public class DragDrop : MonoBehaviour
     //
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isOverDropZone = true;
-        _dropZone = collision.gameObject;
+        if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
+        {
+            _isOverDropZone = true;
+            _dropZone = collision.gameObject;
+        }
     }
     //
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        _isOverDropZone = false;
-        _dropZone = null;
+        if (_gameManager.PlayersTurn == false && collision.gameObject.name == "OpponentDropZone")
+        {
+            _isOverDropZone = false;
+            _dropZone = null;
+        }
     }
 
     //

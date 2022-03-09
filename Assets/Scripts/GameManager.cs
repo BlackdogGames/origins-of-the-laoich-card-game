@@ -30,8 +30,12 @@ public class GameManager : MonoBehaviour
         _oppStats = Opponent.GetComponent<PlayerStats>();
         _playerStats = Player.GetComponent<PlayerStats>();
 
+        _playerStats.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        _oppStats.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+
         // Randomise player deck order
         _playerStats.Deck = _playerStats.Deck.OrderBy(card => _rng.Next()).ToList();
+        _oppStats.Deck = _oppStats.Deck.OrderBy(card => _rng.Next()).ToList();
     }
 
     void TurnLogic()

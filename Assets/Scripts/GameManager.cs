@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     void TurnLogic()
     {
+
+
         _oppStats = Opponent.GetComponent<PlayerStats>();
         _playerStats = Player.GetComponent<PlayerStats>();
         if (PlayersTurn)

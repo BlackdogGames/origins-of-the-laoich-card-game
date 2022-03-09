@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
+
         _oppStats = Opponent.GetComponent<PlayerStats>();
         _playerStats = Player.GetComponent<PlayerStats>();
 

@@ -129,9 +129,10 @@ public class GameManager : MonoBehaviour
 
     public void ManaIncrease(GameObject player)
     {
-        PlayerStatsInstance = player.GetComponent<PlayerStats>();
-        PlayerStatsInstance.MaxMana += 1;    // Increment max mana by 1 every round.
-        PlayerStatsInstance.Mana = PlayerStatsInstance.MaxMana;   // Set mana to the new max at the start of the new round
+        PlayerStats playerStats = player.GetComponent<PlayerStats>();
+
+        playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
+        playerStats.Mana = playerStats.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
     public void DrawCard(GameObject player)

@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             }  
             foreach (var card in PlayerStatsInstance.Cards)
             {
-                print("Disabling dragging");
+               // print("Disabling dragging");
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
         }

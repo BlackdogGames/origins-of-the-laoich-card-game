@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
 
     public bool PlayersTurn; // True if players turn, false if opponents turn
+
+    public TMP_Text TurnText;
 
     public GameObject Player;
     public GameObject Opponent;
@@ -165,5 +168,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TurnLogic();
+
+        TurnText.text = PlayersTurn ? "Players turn" : "Opponents Turn";
     }
 }

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
 
     public bool PlayersTurn; // True if players turn, false if opponents turn
+
+    public TMP_Text TurnText;
 
     public GameObject Player;
     public GameObject Opponent;
@@ -27,11 +30,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        PlayersTurn = true;
+
         OppStatsInstance = Opponent.GetComponent<PlayerStats>();
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
-
-
-        OppStatsInstance = Opponent.GetComponent<PlayerStats>();
 
         PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
         OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
@@ -41,8 +43,9 @@ public class GameManager : MonoBehaviour
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
     }
 
-    void TurnLogic()
+    public void TurnLogic()
     {
+        Debug.Log(PlayersTurn);
         if (PlayersTurn)
         {
             //players turn
@@ -66,6 +69,7 @@ public class GameManager : MonoBehaviour
             }  
             foreach (var card in PlayerStatsInstance.Cards)
             {
+                print("Disabling dragging");
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
         }
@@ -75,8 +79,9 @@ public class GameManager : MonoBehaviour
     public bool IsCardPlayable(GameObject attackingCard, PlayerStats cardPlayer)
     {
         _attackingCard = attackingCard.GetComponent<CardStats>();
+        
 
-        if (PlayerStatsInstance.Mana < _attackingCard.ManaCost)
+        if (cardPlayer.Mana < _attackingCard.ManaCost)
         {
             return false;
         }
@@ -127,9 +132,10 @@ public class GameManager : MonoBehaviour
 
     public void ManaIncrease(GameObject player)
     {
-        PlayerStatsInstance = player.GetComponent<PlayerStats>();
-        PlayerStatsInstance.MaxMana += 1;    // Increment max mana by 1 every round.
-        PlayerStatsInstance.Mana = PlayerStatsInstance.MaxMana;   // Set mana to the new max at the start of the new round
+        PlayerStats playerStats = player.GetComponent<PlayerStats>();
+
+        playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
+        playerStats.Mana = playerStats.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
     public void DrawCard(GameObject player)
@@ -162,5 +168,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TurnLogic();
+
+        TurnText.text = PlayersTurn ? "Players turn" : "Opponents Turn";
     }
 }

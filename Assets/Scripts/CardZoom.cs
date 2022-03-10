@@ -10,6 +10,12 @@ public class CardZoom : MonoBehaviour
     //
 
     //
+
+    private void OnDestroy()
+    {
+        Destroy(_zoomCard);
+    }
+
     public void Awake()
     {
         Canvas = GameObject.Find("Main Canvas");

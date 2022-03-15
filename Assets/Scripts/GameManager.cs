@@ -128,20 +128,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ManaDecrease(GameObject placedCard, GameObject cardPlayer, PlayerStats _cardPlayerStats)
+    public void ManaDecrease(GameObject placedCard, PlayerStats cardPlayer)
     {
         // Subtracts the played cards mana cost from the player
         CardStats placedCardStats = placedCard.GetComponent<CardStats>();
-        _cardPlayerStats = cardPlayer.GetComponent<PlayerStats>();
-        _cardPlayerStats.Mana -= placedCardStats.ManaCost;
+        cardPlayer.Mana -= placedCardStats.ManaCost;
     }
 
     public void ManaIncrease(GameObject player)
     {
         PlayerStats playerStats = player.GetComponent<PlayerStats>();
-
-        playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
-        playerStats.Mana = playerStats.MaxMana;   // Set mana to the new max at the start of the new round
+        if (playerStats.MaxMana < 9)
+        {
+            playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
+            playerStats.Mana = playerStats.MaxMana;   // Set mana to the new max at the start of the new round
+        }
+       
     }
 
     public void DrawCard(GameObject player)

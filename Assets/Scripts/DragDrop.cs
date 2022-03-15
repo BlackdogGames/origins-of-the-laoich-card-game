@@ -222,9 +222,7 @@ public class DragDrop : MonoBehaviour
         {
             transform.SetParent(_dropZone.transform, false);    // Place card in play area
 
-            // TODO: card interaction here, CardAttackCard(), CardAttackPlayer(), ManaDecrease()
-
-           // _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // Swap turns
+            _gameManager.ManaDecrease(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance); // run the mana decrease function
         }
         else
         {

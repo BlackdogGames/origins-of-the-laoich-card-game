@@ -43,21 +43,52 @@ public class GameManager : MonoBehaviour
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
     }
 
+    public void ClearCardSelection()
+    {
+        foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
+        {
+            if (!card)
+            {
+                OppStatsInstance.Cards.Remove(card);
+            }
+            
+            card.SendMessage("ClearSelectionList");
+            
+        }
+        foreach (var card in PlayerStatsInstance.Cards)
+        {
+            if (!card)
+            {
+                PlayerStatsInstance.Cards.Remove(card);
+            }
+
+            card.SendMessage("ClearSelectionList");
+        }
+    }
+
     public void TurnLogic()
     {
-        Debug.Log(PlayersTurn);
+       // Debug.Log(PlayersTurn);
         if (PlayersTurn)
         {
             //players turn
             //only access player cards
             foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
             {
-                card.SendMessage("ClearSelectionList");
+                if (!card)
+                {
+                    OppStatsInstance.Cards.Remove(card);
+                }
+
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Opponents Cards
             }
             foreach (var card in PlayerStatsInstance.Cards)
             {
-                card.SendMessage("ClearSelectionList");
+                if (!card)
+                {
+                    PlayerStatsInstance.Cards.Remove(card);
+                }
+
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
             }
         }
@@ -67,11 +98,21 @@ public class GameManager : MonoBehaviour
             //only access opponent cards
             foreach (var card in OppStatsInstance.Cards)   // For each card in the opponents deck
             {
+                if (!card)
+                {
+                    OppStatsInstance.Cards.Remove(card);
+                }
+
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Opponents Cards
             }  
             foreach (var card in PlayerStatsInstance.Cards)
             {
-               // print("Disabling dragging");
+                //print("Disabling dragging");
+                if (!card)
+                {
+                    PlayerStatsInstance.Cards.Remove(card);
+                }
+
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
             }
         }

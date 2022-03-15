@@ -9,6 +9,7 @@ public class EndTurnButton : MonoBehaviour
     void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
     }
 
     public void OnClick()
@@ -29,6 +30,8 @@ public class EndTurnButton : MonoBehaviour
                 _gameManager.DrawCard(_gameManager.Opponent);
             }
         }
+
+        _gameManager.ClearCardSelection(); // clear the card list
 
         _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // End turn
     }

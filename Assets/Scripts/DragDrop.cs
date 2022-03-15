@@ -117,11 +117,19 @@ public class DragDrop : MonoBehaviour
                 break;
 
         }
-    }
+    } 
     //
+
+    public void ClearSelectionList()
+    {
+        CardList.Clear();
+    }
 
     public void OnSelection()
     {
+        CardStats _stats = GetComponent<CardStats>();
+        bool _belongsToPlayer = _stats.BelongsToLocalPlayer;
+
         if (_isOverDropZone && !_isDragging)
         {
             switch (_gameManager.PlayersTurn)
@@ -130,22 +138,20 @@ public class DragDrop : MonoBehaviour
 
                     if (_dropZone.name == "DropZone" && !_isDragging) // if the card is in the player's dropzone and not being dragged currently
                     {
-                      
-                        if (CardList.Count < 2 ) // if the list has less than two items and the first slot is blank
+                        if (_belongsToPlayer == true && !CardList.Contains(gameObject)) // card belongs to the player and this specific card is not already in the list 
                         {
-                            
-                            CardList.Add(gameObject);
+                            CardList.Add(gameObject); // add the card to the list 
                             Debug.Log("Player Card Selected; is in Attack Slot");
-                            
                         }
+
                     }
-                    if (_dropZone.name == "OpponentDropZone" && !_isDragging) // if the card is in the opponents dropzone and not being dragged currently
+                    else if (_dropZone.name == "OpponentDropZone" && !_isDragging) // if the card is in the opponents dropzone and not being dragged currently
                     {
-                        if (CardList.Count < 2) // if the list has less than two items and the first slot is NOT blank (hence the attacking card always has to be selected first)
+                        if (CardList.Count < 2) // if the list has less than two items 
                         {
-                            if (CardList[0] != null)
+                            if (_belongsToPlayer == false && CardList[0] != null) // if its an opponent card and the first slot is not null
                             {
-                                CardList.Add(gameObject);
+                                CardList.Add(gameObject); // add the card to the list 
                                 Debug.Log("Opponent Card Selected; is in Defendant Slot");
                             }
                         }
@@ -159,23 +165,18 @@ public class DragDrop : MonoBehaviour
 
                     if (_dropZone.name == "OpponentDropZone" && !_isDragging) // if the card is in the player's dropzone and not being dragged currently
                     {
-                        if (CardList.Count < 2 ) // if the list has less than two items and the first slot is blank
+                        if (_belongsToPlayer == false && !CardList.Contains(gameObject)) //  if the card belongs to the opponent and is not already in the cardlist
                         {
-                            CardList.Add(gameObject);
-                            Debug.Log("Opponent Card Selected; is in Attack Slot");
-                            
+                            CardList.Add(gameObject); // add it to the list 
+                            Debug.Log("Player Card Selected; is in Attack Slot");
                         }
                     }
-                    if (_dropZone.name == "DropZone" && !_isDragging) // if the card is in the opponents dropzone and not being dragged currently
+                    else if (_dropZone.name == "DropZone" && !_isDragging) // if the card is in the opponents dropzone and not being dragged currently
                     {
-                        if (CardList.Count < 2) // if the list has less than two items and the first slot is NOT blank (hence the attacking card always has to be selected first)
+                        if (_belongsToPlayer == true && CardList[0] != null) // if the card belongs to the player and the first card slot is fulled 
                         {
-                            if (CardList[0] != null)
-                            {
-                                CardList.Add(gameObject); // add the selected card to this slot in the list
-                                Debug.Log("Players Card Selected; is in Defendant Slot");
-                            }
-                            
+                            CardList.Add(gameObject);
+                            Debug.Log("Opponent Card Selected; is in Defendant Slot");
                         }
 
 
@@ -187,7 +188,7 @@ public class DragDrop : MonoBehaviour
 
             if (CardList.Count >= 2) // if both slots are not empty //CardList[0] != null && CardList[1] != null)
             {
-                _gameManager.CardAttackCard(CardList[0], CardList[1]); // run the attack function
+                _gameManager.CardAttackCard(CardList[0], CardList[1]); // run the attack with both cards in the list 
                 CardList.Clear(); // clear the list 
                 Debug.Log("Card attack occured, list cleared");
             }

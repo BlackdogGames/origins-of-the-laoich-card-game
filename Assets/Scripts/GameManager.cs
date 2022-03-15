@@ -58,10 +58,12 @@ public class GameManager : MonoBehaviour
             //only access player cards
             foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
             {
+                card.SendMessage("ClearSelectionList");
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Opponents Cards
             }
             foreach (var card in PlayerStatsInstance.Cards)
             {
+                card.SendMessage("ClearSelectionList");
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
             }
         }

@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
         // Randomise player deck order
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
+
+        for (int i = 0; i < 5; i++)
+        {
+            DrawCard(Player);
+            DrawCard(Opponent);
+        }
     }
 
     public void TurnLogic()

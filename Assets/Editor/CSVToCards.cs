@@ -37,10 +37,11 @@ public class CSVToCards
             string[] variables = s.Split(',');
 
             Card newCard = ScriptableObject.CreateInstance<Card>();
-            newCard.CardName = variables[0];
-            newCard.ManaCost = int.Parse(variables[1]);
-            newCard.Attack = int.Parse(variables[2]);
-            newCard.Health = int.Parse(variables[3]);
+            newCard.ID = int.Parse(variables[0]);
+            newCard.CardName = variables[1];
+            newCard.ManaCost = int.Parse(variables[2]);
+            newCard.Attack = int.Parse(variables[3]);
+            newCard.Health = int.Parse(variables[4]);
             newCard.CardImage = Resources.Load<Sprite>("Sprites/CardSprites/" + variables[4]);
             
             AssetDatabase.CreateAsset(newCard, $"Assets/Resources/Cards/{newCard.CardName}.asset");

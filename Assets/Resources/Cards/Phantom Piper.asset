@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1230d1b6837afa44833456761a4070a, type: 3}
   m_Name: Phantom Piper
   m_EditorClassIdentifier: 
+  ID: 27
   CardName: Phantom Piper
   ManaCost: 6
   Attack: 1

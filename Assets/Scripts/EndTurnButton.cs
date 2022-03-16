@@ -13,21 +13,26 @@ public class EndTurnButton : MonoBehaviour
 
     public void OnClick()
     {
-        if (_gameManager.PlayersTurn) // if it is the players turn that is ending and they have space for it, draw 1 new card
+        if (_gameManager.PlayersTurn) // if it is the players turn that is ending
         {
             _gameManager.ManaIncrease(_gameManager.Player);
-
-            if (_gameManager.PlayerStatsInstance.Cards.Count < 7)
+            /*
+            if (_gameManager.PlayerStatsInstance.Cards.Count < 7) // if the player has space, draw 1 new card
             {
                 _gameManager.DrawCard(_gameManager.Player);
             }
-        } else // if it is the opponents turn that is ending and they have space for it, draw 1 new card
+            */
+        } 
+
+        if (!_gameManager.PlayersTurn)// if it is the opponents turn that is ending
         {
             _gameManager.ManaIncrease(_gameManager.Opponent);
+            /*
             if (_gameManager.OppStatsInstance.Cards.Count < 7)
             {
                 _gameManager.DrawCard(_gameManager.Opponent);
             }
+            */
         }
 
         _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // End turn

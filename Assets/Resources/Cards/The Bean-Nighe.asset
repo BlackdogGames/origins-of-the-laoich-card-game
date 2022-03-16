@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1230d1b6837afa44833456761a4070a, type: 3}
   m_Name: The Bean-Nighe
   m_EditorClassIdentifier: 
+  ID: 16
   CardName: The Bean-Nighe
   ManaCost: 2
   Attack: 3

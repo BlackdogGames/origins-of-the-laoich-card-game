@@ -486,7 +486,7 @@ MonoBehaviour:
   m_text: CHRIS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d6245265779e164a807393395119991, type: 2}
-  m_sharedMaterial: {fileID: 281936988624394356, guid: 6d6245265779e164a807393395119991, type: 2}
+  m_sharedMaterial: {fileID: 2237681673201464543, guid: 6d6245265779e164a807393395119991, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

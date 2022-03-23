@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class CardStats : MonoBehaviour
@@ -14,9 +15,10 @@ public class CardStats : MonoBehaviour
     public bool BelongsToLocalPlayer;
 
     // Assigned through the inspector
-    public Text ManaCostText;
-    public Text AttackText;
-    public Text HealthText;
+    public TMP_Text CardNameText;
+    public TMP_Text ManaCostText;
+    public TMP_Text AttackText;
+    public TMP_Text HealthText;
 
     public Image CardImage;
 
@@ -26,6 +28,7 @@ public class CardStats : MonoBehaviour
         Attack = CardAsset.Attack;
         Health = CardAsset.Health;
         CardImage.sprite = CardAsset.CardImage;
+        CardNameText.text = CardAsset.CardName;
 
         // name
         // image

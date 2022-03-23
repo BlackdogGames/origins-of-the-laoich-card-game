@@ -1430,9 +1430,10 @@ MonoBehaviour:
   Attack: 0
   Health: 0
   BelongsToLocalPlayer: 0
-  ManaCostText: {fileID: 0}
-  AttackText: {fileID: 0}
-  HealthText: {fileID: 0}
+  CardNameText: {fileID: 7168327372764286176}
+  ManaCostText: {fileID: 34328829130089339}
+  AttackText: {fileID: 2090796141120252948}
+  HealthText: {fileID: 7033114455718998677}
   CardImage: {fileID: 149687993726956949}
 --- !u!114 &-8389175650262524535
 MonoBehaviour:

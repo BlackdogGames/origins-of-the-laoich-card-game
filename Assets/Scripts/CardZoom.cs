@@ -38,8 +38,6 @@ public class CardZoom : MonoBehaviour
         _zoomCard.GetComponent<Image>().raycastTarget = false;
         _zoomCard.transform.SetParent(Canvas.transform, false);
         _zoomCard.layer = LayerMask.NameToLayer("Zoom"); // puts the new zoomed card to a seperate layer
-
-        rect.sizeDelta = new Vector2(480, 708);
     }
 
     public void HoverExit()

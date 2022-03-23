@@ -18,7 +18,7 @@ public class DragDrop : MonoBehaviour
 
     private GameManager _gameManager;
     private GameObject _player;
-    private GameManager _opponent;
+    private GameObject _opponent;
 
     public GameObject AttackingCard;
     public GameObject CardToAttack;
@@ -41,9 +41,9 @@ public class DragDrop : MonoBehaviour
 
         if (CardList == null)
             CardList = new List<GameObject>(2);
-      
 
-        
+        _player = GameObject.Find("Player");
+        _opponent = GameObject.Find("Opponent");
     }
     //
 
@@ -71,6 +71,8 @@ public class DragDrop : MonoBehaviour
                 {
                     _isOverDropZone = true;
                     _dropZone = collision.gameObject;
+
+                    GetComponent<CardStats>().FirstTurnPlayed = true;
                 }
 
                 break;
@@ -81,6 +83,8 @@ public class DragDrop : MonoBehaviour
                 {
                     _isOverDropZone = true;
                     _dropZone = collision.gameObject;
+
+                    GetComponent<CardStats>().FirstTurnPlayed = true;
                 }
 
                 break;
@@ -128,7 +132,7 @@ public class DragDrop : MonoBehaviour
     public void OnSelection()
     {
         CardStats _stats = GetComponent<CardStats>();
-        bool _belongsToPlayer = _stats.BelongsToLocalPlayer;
+        bool belongsToPlayer = _stats.BelongsToLocalPlayer;
 
         if (_isOverDropZone && !_isDragging)
         {
@@ -138,7 +142,7 @@ public class DragDrop : MonoBehaviour
 
                     if (_dropZone.name == "DropZone" && !_isDragging) // if the card is in the player's dropzone and not being dragged currently
                     {
-                        if (_belongsToPlayer == true && !CardList.Contains(gameObject)) // card belongs to the player and this specific card is not already in the list 
+                        if (belongsToPlayer == true && !CardList.Contains(gameObject)) // card belongs to the player and this specific card is not already in the list 
                         {
                             CardList.Add(gameObject); // add the card to the list 
                             Debug.Log("Player Card Selected; is in Attack Slot");
@@ -149,7 +153,7 @@ public class DragDrop : MonoBehaviour
                     {
                         if (CardList.Count < 2) // if the list has less than two items 
                         {
-                            if (_belongsToPlayer == false && CardList[0] != null) // if its an opponent card and the first slot is not null
+                            if (belongsToPlayer == false && CardList[0] != null) // if its an opponent card and the first slot is not null
                             {
                                 CardList.Add(gameObject); // add the card to the list 
                                 Debug.Log("Opponent Card Selected; is in Defendant Slot");
@@ -165,7 +169,7 @@ public class DragDrop : MonoBehaviour
 
                     if (_dropZone.name == "OpponentDropZone" && !_isDragging) // if the card is in the player's dropzone and not being dragged currently
                     {
-                        if (_belongsToPlayer == false && !CardList.Contains(gameObject)) //  if the card belongs to the opponent and is not already in the cardlist
+                        if (belongsToPlayer == false && !CardList.Contains(gameObject)) //  if the card belongs to the opponent and is not already in the cardlist
                         {
                             CardList.Add(gameObject); // add it to the list 
                             Debug.Log("Player Card Selected; is in Attack Slot");
@@ -173,7 +177,7 @@ public class DragDrop : MonoBehaviour
                     }
                     else if (_dropZone.name == "DropZone" && !_isDragging) // if the card is in the opponents dropzone and not being dragged currently
                     {
-                        if (_belongsToPlayer == true && CardList[0] != null) // if the card belongs to the player and the first card slot is fulled 
+                        if (belongsToPlayer == true && CardList[0] != null) // if the card belongs to the player and the first card slot is fulled 
                         {
                             CardList.Add(gameObject);
                             Debug.Log("Opponent Card Selected; is in Defendant Slot");
@@ -188,9 +192,16 @@ public class DragDrop : MonoBehaviour
 
             if (CardList.Count >= 2) // if both slots are not empty //CardList[0] != null && CardList[1] != null)
             {
-                _gameManager.CardAttackCard(CardList[0], CardList[1]); // run the attack with both cards in the list 
-                CardList.Clear(); // clear the list 
-                Debug.Log("Card attack occured, list cleared");
+                if ((belongsToPlayer && !_player.GetComponent<PlayerStats>().IsFirstTurn) || (!belongsToPlayer && !_opponent.GetComponent<PlayerStats>().IsFirstTurn) && !CardList[0].GetComponent<CardStats>().FirstTurnPlayed)
+                {
+                    _gameManager.CardAttackCard(CardList[0], CardList[1]); // run the attack with both cards in the list 
+                    CardList.Clear(); // clear the list 
+                    Debug.Log("Card attack occured, list cleared");
+                } else
+                {
+                    CardList.Clear();
+                    Debug.Log("First turn detected, no action conducteds, list cleared");
+                }
             }
 
 

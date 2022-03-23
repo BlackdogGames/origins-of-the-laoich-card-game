@@ -13,6 +13,7 @@ public class CardStats : MonoBehaviour
     public int Health;
 
     public bool BelongsToLocalPlayer;
+    public bool FirstTurnPlayed = true;
 
     // Assigned through the inspector
     public TMP_Text CardNameText;

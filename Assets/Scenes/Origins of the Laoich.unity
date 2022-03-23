@@ -676,7 +676,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1011
 --- !u!114 &581073365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,7 +1093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336892641620805588, guid: 9d1374f2603631749ac486c878a0c342, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.45001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3336892641620805588, guid: 9d1374f2603631749ac486c878a0c342, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1362,7 +1362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2860870022725097239, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.45004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2860870022725097239, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2274,7 +2274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6666745632501922366, guid: 724dcac51ef696446b4192247df32cb3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.54999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6666745632501922366, guid: 724dcac51ef696446b4192247df32cb3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2388,7 +2388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2860870022725097239, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.45004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2860870022725097239, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_AnchoredPosition.y

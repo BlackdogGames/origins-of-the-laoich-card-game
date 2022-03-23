@@ -1,15 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EndTurnButton : MonoBehaviour
 {
     private GameManager _gameManager;
 
+    public TMP_Text TimerText;
+    private float _turnTimer;
+    public float TurnTime = 30;
+
     void Start()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
+        _turnTimer = TurnTime;
+    }
+
+    private void Update()
+    {
+        _turnTimer -= Time.deltaTime;
+
+        TimerText.text = "TIME REMAINING: " + _turnTimer;
+
+        if (_turnTimer < 0)
+        {
+            OnClick();
+        }
     }
 
     public void OnClick()
@@ -48,5 +65,7 @@ public class EndTurnButton : MonoBehaviour
         _gameManager.ClearCardSelection(); // clear the card list
 
         _gameManager.PlayersTurn = !_gameManager.PlayersTurn; // End turn
+
+        _turnTimer = TurnTime;
     }
 }

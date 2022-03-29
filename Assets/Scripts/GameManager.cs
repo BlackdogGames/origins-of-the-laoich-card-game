@@ -148,6 +148,8 @@ public class GameManager : MonoBehaviour
         _attackingCard = attackingCard.GetComponent<CardStats>();
         _defendingCard = defendingCard.GetComponent<CardStats>();
         _defendingCard.Health -= _attackingCard.Attack;
+        // Calls AudioManager to Play requested sound effect.
+        AudioManager.Instance.Play("SFX_Card_Attack");
 
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)

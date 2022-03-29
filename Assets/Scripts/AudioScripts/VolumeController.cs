@@ -7,20 +7,51 @@ using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
-    [SerializeField] string VolumeParameter;
-    [SerializeField] AudioMixerGroup AudioMixerGroup;
     [SerializeField] AudioMixer AudioMixer;
-    [SerializeField] Slider Slider;
+    [SerializeField] Slider MasterSlider;
+    [SerializeField] Slider MusicSlider;
+    [SerializeField] Slider SFXSlider;
+
+    public const string MasterVolume = "MasterVolume";
+    public const string MusicVolume = "MusicVolume";
+    public const string SFXVolume = "SFXVolume";
 
     private void Awake()
     {
-        Slider.onValueChanged.AddListener(SliderValueChanged);
+        MasterSlider.onValueChanged.AddListener(SetMasterVolume);
+        MusicSlider.onValueChanged.AddListener(SetMusicVolume);
+        SFXSlider.onValueChanged.AddListener(SetSFXVolume);
     }
 
-    private void SliderValueChanged(float value)
+    private void Start()
     {
-        AudioMixer.SetFloat(VolumeParameter, value:Mathf.Log10(value) * 30f);
+        MasterSlider.value = PlayerPrefs.GetFloat(AudioManager.MasterKey, 1f);
+        MusicSlider.value = PlayerPrefs.GetFloat(AudioManager.MusicKey, 1f);
+        SFXSlider.value = PlayerPrefs.GetFloat(AudioManager.SFXKey, 1f);
     }
 
+    //save preference key
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat(AudioManager.MasterKey, MasterSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MusicKey, MusicSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.SFXKey, SFXSlider.value);
+    }
+
+
+    void SetMasterVolume(float volume)
+    {
+        AudioMixer.SetFloat(MasterVolume, Mathf.Log10(volume) * 20);
+    }
+
+    void SetMusicVolume(float volume)
+    {
+        AudioMixer.SetFloat(MusicVolume, Mathf.Log10(volume) * 20);
+    }
+
+    void SetSFXVolume(float volume)
+    {
+        AudioMixer.SetFloat(SFXVolume, Mathf.Log10(volume) * 20);
+    }
 
 }

@@ -511,6 +511,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
 --- !u!1 &1305781368
 GameObject:
   m_ObjectHideFlags: 0

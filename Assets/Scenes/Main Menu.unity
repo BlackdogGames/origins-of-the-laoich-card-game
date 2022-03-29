@@ -1547,7 +1547,6 @@ GameObject:
   m_Component:
   - component: {fileID: 98040168}
   - component: {fileID: 98040169}
-  - component: {fileID: 98040170}
   m_Layer: 5
   m_Name: Master
   m_TagString: Untagged
@@ -1629,22 +1628,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &98040170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98040167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cf1c86526301547a6f7de67f829f3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VolumeParameter: MasterVolume
-  AudioMixerGroup: {fileID: 24300002, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
-  AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
-  Slider: {fileID: 98040169}
 --- !u!1 &101644737
 GameObject:
   m_ObjectHideFlags: 0
@@ -6704,7 +6687,6 @@ GameObject:
   m_Component:
   - component: {fileID: 433141019}
   - component: {fileID: 433141020}
-  - component: {fileID: 433141021}
   m_Layer: 5
   m_Name: SFX
   m_TagString: Untagged
@@ -6786,22 +6768,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &433141021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433141018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cf1c86526301547a6f7de67f829f3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VolumeParameter: SFXVolume
-  AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
-  AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
-  Slider: {fileID: 433141020}
 --- !u!1 &434248056
 GameObject:
   m_ObjectHideFlags: 0
@@ -27944,6 +27910,7 @@ GameObject:
   - component: {fileID: 1789954027}
   - component: {fileID: 1789954026}
   - component: {fileID: 1789954025}
+  - component: {fileID: 1789954029}
   m_Layer: 5
   m_Name: MainMenu-V2
   m_TagString: Untagged
@@ -28033,6 +28000,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1789954029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789954024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cf1c86526301547a6f7de67f829f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+  MasterSlider: {fileID: 98040169}
+  MusicSlider: {fileID: 1875909579}
+  SFXSlider: {fileID: 433141020}
 --- !u!1 &1790144244
 GameObject:
   m_ObjectHideFlags: 0
@@ -29469,7 +29452,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1875909578}
   - component: {fileID: 1875909579}
-  - component: {fileID: 1875909580}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -29551,22 +29533,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1875909580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875909577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cf1c86526301547a6f7de67f829f3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VolumeParameter: MusicVolume
-  AudioMixerGroup: {fileID: -7212981764287549671, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
-  AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
-  Slider: {fileID: 1875909579}
 --- !u!1 &1885504289
 GameObject:
   m_ObjectHideFlags: 0

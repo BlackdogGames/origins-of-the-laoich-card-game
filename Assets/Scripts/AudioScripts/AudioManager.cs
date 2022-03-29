@@ -14,6 +14,12 @@ public class AudioManager : MonoBehaviour
 	// Singleton instance.
 	public static AudioManager Instance = null;
 
+    public const string MasterKey = "MasterVolume";
+    public const string MusicKey = "MusicVolume";
+    public const string SFXKey = "SFXVolume";
+
+    [SerializeField] AudioMixer AudioMixer;
+
 	// Initialize the singleton instance.
 	private void Awake()
 	{
@@ -43,6 +49,13 @@ public class AudioManager : MonoBehaviour
 			s.source.loop = s.loop;
         }
 
+		LoadVolume();
+
+	}
+    
+	void Start()
+	{
+		Play("MasterMusic");
 	}
 
 	public void Play(string name)
@@ -56,10 +69,15 @@ public class AudioManager : MonoBehaviour
 		s.source.Play();
     }
 
-	// Start is called before the first frame update
-	void Start()
+    void LoadVolume()
     {
-		Play("MasterMusic");
+        float masterVolume = PlayerPrefs.GetFloat(MasterKey, 1f);
+        float musicVolume = PlayerPrefs.GetFloat(MusicKey, 1f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFXKey, 1f);
+
+        AudioMixer.SetFloat(VolumeController.MasterVolume, Mathf.Log10(masterVolume) * 20);
+        AudioMixer.SetFloat(VolumeController.MusicVolume, Mathf.Log10(musicVolume) * 20);
+        AudioMixer.SetFloat(VolumeController.SFXVolume, Mathf.Log10(sfxVolume) * 20);
     }
 
 }

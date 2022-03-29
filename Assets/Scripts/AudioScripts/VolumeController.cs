@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class VolumeController : MonoBehaviour
 {
-    [SerializeField] string VolumeParameter = "MasterVolume";
+    [SerializeField] string VolumeParameter;
     [SerializeField] AudioMixerGroup AudioMixerGroup;
     [SerializeField] AudioMixer AudioMixer;
     [SerializeField] Slider Slider;
@@ -23,15 +23,4 @@ public class VolumeController : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

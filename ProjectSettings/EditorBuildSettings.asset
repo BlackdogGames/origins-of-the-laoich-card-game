@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Start Screen.unity
+    guid: 99fe986d0443d0b43a83f1b6e84a409f
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 997903a72f6b0f3488abcfcadd30a4a7
+  - enabled: 1
+    path: Assets/Scenes/Origins of the Laoich.unity
+    guid: 5604424e5770cc649a8a227ba0e10bf8
   m_configObjects: {}

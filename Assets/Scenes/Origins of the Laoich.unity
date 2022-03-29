@@ -135,6 +135,10 @@ PrefabInstance:
       value: 'TIME REMAINING: '
       objectReference: {fileID: 0}
     - target: {fileID: -3904909454148230396, guid: 8736e14c53a69be4c87420fadc8587c9, type: 3}
+      propertyPath: m_margin.x
+      value: -311.03967
+      objectReference: {fileID: 0}
+    - target: {fileID: -3904909454148230396, guid: 8736e14c53a69be4c87420fadc8587c9, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -248,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762560080311063821, guid: 8736e14c53a69be4c87420fadc8587c9, type: 3}
       propertyPath: m_Name
-      value: OpponentHealthBar_1
+      value: TimerText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8736e14c53a69be4c87420fadc8587c9, type: 3}
@@ -331,6 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c18ee6513b2804eb2ea3dc748e0029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimerText: {fileID: 2918437}
+  TurnTime: 30
 --- !u!114 &179419471
 MonoBehaviour:
   m_ObjectHideFlags: 0

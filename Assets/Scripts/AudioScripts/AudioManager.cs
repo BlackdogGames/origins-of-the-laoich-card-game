@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
-using TMPro;
 
 public class AudioManager : MonoBehaviour
 {
@@ -49,16 +45,17 @@ public class AudioManager : MonoBehaviour
 			s.source.loop = s.loop;
         }
 
-		LoadVolume();
-
 	}
     
 	void Start()
 	{
-		Play("MasterMusic");
+		// Calls AudioManager to PLay a requested Sound
+		Play("StartMusic");
+		LoadVolume();
 	}
 
-	public void Play(string name)
+    // Call Play to play a Sound
+    public void Play(string name)
     {
 		Sound s = Array.Find(sounds, s => s.ClipName == name);
 		if (s == null)
@@ -67,6 +64,18 @@ public class AudioManager : MonoBehaviour
 			return;
         }
 		s.source.Play();
+    }
+
+	// Call Stop to stop a Sound
+	public void Stop(string name)
+    {
+		Sound s = Array.Find(sounds, s => s.ClipName == name);
+		if (s == null)
+        {
+			Debug.LogWarning("Sound:" + name + " not Found!");
+			return;
+		}
+		s.source.Stop();
     }
 
     void LoadVolume()

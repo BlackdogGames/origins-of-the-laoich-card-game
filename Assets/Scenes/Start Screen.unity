@@ -497,8 +497,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - ClipName: StartMusic
+    Clip: {fileID: 8300000, guid: 306fcb5f77e36b544aeb030bb31b6b60, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - ClipName: MasterMusic
     Clip: {fileID: 8300000, guid: d92b968204ab98d4fbbf88f3334a9d45, type: 3}
+    AudioMixerGroup: {fileID: -7212981764287549671, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - ClipName: GameMusic
+    Clip: {fileID: 8300000, guid: fa7f5db2f62078849b8cf24811bdd731, type: 3}
     AudioMixerGroup: {fileID: -7212981764287549671, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
     Volume: 1
     pitch: 1
@@ -531,6 +545,13 @@ MonoBehaviour:
     Volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - ClipName: SFX_Card_Hover
+    Clip: {fileID: 8300000, guid: ed80a3b04c533b644b66cb8e1a10062c, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
   AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
 --- !u!1 &1305781368
@@ -845,7 +866,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ORIGINS OF THE LAOICH
+  m_text: 'ORIGINS OF THE LAOICH
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d6245265779e164a807393395119991, type: 2}
   m_sharedMaterial: {fileID: 2237681673201464543, guid: 6d6245265779e164a807393395119991, type: 2}

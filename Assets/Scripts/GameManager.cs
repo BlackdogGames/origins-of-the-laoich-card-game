@@ -172,7 +172,10 @@ public class GameManager : MonoBehaviour
         if (defendingPlayerStats.Health <= 0)
         {
             if (defendingPlayerStats == PlayerStatsInstance)
+            {
                 DefeatPanel.SetActive(true);
+                AudioManager.Instance.Play("SFX_Defeat"); // Can't test
+            }
 
             // TODO: VictoryPanel.SetActive(true) for the winning player
 

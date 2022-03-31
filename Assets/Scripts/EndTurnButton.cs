@@ -46,6 +46,8 @@ public class EndTurnButton : MonoBehaviour
             if (_gameManager.PlayerStatsInstance.Cards.Count < 7) // if the player has space, draw 1 new card
             {
                 _gameManager.DrawCard(_gameManager.Player);
+                // Calls AudioManager to Play requested sound effect.
+                AudioManager.Instance.Play("SFX_Card_Pickup");
             }
             
         } 
@@ -58,6 +60,8 @@ public class EndTurnButton : MonoBehaviour
             if (_gameManager.OppStatsInstance.Cards.Count < 7)
             {
                 _gameManager.DrawCard(_gameManager.Opponent);
+                // Calls AudioManager to Play requested sound effect.
+                AudioManager.Instance.Play("SFX_Card_Pickup");
             }
             
         }

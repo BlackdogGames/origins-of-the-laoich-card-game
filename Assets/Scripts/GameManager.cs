@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerArea;
     public GameObject OpponentArea;
 
+    public GameObject VictoryPanel, DefeatPanel;
+
     // Used to randomise deck order
     System.Random _rng = new System.Random();
 
@@ -148,6 +150,8 @@ public class GameManager : MonoBehaviour
         _attackingCard = attackingCard.GetComponent<CardStats>();
         _defendingCard = defendingCard.GetComponent<CardStats>();
         _defendingCard.Health -= _attackingCard.Attack;
+        // Calls AudioManager to PLay a requested Sound.
+        AudioManager.Instance.Play("SFX_Card_Attack");
 
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)
@@ -161,13 +165,21 @@ public class GameManager : MonoBehaviour
     {
         // Subracts the cards attack damage from the player health
         _attackingCard = attackingCard.GetComponent<CardStats>();
-        PlayerStatsInstance = defendingPlayer.GetComponent<PlayerStats>();
-        PlayerStatsInstance.Health -= _attackingCard.Attack;
+        PlayerStats defendingPlayerStats = defendingPlayer.GetComponent<PlayerStats>();
+        defendingPlayerStats.Health -= _attackingCard.Attack;
 
-        // If player dies, reset scene
-        if (PlayerStatsInstance.Health <= 0)
+        // If player dies, display defeat panel 
+        if (defendingPlayerStats.Health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (defendingPlayerStats == PlayerStatsInstance)
+            {
+                DefeatPanel.SetActive(true);
+                AudioManager.Instance.Play("SFX_Defeat"); // Can't test
+            }
+
+            // TODO: VictoryPanel.SetActive(true) for the winning player
+
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

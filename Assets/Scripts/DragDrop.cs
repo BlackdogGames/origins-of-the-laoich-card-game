@@ -54,6 +54,8 @@ public class DragDrop : MonoBehaviour
         {
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             transform.SetParent(Canvas.transform, true);
+            // Calls AudioManager to Play requested sound effect.
+            AudioManager.Instance.Play("SFX_Card_Placement");
         }
     }
     //

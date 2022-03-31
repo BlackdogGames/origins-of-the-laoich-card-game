@@ -25,6 +25,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public void OnPointerClick(PointerEventData eventData) // When mouse clicks UI elements, call OnTabSelected
     {
         TabGroup.OnTabSelected(this);
+        AudioManager.Instance.Play("UI_Button");
     }
 
     public void OnPointerEnter(PointerEventData eventData) // When mouse enters UI element, call OnTabEnter

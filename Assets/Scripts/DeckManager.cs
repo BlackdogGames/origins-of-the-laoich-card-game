@@ -30,12 +30,12 @@ public class DeckManager : MonoBehaviour
 
     void Populate() // populate grid
     {
-        GameObject _playerCard;
+        GameObject playerCard;
 
         for (int i = 0; i < CardList.Count(); i++)
         {
-            _playerCard = Instantiate(CardPrefab, transform); //  where a card is instantiated from the list
-            _playerCard.GetComponent<CardStats>().CardAsset = CardList[i];
+            playerCard = Instantiate(CardPrefab, transform); //  where a card is instantiated from the list
+            playerCard.GetComponent<CardStats>().CardAsset = CardList[i];
         }
     }
 

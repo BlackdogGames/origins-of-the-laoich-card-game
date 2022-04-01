@@ -68,7 +68,7 @@ public class DragDrop : MonoBehaviour
     //
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CardStats _stats = GetComponent<CardStats>();
+        CardStats stats = GetComponent<CardStats>();
 
         switch (_gameManager.PlayersTurn)
         {
@@ -86,8 +86,8 @@ public class DragDrop : MonoBehaviour
                 if (collision.gameObject.tag == "AttackZone" && _isOverDropZone == true )
                 {
                     _attackZone = collision.gameObject;
-                    _stats.ZoneID = _attackZone.GetComponent<CardAttackZone>().ZoneID;
-                    Debug.Log("oppponent Card in attack zone: " + _stats.ZoneID);
+                    stats.ZoneID = _attackZone.GetComponent<CardAttackZone>().ZoneID;
+                    Debug.Log("oppponent Card in attack zone: " + stats.ZoneID);
                 }
 
 
@@ -108,8 +108,8 @@ public class DragDrop : MonoBehaviour
                 if (collision.gameObject.tag == "AttackZone" && _isOverDropZone == true )
                 {
                     _attackZone = collision.gameObject;
-                    _stats.ZoneID = _attackZone.GetComponent<CardAttackZone>().ZoneID;
-                    Debug.Log("player Card in attack zone: " + _stats.ZoneID);
+                    stats.ZoneID = _attackZone.GetComponent<CardAttackZone>().ZoneID;
+                    Debug.Log("player Card in attack zone: " + stats.ZoneID);
 
                 }
 
@@ -163,8 +163,8 @@ public class DragDrop : MonoBehaviour
     // when a card is selected, run an attack
     public void OnSelection()
     {
-        CardStats _stats = GetComponent<CardStats>();
-        bool belongsToPlayer = _stats.BelongsToLocalPlayer;
+        CardStats stats = GetComponent<CardStats>();
+        bool belongsToPlayer = stats.BelongsToLocalPlayer;
 
 
         if (_isOverDropZone && !_isDragging)

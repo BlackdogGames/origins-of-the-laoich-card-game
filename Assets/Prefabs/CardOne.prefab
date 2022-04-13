@@ -1245,6 +1245,8 @@ MonoBehaviour:
   _isDragging: 0
   AttackingCard: {fileID: 0}
   CardToAttack: {fileID: 0}
+  Arrow: {fileID: 21300000, guid: b73cb5ea4a9859945a1e6ce3aa6eb130, type: 3}
+  Crosshair: {fileID: 21300000, guid: 6d759513a287bf541a0c33323bc34478, type: 3}
 --- !u!114 &4751563756640624498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,7 +1431,9 @@ MonoBehaviour:
   ManaCost: 0
   Attack: 0
   Health: 0
+  ZoneID: 0
   BelongsToLocalPlayer: 0
+  FirstTurnPlayed: 1
   CardNameText: {fileID: 7168327372764286176}
   ManaCostText: {fileID: 34328829130089339}
   AttackText: {fileID: 2090796141120252948}

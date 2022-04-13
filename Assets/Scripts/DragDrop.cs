@@ -25,6 +25,7 @@ public class DragDrop : MonoBehaviour
     public GameObject AttackingCard;
     public GameObject CardToAttack;
 
+
     static bool _attackCardSelected = false;
     static bool _defendCardSelected = false;
 
@@ -49,6 +50,7 @@ public class DragDrop : MonoBehaviour
         _player = GameObject.Find("Player");
         _opponent = GameObject.Find("Opponent");
 
+
     }
     //
 
@@ -62,6 +64,7 @@ public class DragDrop : MonoBehaviour
             // Calls AudioManager to Play requested sound effect.
             AudioManager.Instance.Play("SFX_Card_Placement");
         }
+
     }
     //
 

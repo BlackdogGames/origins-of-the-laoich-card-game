@@ -15,25 +15,25 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        string TextToDisplay = RandomTip();
+        string textToDisplay = RandomTip();
 
-        LoadingText.text = TextToDisplay;
+        LoadingText.text = textToDisplay;
     }
 
     private string RandomTip()
     {
-        string RandomTip = LoadingTips[Random.Range(0, LoadingTips.Length)];
-        return RandomTip;
+        string randomTip = LoadingTips[Random.Range(0, LoadingTips.Length)];
+        return randomTip;
     }
 
-    public void LoadScene(string LevelName)
+    public void LoadScene(string levelName)
     {
-        StartCoroutine(LoadSceneAsynchronously(LevelName));
+        StartCoroutine(LoadSceneAsynchronously(levelName));
     }
 
-    IEnumerator LoadSceneAsynchronously(string LevelName)
+    IEnumerator LoadSceneAsynchronously(string levelName)
     {
-        AsyncOperation Operation = SceneManager.LoadSceneAsync(LevelName);
+        AsyncOperation Operation = SceneManager.LoadSceneAsync(levelName);
         LoadingScreen.SetActive(true);
         while(!Operation.isDone)
         {

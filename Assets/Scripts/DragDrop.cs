@@ -80,6 +80,8 @@ public class DragDrop : MonoBehaviour
                     _isOverDropZone = true;
                     _dropZone = collision.gameObject;
 
+                    _opponent.GetComponent<PlayerStats>().HandCards.Remove(gameObject);
+                    _opponent.GetComponent<PlayerStats>().FieldCards.Add(gameObject);
                     GetComponent<CardStats>().FirstTurnPlayed = true;
                 }
 
@@ -102,6 +104,8 @@ public class DragDrop : MonoBehaviour
                     _isOverDropZone = true;
                     _dropZone = collision.gameObject;
 
+                    _player.GetComponent<PlayerStats>().HandCards.Remove(gameObject);
+                    _player.GetComponent<PlayerStats>().FieldCards.Add(gameObject);
                     GetComponent<CardStats>().FirstTurnPlayed = true;
                 }
 

@@ -18,3 +18,6 @@ MonoBehaviour:
   Attack: 9
   Health: 9
   CardImage: {fileID: 0}
+  Ability:
+    m_PersistentCalls:
+      m_Calls: []

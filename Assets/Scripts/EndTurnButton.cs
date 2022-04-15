@@ -38,12 +38,12 @@ public class EndTurnButton : MonoBehaviour
             //TODO : This and the coupling line below should not work this way, something is wrong here
             _gameManager.OppStatsInstance.IsFirstTurn = false;
 
-            foreach (var card in _gameManager.Opponent.GetComponent<PlayerStats>().Cards)
+            foreach (var card in _gameManager.Opponent.GetComponent<PlayerStats>().HandCards)
             {
                 card.GetComponent<CardStats>().FirstTurnPlayed = false;
             }
 
-            if (_gameManager.PlayerStatsInstance.Cards.Count < 7) // if the player has space, draw 1 new card
+            if (_gameManager.PlayerStatsInstance.HandCards.Count < 7) // if the player has space, draw 1 new card
             {
                 _gameManager.DrawCard(_gameManager.Player);
                 // Calls AudioManager to Play requested sound effect.
@@ -57,7 +57,7 @@ public class EndTurnButton : MonoBehaviour
             _gameManager.ManaIncrease(_gameManager.Opponent);
             _gameManager.PlayerStatsInstance.IsFirstTurn = false;
 
-            if (_gameManager.OppStatsInstance.Cards.Count < 7)
+            if (_gameManager.OppStatsInstance.HandCards.Count < 7)
             {
                 _gameManager.DrawCard(_gameManager.Opponent);
                 // Calls AudioManager to Play requested sound effect.
@@ -73,3 +73,4 @@ public class EndTurnButton : MonoBehaviour
         _turnTimer = TurnTime;
     }
 }
+

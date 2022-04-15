@@ -47,4 +47,5 @@ public class CardStats : MonoBehaviour
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();
     }
+
 }

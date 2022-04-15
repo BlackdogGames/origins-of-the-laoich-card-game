@@ -19,5 +19,25 @@ MonoBehaviour:
   Health: 9
   CardImage: {fileID: 0}
   Ability:
-    m_PersistentCalls:
-      m_Calls: []
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null.EffieAbility
+      _PersistentArguments:
+      - _Type: 13
+        _Int: 0
+        _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 13
+        _Int: 0
+        _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}

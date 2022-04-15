@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -43,7 +44,8 @@ public class CSVToCards
             newCard.Attack = int.Parse(variables[3]);
             newCard.Health = int.Parse(variables[4]);
             newCard.CardImage = Resources.Load<Sprite>("Sprites/CardSprites/" + variables[4]);
-            
+            newCard.Ability.AddPersistentCall(Delegate.CreateDelegate(typeof(CardDelegateAbility), typeof(CardAbilities), "EffieAbility"));
+
             AssetDatabase.CreateAsset(newCard, $"Assets/Resources/Cards/{newCard.CardName}.asset");
         }
 

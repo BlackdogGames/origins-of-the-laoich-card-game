@@ -3,20 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SceneLoader : MonoBehaviour
 {
     public GameObject LoadingScreen;
     public Slider LoadingBar;
 
-    public void LoadScene(string LevelName)
+    public string[] LoadingTips = { "Tip 01", "Tip 02", "Tip 03", "Tip 04", "Tip 05", "Tip 06", "Tip 07", "Tip 08", "Tip 09", "Tip 10" };
+    public TMP_Text LoadingText;
+
+    private void Start()
     {
-        StartCoroutine(LoadSceneAsynchronously(LevelName));
+        string textToDisplay = RandomTip();
+
+        LoadingText.text = textToDisplay;
     }
 
-    IEnumerator LoadSceneAsynchronously(string LevelName)
+    private string RandomTip()
     {
-        AsyncOperation Operation = SceneManager.LoadSceneAsync(LevelName);
+        string randomTip = LoadingTips[Random.Range(0, LoadingTips.Length)];
+        return randomTip;
+    }
+
+    public void LoadScene(string levelName)
+    {
+        StartCoroutine(LoadSceneAsynchronously(levelName));
+    }
+
+    IEnumerator LoadSceneAsynchronously(string levelName)
+    {
+        AsyncOperation Operation = SceneManager.LoadSceneAsync(levelName);
         LoadingScreen.SetActive(true);
         while(!Operation.isDone)
         {

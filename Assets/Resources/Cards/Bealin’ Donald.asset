@@ -17,12 +17,13 @@ MonoBehaviour:
   ManaCost: 6
   Attack: 2
   Health: 4
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: b11bea41a574ec447afc1e29a82b5d0c, type: 3}
+  Description: 
   Ability:
     _PersistentCalls:
     - _Target: {fileID: 0}
       _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null.EffieAbility
+        PublicKeyToken=null.DonaldAbility
       _PersistentArguments:
       - _Type: 13
         _Int: 0

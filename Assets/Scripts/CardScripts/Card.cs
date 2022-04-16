@@ -22,6 +22,7 @@ public class Card : ScriptableObject
     public int Attack;
     public int Health;
     public Sprite CardImage;
+    public string Description;
 
     public CardAbility Ability = new CardAbility();
 

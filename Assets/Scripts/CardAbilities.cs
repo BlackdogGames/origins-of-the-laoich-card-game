@@ -22,5 +22,25 @@ public class CardAbilities : MonoBehaviour
         }
     }
 
-    
+    public static void DonaldAbility(GameManager gameManager, CardStats caster)
+    {
+        int casterId = caster.GetComponent<CardStats>().ZoneID;
+
+        //Get opponent cards
+        List<GameObject> targets = (caster.BelongsToLocalPlayer) ?
+            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards :
+            gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+
+        foreach (var target in targets)
+        {
+            if (casterId == target.GetComponent<CardStats>().ZoneID)
+            {
+                target.GetComponent<CardStats>().Health -= 2;
+            } else if (casterId - 1 == target.GetComponent<CardStats>().ZoneID ||
+                       casterId + 1 == target.GetComponent<CardStats>().ZoneID)
+            {
+                target.GetComponent<CardStats>().Health -= 1;
+            }
+        }
+    }
 }

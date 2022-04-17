@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cursor : MonoBehaviour
 {
     public Sprite DefaultCursor;
     public Sprite TargetCrosshair;
 
-    public SpriteRenderer Renderer;
+    public Image Renderer;
     public LayerMask TargetLayer; // card layer
 
     //public CardStats Card;

@@ -18,6 +18,13 @@ public class MainMenuManager : MonoBehaviour
         AudioManager.Instance.Stop("GameMusic");
     }
 
+    // toggle fullscreen and save it to PlayerPrefs
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+        PlayerPrefs.SetInt("Fullscreen", Screen.fullScreen ? 1 : 0);
+    }
+
     public void LoadGame()
     {
         SceneManager.LoadScene("Origins of the Laoich");

@@ -45,6 +45,28 @@ public class AIController : MonoBehaviour
 
     }
 
+    public void PlayCard()
+    {
+
+    }
+
+    public void AttackWithCard()
+    {
+
+    }
+
+    public void InvokeCardAbility()
+    {
+
+    }
+
+    public void EndTurn()
+    {
+
+    }
+    
+    
+
     #region Rules
     //function that checks handcards of AI and returns true if it has a card that can be played based on mana
     public bool CheckIfPlayableCard()

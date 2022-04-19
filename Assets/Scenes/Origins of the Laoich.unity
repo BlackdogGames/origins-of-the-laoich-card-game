@@ -3393,8 +3393,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2021846718}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3815,6 +3814,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 581073367}
     m_Modifications:
+    - target: {fileID: 1057514320345218893, guid: 9d1374f2603631749ac486c878a0c342, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2839828009163226677, guid: 9d1374f2603631749ac486c878a0c342, type: 3}
       propertyPath: m_Name
       value: OpponentArea
@@ -4432,6 +4435,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9056604
       objectReference: {fileID: 0}
+    - target: {fileID: 5284143890517661306, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5601869348260161561, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_Name
       value: OpponentDropZone
@@ -4439,6 +4446,10 @@ PrefabInstance:
     - target: {fileID: 5601869348260161561, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601869348260161561, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6893153245783909963, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_Spacing.x
@@ -4988,7 +4999,7 @@ MonoBehaviour:
   TurnText: {fileID: 1153574191}
   Player: {fileID: 1533412565}
   Opponent: {fileID: 436977974}
-  mousePointer: {fileID: 0}
+  MousePointer: {fileID: 0}
   PlayerStatsInstance: {fileID: 0}
   OppStatsInstance: {fileID: 0}
   CardPrefab: {fileID: 8638656579416893456, guid: b2a95eb304a8b844f8b39f9301519a3d, type: 3}
@@ -5719,6 +5730,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 7303312743605283327, guid: 005616335548dc94f8ff9f781407c946, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c465fbb9728e2274e9f6bd479248bf69, type: 3}
+    - target: {fileID: 7303312743605283327, guid: 005616335548dc94f8ff9f781407c946, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303312743605283327, guid: 005616335548dc94f8ff9f781407c946, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303312743605283327, guid: 005616335548dc94f8ff9f781407c946, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303312743605283327, guid: 005616335548dc94f8ff9f781407c946, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 005616335548dc94f8ff9f781407c946, type: 3}
 --- !u!1 &1949985471
@@ -5921,9 +5952,17 @@ PrefabInstance:
       propertyPath: m_CellSize.y
       value: 354
       objectReference: {fileID: 0}
+    - target: {fileID: 3630991101649042259, guid: 724dcac51ef696446b4192247df32cb3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3930241192105346352, guid: 724dcac51ef696446b4192247df32cb3, type: 3}
       propertyPath: m_Name
       value: PlayerArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930241192105346352, guid: 724dcac51ef696446b4192247df32cb3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6666745632501922366, guid: 724dcac51ef696446b4192247df32cb3, type: 3}
       propertyPath: m_Pivot.x
@@ -6258,6 +6297,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2860870022725097239, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284143890517661306, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5601869348260161561, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}

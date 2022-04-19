@@ -113,4 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b53db4c493d1d04eaa4900711ddb6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardArea: {fileID: 0}
+  Player: {fileID: 0}
+  PlayerStatsInstance: {fileID: 0}
+  CardPrefab: {fileID: 0}
+  CardStats: {fileID: 0}
   CardList: []
+  CustomDeck: []

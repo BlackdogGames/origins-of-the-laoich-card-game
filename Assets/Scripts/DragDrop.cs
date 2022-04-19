@@ -25,9 +25,11 @@ public class DragDrop : MonoBehaviour
     public GameObject AttackingCard;
     public GameObject CardToAttack;
 
+    public GameObject Pointer;
 
     static bool _attackCardSelected = false;
     static bool _defendCardSelected = false;
+    public bool IsSelected;
 
     static List<GameObject> CardList;  
     
@@ -50,7 +52,9 @@ public class DragDrop : MonoBehaviour
         _player = GameObject.Find("Player");
         _opponent = GameObject.Find("Opponent");
 
+        Pointer = GameObject.Find("Arrow Head");
 
+        IsSelected = false;
     }
     //
 
@@ -64,6 +68,12 @@ public class DragDrop : MonoBehaviour
             // Calls AudioManager to Play requested sound effect.
             AudioManager.Instance.Play("SFX_Card_Placement");
         }
+
+       if (_attackCardSelected)
+        {
+            Pointer.GetComponent<Cursor>().SelectTarget(Input.mousePosition, _attackCardSelected, CardList[0]);
+        }
+        
 
     }
     //
@@ -158,6 +168,10 @@ public class DragDrop : MonoBehaviour
 
     public void ClearSelectionList()
     {
+        _attackCardSelected = false;
+        _defendCardSelected = false;
+        IsSelected = false;
+
         CardList.Clear();
 
     }
@@ -183,6 +197,7 @@ public class DragDrop : MonoBehaviour
                             if (belongsToPlayer == true && !CardList.Contains(gameObject)) // card belongs to the player and this specific card is not already in the list 
                             {
                                 _attackCardSelected = true;
+                                IsSelected = true;
                                 CardList.Add(gameObject); // add the card to the list 
                                 Debug.Log("Player Card Selected; is in Attack Slot " + _attackCardSelected);
 
@@ -192,6 +207,7 @@ public class DragDrop : MonoBehaviour
                         {
                             CardList.Remove(gameObject); // remove the card from the selection
                             _attackCardSelected = false;
+                            IsSelected = false;
                             Debug.Log("Card removed ");
                         }
 
@@ -205,6 +221,7 @@ public class DragDrop : MonoBehaviour
                                 if (belongsToPlayer == false && CardList[0] != null) // if its an opponent card and the first slot is not null
                                 {
                                     _defendCardSelected = true;
+                                    IsSelected = false;
                                     CardList.Add(gameObject); // add the card to the list 
                                     Debug.Log("Opponent Card Selected; is in Defendant Slot");
 
@@ -226,6 +243,7 @@ public class DragDrop : MonoBehaviour
                             if (!_attackCardSelected)
                             {
                                 _attackCardSelected = true;
+                                IsSelected = true;
                                 CardList.Add(gameObject); // add it to the list 
                                 Debug.Log("Player Card Selected; is in Attack Slot");
                             } 
@@ -234,6 +252,7 @@ public class DragDrop : MonoBehaviour
                         {
                             CardList.Remove(gameObject); // remove the card from the selection
                             _attackCardSelected = false;
+                            IsSelected = false;
                             Debug.Log("Card removed ");
                         }
                     }
@@ -244,6 +263,7 @@ public class DragDrop : MonoBehaviour
                             if (!_defendCardSelected)
                             {
                                 _defendCardSelected = true;
+                                IsSelected = true;
                                 CardList.Add(gameObject);
                                 Debug.Log("Opponent Card Selected; is in Defendant Slot");
                             }
@@ -270,6 +290,7 @@ public class DragDrop : MonoBehaviour
                                                                                // clear flags //
                         _attackCardSelected = false;
                         _defendCardSelected = false;
+                        IsSelected = false;
                         //
                         CardList.Clear(); // clear the list 
                         Debug.Log("Card attack occured, list cleared");
@@ -279,6 +300,7 @@ public class DragDrop : MonoBehaviour
                         // clear flags //
                         _attackCardSelected = false;
                         _defendCardSelected = false;
+                        IsSelected = false;
                         //
                         CardList.Clear();
                         Debug.Log("First turn detected, no action conducted, list cleared");
@@ -289,6 +311,7 @@ public class DragDrop : MonoBehaviour
                     // clear flags //
                     _attackCardSelected = false;
                     _defendCardSelected = false;
+                    IsSelected = false;
                     //
                     CardList.Clear();
                     Debug.Log("Zones are not compatible; list cleared, no action conducted");

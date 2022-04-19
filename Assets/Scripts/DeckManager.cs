@@ -7,35 +7,43 @@ using UnityEngine.UI;
 
 public class DeckManager : MonoBehaviour
 {
-    // array/list of all the cards loaded in
-    public List<Card> CardList = new List<Card>();
-    // list of cards that would be added to the new deck (list to append to)
 
-    // name of the deck
-    // a txt/spreadsheet to save the newly built deck to
+    public GameObject CardArea;
+    public GameObject Player;
 
-    // page counter/tracker
-
+    public PlayerStats PlayerStatsInstance;
+   
     public GameObject CardPrefab;
     public CardStats CardStats;
+
+    public List<GameObject> CardList;
+    public List<GameObject> CustomDeck;
 
 
     void Start()
     {
-        CardList = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
-        // populate the grid with cards (6/8 on each 'page')
+        PlayerStatsInstance = Player.GetComponent<PlayerStats>();
+        PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+
+        // populate the grid with cards 
         Populate();
-        // new deck list/counter empty
+        
     }
 
     void Populate() // populate grid
     {
-        GameObject playerCard;
+        PlayerStats playerStats = Player.GetComponent<PlayerStats>();
 
-        for (int i = 0; i < CardList.Count(); i++)
+       // GameObject playerCard;
+
+        for (int i = 0; i != PlayerStatsInstance.Deck.Count; i++)
         {
-            playerCard = Instantiate(CardPrefab, transform); //  where a card is instantiated from the list
-            playerCard.GetComponent<CardStats>().CardAsset = CardList[i];
+            GameObject playerCard = Instantiate(CardPrefab, transform); //  where a card is instantiated from the list
+            playerCard.transform.SetParent(CardArea.transform, false); // set the parent to the grid
+            playerCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[i]; // give the card it's stats
+            
+            CardList.Add(playerCard); // add all of the cards in a list to keep track
+           
         }
     }
 
@@ -43,6 +51,8 @@ public class DeckManager : MonoBehaviour
     {
         // check how many of the same card exist before adding to the deck
         // add a selected card to the deck
+
+
     }
 
    

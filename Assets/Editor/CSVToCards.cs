@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -42,8 +43,16 @@ public class CSVToCards
             newCard.ManaCost = int.Parse(variables[2]);
             newCard.Attack = int.Parse(variables[3]);
             newCard.Health = int.Parse(variables[4]);
-            newCard.CardImage = Resources.Load<Sprite>("Sprites/CardSprites/" + variables[4]);
+            newCard.CardImage = Resources.Load<Sprite>("Sprites/CardSprites/" + variables[5]);
+            newCard.Description = variables[6];
             
+            //if function field isn't empty, give the event an ability
+            if (variables[7] != "")
+            {
+                newCard.Ability.AddPersistentCall(Delegate.CreateDelegate(typeof(CardDelegateAbility),
+                    typeof(CardAbilities), variables[7]));
+            }
+
             AssetDatabase.CreateAsset(newCard, $"Assets/Resources/Cards/{newCard.CardName}.asset");
         }
 

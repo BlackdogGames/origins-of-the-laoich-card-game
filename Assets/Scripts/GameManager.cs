@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public GameObject Opponent;
 
-    public GameObject mousePointer;
+    public GameObject MousePointer;
 
     public PlayerStats PlayerStatsInstance;
     public PlayerStats OppStatsInstance;

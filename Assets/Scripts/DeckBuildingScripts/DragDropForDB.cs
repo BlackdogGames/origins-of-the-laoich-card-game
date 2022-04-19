@@ -22,9 +22,9 @@ public class DragDropForDB : MonoBehaviour
 
     private GameObject _player;
 
-    public bool isDupe;
+    public bool IsDupe;
 
-    static List<GameObject> CardList;
+    static List<GameObject> _cardList;
 
     private DeckManager _deckManager;
 
@@ -42,7 +42,7 @@ public class DragDropForDB : MonoBehaviour
 
         _player = GameObject.Find("Player");
 
-        CardList = new List<GameObject>();
+        _cardList = new List<GameObject>();
         
     }
     //
@@ -117,16 +117,16 @@ public class DragDropForDB : MonoBehaviour
     {
         _isDragging = false;
 
-        if (_isSelectZone && !isDupe) //if its over the selection szone and is not a duplicared card (is from the deck building area)
+        if (_isSelectZone && !IsDupe) //if its over the selection szone and is not a duplicared card (is from the deck building area)
         {
             GameObject selectedCard = Instantiate(CardPrefab, transform); // create a new card
             selectedCard.name = "duped card";
             selectedCard.GetComponent<CardStats>().CardAsset = gameObject.GetComponent<CardStats>().CardAsset; // give the card the same assets
            // selectedCard.GetComponent<CardStats>().IsDuplicate = true; // set it to be a duplicate card
-            selectedCard.GetComponent<DragDropForDB>().isDupe = true;
+            selectedCard.GetComponent<DragDropForDB>().IsDupe = true;
             selectedCard.transform.SetParent(_selectionGrid.transform, false);    // Place duped card in play area
             
-            CardList.Add(selectedCard);
+            _cardList.Add(selectedCard);
 
             // put the original card back in it's place
             transform.position = _startPosition;
@@ -137,7 +137,7 @@ public class DragDropForDB : MonoBehaviour
         {
            // bool dupe = gameObject.GetComponent<CardStats>().IsDuplicate;
 
-            if (isDupe == true)
+            if (IsDupe == true)
             {
                 Destroy(gameObject);
             }

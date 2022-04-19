@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragDropForDB : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class DragDropForDB : MonoBehaviour
     public GameObject Canvas;
     public GameObject PlayerDropZone;
     public GameObject DeckDropZone;
+    public GameObject SelectionScroll;
+    public GameObject DefaultScroll;
 
     [SerializeField]
     private bool _isDragging = false;
@@ -17,6 +20,8 @@ public class DragDropForDB : MonoBehaviour
     private GameObject _selectionGrid;
     private GameObject _deckGrid;
     private GameObject _startParent;
+
+    
 
     public GameObject CardPrefab;
 
@@ -38,11 +43,16 @@ public class DragDropForDB : MonoBehaviour
         PlayerDropZone = GameObject.Find("Selection Grid");
         DeckDropZone = GameObject.Find("Card Grid");
 
-       _deckManager = GameObject.Find("DeckManager").GetComponent<DeckManager>();
+        SelectionScroll = GameObject.Find("ContentScroll");
+        DefaultScroll = GameObject.Find("DefaultContentScroll");
+
+        _deckManager = GameObject.Find("DeckManager").GetComponent<DeckManager>();
 
         _player = GameObject.Find("Player");
 
         _cardList = new List<GameObject>();
+
+       
         
     }
     //
@@ -124,13 +134,13 @@ public class DragDropForDB : MonoBehaviour
             selectedCard.GetComponent<CardStats>().CardAsset = gameObject.GetComponent<CardStats>().CardAsset; // give the card the same assets
            // selectedCard.GetComponent<CardStats>().IsDuplicate = true; // set it to be a duplicate card
             selectedCard.GetComponent<DragDropForDB>().IsDupe = true;
-            selectedCard.transform.SetParent(_selectionGrid.transform, false);    // Place duped card in play area
+            selectedCard.transform.SetParent(SelectionScroll.transform, false);    // Place duped card in play area
             
             _cardList.Add(selectedCard);
 
             // put the original card back in it's place
             transform.position = _startPosition;
-            transform.SetParent(_deckGrid.transform, false);
+            transform.SetParent(DefaultScroll.transform, false);
 
         }
         else if (_isDefaultZone) // if tis over the deck building zoen
@@ -143,7 +153,7 @@ public class DragDropForDB : MonoBehaviour
             }
             else
             {
-                transform.SetParent(_deckGrid.transform, false);
+                transform.SetParent(DefaultScroll.transform, false);
             }
 
             

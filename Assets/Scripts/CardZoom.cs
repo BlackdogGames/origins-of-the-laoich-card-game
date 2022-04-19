@@ -10,6 +10,8 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject Canvas;
     private GameObject _zoomCard;
+    public Color Red;
+    public Color Blue;
     //
 
     //
@@ -21,8 +23,26 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Awake()
     {
+        Red = new Color(1, 0, 0, 1);
+        Blue = new Color(0, 0, 1, 1);
+
         Canvas = GameObject.Find("Main Canvas");
         gameObject.GetComponent<Outline>().enabled = false;
+    }
+
+    public void Update()
+    {
+        bool isSelectedCard = gameObject.GetComponent<DragDrop>().IsSelected;
+
+        if (isSelectedCard == true)
+        {
+            gameObject.GetComponent<Outline>().enabled = true;
+            gameObject.GetComponent<Outline>().effectColor = Red;
+        }
+        else
+        {
+            gameObject.GetComponent<Outline>().effectColor = Blue;
+        }
     }
 
     public void HoverOver()
@@ -79,7 +99,7 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _zoomCard.layer = LayerMask.NameToLayer("Ignore Raycast"); // puts the new zoomed card to a seperate layer
         _zoomCard.GetComponent<CardZoom>().enabled = false;
         // Calls AudioManager to Play requested sound effect
-        AudioManager.Instance.Play("SFX_Card_Hover");
+       // AudioManager.Instance.Play("SFX_Card_Hover");
     }
 
     public void OnPointerExit(PointerEventData eventData)

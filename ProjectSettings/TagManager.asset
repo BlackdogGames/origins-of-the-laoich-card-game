@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AttackZone
+  - Dropping Zone
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Oppenent DropZone
   - Player DropZone
   - Card Zones
-  - 
+  - Arrow
   - 
   - 
   - 
@@ -41,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Arrow
+    uniqueID: 2915327771
     locked: 0

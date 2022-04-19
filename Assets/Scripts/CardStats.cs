@@ -12,6 +12,7 @@ public class CardStats : MonoBehaviour
     public int Attack;
     public int Health;
     public int ZoneID; // attack zone ID
+    public bool IsDuplicate; // is a duped card - used in deckbuilding
 
     public bool BelongsToLocalPlayer;
     public bool FirstTurnPlayed = true;

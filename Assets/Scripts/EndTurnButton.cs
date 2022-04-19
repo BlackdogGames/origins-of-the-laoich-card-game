@@ -21,7 +21,7 @@ public class EndTurnButton : MonoBehaviour
     {
         _turnTimer -= Time.deltaTime;
 
-        TimerText.text = "TIME REMAINING: " + _turnTimer;
+       // TimerText.text = "TIME REMAINING: " + _turnTimer;
 
         if (_turnTimer < 0)
         {

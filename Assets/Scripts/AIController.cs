@@ -7,6 +7,8 @@ public class AIController : MonoBehaviour
     public delegate bool Rule();
     public delegate void Action();
 
+    public GameManager GameManager;
+
     //pair of rule and action
     public class RuleActionPair
     {
@@ -23,50 +25,46 @@ public class AIController : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
+        GameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //if players turn, check list of rules and actions and execute the first one that returns true
-        //TODO : Get if it's the AI's turn
-        if (playerStats.isTurn)
+        if ((playerStats.IsLocalPlayer && GameManager.PlayersTurn) || (!playerStats.IsLocalPlayer && !GameManager.PlayersTurn))
         {
-            foreach (RuleActionPair ruleActionPair in ruleActionPairs)
+            foreach (RuleActionPair pair in ruleActionPairs)
             {
-                if (ruleActionPair.rule())
+                if (pair.rule())
                 {
-                    ruleActionPair.action();
+                    pair.action();
                     break;
                 }
             }
         }
-
-
     }
 
     public void PlayCard()
     {
-
+        //Call card play function on drag drop component
     }
 
     public void AttackWithCard()
     {
-
+        //Targeting logic
     }
 
     public void InvokeCardAbility()
     {
-
+        //Also targeting logic
     }
 
     public void EndTurn()
     {
-
+        GameManager.EndTurn();
     }
     
-    
-
     #region Rules
     //function that checks handcards of AI and returns true if it has a card that can be played based on mana
     public bool CheckIfPlayableCard()

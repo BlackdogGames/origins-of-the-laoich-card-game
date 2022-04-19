@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -233,6 +234,12 @@ public class GameManager : MonoBehaviour
         TurnLogic();
 
         TurnText.text = PlayersTurn ? "Players turn" : "Opponents Turn";
+    }
+
+    //function that gets the end turn button and calls the onclick function
+    public void EndTurn()
+    {
+        GameObject.Find("EndTurnButton").GetComponent<Button>().onClick.Invoke();
     }
 }
 

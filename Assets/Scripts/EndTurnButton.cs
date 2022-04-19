@@ -36,16 +36,16 @@ public class EndTurnButton : MonoBehaviour
             _gameManager.ManaIncrease(_gameManager.Player);
 
             //TODO : This and the coupling line below should not work this way, something is wrong here
-            _gameManager.OppStatsInstance.IsFirstTurn = false;
+            _gameManager.PlayerStatsInstance.IsFirstTurn = false;
 
-            foreach (var card in _gameManager.Opponent.GetComponent<PlayerStats>().HandCards)
+            foreach (var card in _gameManager.Player.GetComponent<PlayerStats>().FieldCards)
             {
                 card.GetComponent<CardStats>().FirstTurnPlayed = false;
             }
 
-            if (_gameManager.PlayerStatsInstance.HandCards.Count < 7) // if the player has space, draw 1 new card
+            if (_gameManager.OppStatsInstance.HandCards.Count < 7) // if the player has space, draw 1 new card
             {
-                _gameManager.DrawCard(_gameManager.Player);
+                _gameManager.DrawCard(_gameManager.Opponent);
                 // Calls AudioManager to Play requested sound effect.
                 AudioManager.Instance.Play("SFX_Card_Pickup");
             }
@@ -55,11 +55,16 @@ public class EndTurnButton : MonoBehaviour
         if (!_gameManager.PlayersTurn)// if it is the opponents turn that is ending
         {
             _gameManager.ManaIncrease(_gameManager.Opponent);
-            _gameManager.PlayerStatsInstance.IsFirstTurn = false;
-
-            if (_gameManager.OppStatsInstance.HandCards.Count < 7)
+            _gameManager.OppStatsInstance.IsFirstTurn = false;
+            
+            foreach (var card in _gameManager.Opponent.GetComponent<PlayerStats>().FieldCards)
             {
-                _gameManager.DrawCard(_gameManager.Opponent);
+                card.GetComponent<CardStats>().FirstTurnPlayed = false;
+            }
+            
+            if (_gameManager.PlayerStatsInstance.HandCards.Count < 7)
+            {
+                _gameManager.DrawCard(_gameManager.Player);
                 // Calls AudioManager to Play requested sound effect.
                 AudioManager.Instance.Play("SFX_Card_Pickup");
             }

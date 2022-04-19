@@ -98,13 +98,10 @@ public class DragDrop : MonoBehaviour
                 {
                     if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == false)
                     {
-                        collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = true;
                         _isOverDropZone = true;
                         _droppingGridZone = collision.gameObject;
-
-                    _opponent.GetComponent<PlayerStats>().HandCards.Remove(gameObject);
-                    _opponent.GetComponent<PlayerStats>().FieldCards.Add(gameObject);
-                    GetComponent<CardStats>().FirstTurnPlayed = true;
+                        
+                        GetComponent<CardStats>().FirstTurnPlayed = true;
                     }
                 }
 
@@ -124,12 +121,8 @@ public class DragDrop : MonoBehaviour
 
                 if (collision.gameObject.name == "DropZone") // if they are over the players drop zone, drop the card in
                 {
-                   
                     _dropZone = collision.gameObject;
-                    
 
-                    _player.GetComponent<PlayerStats>().HandCards.Remove(gameObject);
-                    _player.GetComponent<PlayerStats>().FieldCards.Add(gameObject);
                     GetComponent<CardStats>().FirstTurnPlayed = true;
                 }
 
@@ -137,12 +130,11 @@ public class DragDrop : MonoBehaviour
                 {
                     if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == false)
                     {
-                       
+                        
                         _isOverDropZone = true;
                         _droppingGridZone = collision.gameObject;
 
                         GetComponent<CardStats>().FirstTurnPlayed = true;
-                        collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = true;
 
                     }
                 }
@@ -176,8 +168,6 @@ public class DragDrop : MonoBehaviour
 
                 if (collision.gameObject.tag == "Dropping Zone") // if theyre no longer in the drop zone snap them back to opponents hand
                 {
-                    if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == true)
-                    { collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = false; }
                     _isOverDropZone = false;
                     _dropZone = null;
                     _droppingGridZone = null;
@@ -189,8 +179,6 @@ public class DragDrop : MonoBehaviour
             case (true): // local player's turn
                 if (collision.gameObject.tag == "Dropping Zone") // if theyre no longer in the drop zone snap them back to players hand
                 {
-                    if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == true)
-                    { collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = false; }
                     _isOverDropZone = false;
                     _dropZone = null;
                     _droppingGridZone = null;
@@ -384,6 +372,19 @@ public class DragDrop : MonoBehaviour
         if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Ternary statement: shorthand If statement. if the player has enough mana, play the card and decrease player mana
         {
             transform.SetParent(_droppingGridZone.transform, false);    // Place card in play area
+            _droppingGridZone.GetComponent<DroppingZone>().IsBeingUsed = true;
+
+            //if players turn, remove card from hand list and add it to field list
+            if (_gameManager.PlayersTurn)
+            {
+                _gameManager.PlayerStatsInstance.HandCards.Remove(gameObject);
+                _gameManager.PlayerStatsInstance.FieldCards.Add(gameObject);
+            }
+            else
+            {
+                _gameManager.OppStatsInstance.HandCards.Remove(gameObject);
+                _gameManager.OppStatsInstance.FieldCards.Add(gameObject);
+            }
 
             _gameManager.ManaDecrease(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance); // run the mana decrease function
         }

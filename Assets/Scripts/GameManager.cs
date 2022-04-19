@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject OpponentArea;
 
     public GameObject VictoryPanel, DefeatPanel;
-
+    
     // Used to randomise deck order
     System.Random _rng = new System.Random();
 
@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
             enemyCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
             playerStats.Deck.RemoveAt(0);
             enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
-            OppStatsInstance.HandCards.Add(enemyCard);
+            playerStats.HandCards.Add(enemyCard);
 
             enemyCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
         }

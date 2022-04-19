@@ -99,7 +99,7 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _zoomCard.layer = LayerMask.NameToLayer("Ignore Raycast"); // puts the new zoomed card to a seperate layer
         _zoomCard.GetComponent<CardZoom>().enabled = false;
         // Calls AudioManager to Play requested sound effect
-       // AudioManager.Instance.Play("SFX_Card_Hover");
+        AudioManager.Instance.Play("SFX_Card_Hover");
     }
 
     public void OnPointerExit(PointerEventData eventData)

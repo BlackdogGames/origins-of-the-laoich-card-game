@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - AttackZone
+  - Dropping Zone
   layers:
   - Default
   - TransparentFX

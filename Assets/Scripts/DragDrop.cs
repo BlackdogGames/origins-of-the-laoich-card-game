@@ -14,6 +14,7 @@ public class DragDrop : MonoBehaviour
     private Vector2 _startPosition;
     private bool _isOverDropZone = false;
     private GameObject _dropZone;
+    private GameObject _droppingGridZone;
     private GameObject _startParent;
 
     private GameManager _gameManager;
@@ -88,12 +89,21 @@ public class DragDrop : MonoBehaviour
 
             case (false): // opponents turn
 
-                if (collision.gameObject.name == "OpponentDropZone" ) // if they are over the opponent's drop zone, drop the card in
+                if (collision.gameObject.name == "OpponentDropZone") // if they are over the opponent's drop zone, drop the card in
                 {
-                    _isOverDropZone = true;
                     _dropZone = collision.gameObject;
+                }
 
-                    GetComponent<CardStats>().FirstTurnPlayed = true;
+                if (collision.gameObject.tag == "Dropping Zone" && collision.gameObject.GetComponent<DroppingZone>().isEnemyZone == true) // if they are over the opponent's drop zone, drop the card in
+                {
+                    if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == false)
+                    {
+                        collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = true;
+                        _isOverDropZone = true;
+                        _droppingGridZone = collision.gameObject;
+
+                        GetComponent<CardStats>().FirstTurnPlayed = true;
+                    }
                 }
 
                 if (collision.gameObject.tag == "AttackZone" && _isOverDropZone == true )
@@ -112,10 +122,24 @@ public class DragDrop : MonoBehaviour
 
                 if (collision.gameObject.name == "DropZone") // if they are over the players drop zone, drop the card in
                 {
-                    _isOverDropZone = true;
+                   
                     _dropZone = collision.gameObject;
+                    
 
-                    GetComponent<CardStats>().FirstTurnPlayed = true;
+                }
+
+                if (collision.gameObject.tag == "Dropping Zone" && collision.gameObject.GetComponent<DroppingZone>().isPlayerZone == true) // if they are over the players drop zone, drop the card in
+                {
+                    if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == false)
+                    {
+                       
+                        _isOverDropZone = true;
+                        _droppingGridZone = collision.gameObject;
+
+                        GetComponent<CardStats>().FirstTurnPlayed = true;
+                        collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = true;
+
+                    }
                 }
 
                 if (collision.gameObject.tag == "AttackZone" && _isOverDropZone == true )
@@ -145,20 +169,26 @@ public class DragDrop : MonoBehaviour
 
             case (false): // opponents turn
 
-                if (collision.gameObject.name == "OpponentDropZone") // if theyre no longer in the drop zone snap them back to opponents hand
+                if (collision.gameObject.tag == "Dropping Zone") // if theyre no longer in the drop zone snap them back to opponents hand
                 {
+                    if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == true)
+                    { collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = false; }
                     _isOverDropZone = false;
                     _dropZone = null;
+                    _droppingGridZone = null;
                 }
 
                 break;
 
 
             case (true): // local player's turn
-                if (collision.gameObject.name == "DropZone") // if theyre no longer in the drop zone snap them back to players hand
+                if (collision.gameObject.tag == "Dropping Zone") // if theyre no longer in the drop zone snap them back to players hand
                 {
+                    if (collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed == true)
+                    { collision.gameObject.GetComponent<DroppingZone>().IsBeingUsed = false; }
                     _isOverDropZone = false;
                     _dropZone = null;
+                    _droppingGridZone = null;
                 }
                 break;
 
@@ -346,9 +376,9 @@ public class DragDrop : MonoBehaviour
     {
         _isDragging = false;
 
-        if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Ternary statement: shorthand If statement. If it is the players turn use playerstats, else use oppstats
+        if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Ternary statement: shorthand If statement. if the player has enough mana, play the card and decrease player mana
         {
-            transform.SetParent(_dropZone.transform, false);    // Place card in play area
+            transform.SetParent(_droppingGridZone.transform, false);    // Place card in play area
 
             _gameManager.ManaDecrease(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance); // run the mana decrease function
         }

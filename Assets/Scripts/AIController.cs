@@ -142,7 +142,7 @@ public class AIController : MonoBehaviour
         int highestMana = 0;
         foreach (GameObject card in playerStats.HandCards)
         {
-            if (card.GetComponent<CardStats>().ManaCost > highestMana)
+            if (card.GetComponent<CardStats>().ManaCost > highestMana && card.GetComponent<CardStats>().ManaCost <= playerStats.Mana)
             {
                 highestMana = card.GetComponent<CardStats>().ManaCost;
                 highestManaCard = card;
@@ -151,16 +151,33 @@ public class AIController : MonoBehaviour
 
         //get card drag drop component
         DragDrop dragDrop = highestManaCard.GetComponent<DragDrop>();
-        if (!OpponentZone1.GetComponent<DroppingZone>().IsBeingUsed)        
+        if (!OpponentZone1.GetComponent<DroppingZone>().IsBeingUsed)
+        {
             dragDrop.PlayCardToZone(OpponentZone1);
+            highestManaCard.GetComponent<CardStats>().ZoneID = 1;
+        } 
         else if (!OpponentZone2.GetComponent<DroppingZone>().IsBeingUsed)
+        {
             dragDrop.PlayCardToZone(OpponentZone2);
+            highestManaCard.GetComponent<CardStats>().ZoneID = 2;
+        } 
         else if (!OpponentZone3.GetComponent<DroppingZone>().IsBeingUsed)
+        {
             dragDrop.PlayCardToZone(OpponentZone3);
+            highestManaCard.GetComponent<CardStats>().ZoneID = 3;
+        }
         else if (!OpponentZone4.GetComponent<DroppingZone>().IsBeingUsed)
+        {
             dragDrop.PlayCardToZone(OpponentZone4);
+            highestManaCard.GetComponent<CardStats>().ZoneID = 4;
+        }
         else if (!OpponentZone5.GetComponent<DroppingZone>().IsBeingUsed)
+        {
             dragDrop.PlayCardToZone(OpponentZone5);
+            highestManaCard.GetComponent<CardStats>().ZoneID = 5;
+        }
+
+
     }
     #endregion
 

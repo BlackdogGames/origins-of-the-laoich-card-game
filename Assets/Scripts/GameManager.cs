@@ -150,10 +150,13 @@ public class GameManager : MonoBehaviour
 
         // Subtracts the attacking cards attack damage from the defending cards health
         _attackingCard = attackingCard.GetComponent<CardStats>();
-        _defendingCard = defendingCard.GetComponent<CardStats>();
-        _defendingCard.Health -= _attackingCard.Attack;
         // Calls AudioManager to PLay a requested Sound.
         AudioManager.Instance.Play("SFX_Card_Attack");
+        _defendingCard = defendingCard.GetComponent<CardStats>();
+        // Calls AudioManager to PLay a requested Sound.
+        AudioManager.Instance.Play("SFX_Card_Block");
+        _defendingCard.Health -= _attackingCard.Attack;
+       
 
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)

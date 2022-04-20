@@ -24,6 +24,8 @@ public class CardStats : MonoBehaviour
     public TMP_Text HealthText;
     public TMP_Text DescriptionText;
 
+    public GameObject CardBack;
+
     public Image CardImage;
 
     void Start()
@@ -50,5 +52,5 @@ public class CardStats : MonoBehaviour
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();
     }
-
+    
 }

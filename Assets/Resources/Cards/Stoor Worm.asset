@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1230d1b6837afa44833456761a4070a, type: 3}
+  m_Name: Stoor Worm
+  m_EditorClassIdentifier: 
+  ID: 23
+  CardName: Stoor Worm
+  ManaCost: 9
+  Attack: 9
+  Health: 9
+  CardImage: {fileID: 21300000, guid: e2a9b0290d23c7f4eb6a8949a8409a51, type: 3}
+  Description: 
+  AbilityTrigger: 0
+  Ability:
+    _PersistentCalls: []

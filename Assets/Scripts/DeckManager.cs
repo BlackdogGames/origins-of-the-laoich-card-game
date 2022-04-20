@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro; 
 
 
 public class DeckManager : MonoBehaviour
@@ -19,11 +20,21 @@ public class DeckManager : MonoBehaviour
     public List<GameObject> CardList;
     public List<GameObject> CustomDeck;
 
+    public TMP_InputField DeckNameInput;
+    public TMP_InputField ImportInput;
+
+    public GameObject ScrollviewParent; // the selection zone
+
+
 
     void Start()
     {
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
         PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+
+        // set the text field to interactable input
+        DeckNameInput.interactable = true;
+        ImportInput.interactable = true;
 
         // populate the grid with cards 
         Populate();
@@ -47,13 +58,7 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    void AddCardToDeck()
-    {
-        // check how many of the same card exist before adding to the deck
-        // add a selected card to the deck
-
-
-    }
+    
 
    
     void Update()
@@ -61,23 +66,45 @@ public class DeckManager : MonoBehaviour
         //
     }
 
-    void OnRightPageTurn()
+
+    public void CleanDeck()
     {
-        // display the next set of cards (increment the card array)
+        CustomDeck.Clear();
     }
 
-    void OnLeftPageTurn()
+    // a function to export CustomDeck to a text file
+    public void ExportDeck()
     {
-        // display the previous set of cards (decrement the card array)
+        string path = "Assets/Resources/Decks/" + DeckNameInput.text + ".txt";
+        System.IO.File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
     }
 
-    void SaveDeck()
+    // a function to import a text file to CustomDeck
+    public void ImportDeck()
     {
-        // save the current deck to a file
+        string path = "Assets/Resources/Decks/" + ImportInput.text + ".txt";
+        //  string path = "Assets/Resources/Decks/id test deck.txt";
+        List<Card> cardList = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
+
+        foreach (Card card in cardList) {
+            GameObject enemyCard;
+            CustomDeck.Add(enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity));
+            enemyCard.GetComponent<CardStats>().CardAsset = card;
+        }
+
+        for (int i = 0; i != CustomDeck.Count; i++)
+        {
+            CustomDeck[i].transform.SetParent(ScrollviewParent.transform, false); // set the cards as children of the scroll view
+            
+        }
     }
 
-    void CleanDeck()
-    {
-        // clear the deck / selections
-    }
+
+    ////a function to export all Card stats in CustomDeck to a spreadsheet
+    //public void ExportDeckStats()
+    //{
+    //    string path = "Assets/Resources/Decks/" + DeckNameInput.text + ".csv";
+    //    System.IO.File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name + "," + x.GetComponent<CardStats>().CardAsset.ManaCost + "," + x.GetComponent<CardStats>().CardAsset.Attack + "," + x.GetComponent<CardStats>().CardAsset.Health).ToArray());
+    //}
+
 }

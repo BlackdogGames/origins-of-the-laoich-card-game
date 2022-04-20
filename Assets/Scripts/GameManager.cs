@@ -231,6 +231,18 @@ public class GameManager : MonoBehaviour
             enemyCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
         }
 
+        if (playerStats.Deck.Count == 0)
+        {
+            //if local player, display defeat panel, else display victory panel
+            if (playerStats.IsLocalPlayer)
+            {
+                DefeatPanel.SetActive(true);
+            }
+            else
+            {
+                VictoryPanel.SetActive(true);
+            }
+        }
     }
 
     // Update is called once per frame

@@ -385,32 +385,7 @@ public class DragDrop : MonoBehaviour
 
         if (_isOverDropZone && _gameManager.IsCardPlayable(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance)) // Ternary statement: shorthand If statement. if the player has enough mana, play the card and decrease player mana
         {
-<<<<<<< Updated upstream
-            transform.SetParent(_droppingGridZone.transform, false);    // Place card in play area
-            _droppingGridZone.GetComponent<DroppingZone>().IsBeingUsed = true;
-
-            //if players turn, remove card from hand list and add it to field list
-            if (_gameManager.PlayersTurn)
-            {
-                _gameManager.PlayerStatsInstance.HandCards.Remove(gameObject);
-                _gameManager.PlayerStatsInstance.FieldCards.Add(gameObject);
-            }
-            else
-            {
-                _gameManager.OppStatsInstance.HandCards.Remove(gameObject);
-                _gameManager.OppStatsInstance.FieldCards.Add(gameObject);
-            }
-
-            //if card ability type is onplayed, run the ability
-            if (gameObject.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnPlayed)
-            {
-                gameObject.GetComponent<CardStats>().CardAsset.Ability.Invoke(_gameManager, GetComponent<CardStats>());
-            }
-
-            _gameManager.ManaDecrease(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance); // run the mana decrease function
-=======
             PlayCardToZone(_droppingGridZone);
->>>>>>> Stashed changes
         }
         else
         {

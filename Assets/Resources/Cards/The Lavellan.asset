@@ -18,8 +18,8 @@ MonoBehaviour:
   Attack: 2
   Health: 4
   CardImage: {fileID: 0}
-  Description: "Their attack infects the targeted Unit Card with a poison that deals
-    1 damage at the end of each of the opponent\u2019s turns"
+  Description: Its attacks poison the target, dealing 1 Damage at the end of each
+    turn
   AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

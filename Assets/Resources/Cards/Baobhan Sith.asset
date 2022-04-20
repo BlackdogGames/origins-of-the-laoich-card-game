@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 3
   Health: 4
   CardImage: {fileID: 0}
-  Description: Replenishes 1 HP when attacking an enemy Unit Card
+  Description: Replenishes 1HP when attacking an enemy Unit Card
   AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

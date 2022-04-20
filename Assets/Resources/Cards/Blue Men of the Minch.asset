@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 2
   Health: 2
   CardImage: {fileID: 0}
-  Description: When placed, summons 2 Blue Men with 1 HP and 1 Damage, should the
+  Description: When played, summons 2 Blue Men with 1HP and 1 Damage, should the
     board permit
   AbilityTrigger: 0
   Ability:

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     public GameObject OpponentArea;
 
     public GameObject VictoryPanel, DefeatPanel;
-
+    
     // Used to randomise deck order
     System.Random _rng = new System.Random();
 
@@ -55,21 +56,21 @@ public class GameManager : MonoBehaviour
 
     public void ClearCardSelection()
     {
-        foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
+        foreach (var card in OppStatsInstance.HandCards)   // For each card in the players deck
         {
             if (!card)
             {
-                OppStatsInstance.Cards.Remove(card);
+                OppStatsInstance.HandCards.Remove(card);
             }
             
             card.SendMessage("ClearSelectionList");
             
         }
-        foreach (var card in PlayerStatsInstance.Cards)
+        foreach (var card in PlayerStatsInstance.HandCards)
         {
             if (!card)
             {
-                PlayerStatsInstance.Cards.Remove(card);
+                PlayerStatsInstance.HandCards.Remove(card);
             }
 
             card.SendMessage("ClearSelectionList");
@@ -83,20 +84,20 @@ public class GameManager : MonoBehaviour
         {
             //players turn
             //only access player cards
-            foreach (var card in OppStatsInstance.Cards)   // For each card in the players deck
+            foreach (var card in OppStatsInstance.HandCards)   // For each card in the players deck
             {
                 if (!card)
                 {
-                    OppStatsInstance.Cards.Remove(card);
+                    OppStatsInstance.HandCards.Remove(card);
                 }
 
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Opponents Cards
             }
-            foreach (var card in PlayerStatsInstance.Cards)
+            foreach (var card in PlayerStatsInstance.HandCards)
             {
                 if (!card)
                 {
-                    PlayerStatsInstance.Cards.Remove(card);
+                    PlayerStatsInstance.HandCards.Remove(card);
                 }
 
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Player Cards
@@ -106,21 +107,21 @@ public class GameManager : MonoBehaviour
         {
             //opponents turn
             //only access opponent cards
-            foreach (var card in OppStatsInstance.Cards)   // For each card in the opponents deck
+            foreach (var card in OppStatsInstance.HandCards)   // For each card in the opponents deck
             {
                 if (!card)
                 {
-                    OppStatsInstance.Cards.Remove(card);
+                    OppStatsInstance.HandCards.Remove(card);
                 }
 
                 card.GetComponent<DragDrop>().enabled = true;   // Enable Opponents Cards
             }  
-            foreach (var card in PlayerStatsInstance.Cards)
+            foreach (var card in PlayerStatsInstance.HandCards)
             {
                 //print("Disabling dragging");
                 if (!card)
                 {
-                    PlayerStatsInstance.Cards.Remove(card);
+                    PlayerStatsInstance.HandCards.Remove(card);
                 }
 
                 card.GetComponent<DragDrop>().enabled = false;  // Disable Player Cards
@@ -216,7 +217,7 @@ public class GameManager : MonoBehaviour
             playerCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
             playerStats.Deck.RemoveAt(0);
             playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
-            playerStats.Cards.Add(playerCard);
+            playerStats.HandCards.Add(playerCard);
 
             playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
         } else if (playerStats.Deck.Count > 0 && !playerStats.IsLocalPlayer)
@@ -225,7 +226,7 @@ public class GameManager : MonoBehaviour
             enemyCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
             playerStats.Deck.RemoveAt(0);
             enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
-            OppStatsInstance.Cards.Add(enemyCard);
+            playerStats.HandCards.Add(enemyCard);
 
             enemyCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
         }
@@ -239,4 +240,71 @@ public class GameManager : MonoBehaviour
 
         TurnText.text = PlayersTurn ? "Players turn" : "Opponents Turn";
     }
+
+    //function that gets the end turn button and calls the onclick function
+    public void EndTurn()
+    {
+        GameObject.Find("EndTurnButton").GetComponent<Button>().onClick.Invoke();
+    }
 }
+
+//class that implements monte carlo tree search
+//public class MCTS
+//{
+//    private int maxDepth = 5;
+//    private int maxIterations = 100;
+//    private int maxSimulations = 10;
+//
+//    public int MaxDepth
+//    {
+//        get { return maxDepth; }
+//        set { maxDepth = value; }
+//    }
+//
+//    public int MaxIterations
+//    {
+//        get { return maxIterations; }
+//        set { maxIterations = value; }
+//    }
+//
+//    public int MaxSimulations
+//    {
+//        get { return maxSimulations; }
+//        set { maxSimulations = value; }
+//    }
+//
+//    public int Evaluate(GameState state)
+//    {
+//        //return state.Evaluate();
+//        return 0;
+//    }
+//
+//    public GameState Select(GameState state)
+//    {
+//        //return state.Select();
+//        return null;
+//    }
+//
+//    public GameState Simulate(GameState state)
+//    {
+//        //return state.Simulate();
+//        return null;
+//    }
+//
+//    public GameState Search(GameState state)
+//    {
+//        int iterations = 0;
+//        int simulations = 0;
+//
+//        while (iterations < maxIterations && simulations < maxSimulations)
+//        {
+//            GameState selected = Select(state);
+//            GameState simulated = Simulate(selected);
+//            int score = Evaluate(simulated);
+//            state.Update(score);
+//            simulations++;
+//        }
+//
+//        return state;
+//    }
+//}

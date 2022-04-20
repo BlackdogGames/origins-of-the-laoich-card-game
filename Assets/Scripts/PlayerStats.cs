@@ -12,7 +12,8 @@ public class PlayerStats : MonoBehaviour
 	public int Mana;
 	public int MaxMana;
 
-	public List<GameObject> Cards = new List<GameObject>();
+	public List<GameObject> HandCards = new List<GameObject>();
+	public List<GameObject> FieldCards = new List<GameObject>();
 
 	public List<Card> Deck = new List<Card>();
 }

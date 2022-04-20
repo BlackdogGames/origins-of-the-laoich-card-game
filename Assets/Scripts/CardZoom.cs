@@ -76,6 +76,7 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //cardPosition = GetComponent<RectTransform>().anchoredPosition;
 
         _zoomCard = Instantiate(gameObject, cardPosition, Quaternion.identity);
+        _zoomCard.GetComponent<BoxCollider2D>().enabled = false;
         RectTransform rect = _zoomCard.GetComponent<RectTransform>();
         rect.anchorMax = new Vector2(0.5f, 0.5f);
         rect.anchorMin = new Vector2(0.5f, 0.5f);

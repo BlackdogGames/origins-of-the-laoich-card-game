@@ -16,7 +16,7 @@ public class Cursor : MonoBehaviour
 
     private void Update()
     {
-        gameObject.transform.position = Input.mousePosition;
+        gameObject.transform.position = Input.mousePosition - new Vector3(0, 50, 0);
     }
 
     public void SelectTarget(Vector2 mousePosition, bool isSelected, GameObject playerCard) // takes in the mouse position, if an attack card is selected and the selected card object

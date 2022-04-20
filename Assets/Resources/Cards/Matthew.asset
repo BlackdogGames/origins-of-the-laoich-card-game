@@ -18,6 +18,7 @@ MonoBehaviour:
   Attack: 3
   Health: 3
   CardImage: {fileID: 21300000, guid: f58fd3a9bd525164b8e93a524ba41cf4, type: 3}
-  Description: 
+  Description: Weaken an Enemy Attacker by -2 Damage while Blocking
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

@@ -18,6 +18,8 @@ MonoBehaviour:
   Attack: 2
   Health: 4
   CardImage: {fileID: 0}
-  Description: 
+  Description: Its attacks poison the target, dealing 1 Damage at the end of each
+    turn
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

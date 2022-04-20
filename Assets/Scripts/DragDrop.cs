@@ -400,7 +400,11 @@ public class DragDrop : MonoBehaviour
                 _gameManager.OppStatsInstance.FieldCards.Add(gameObject);
             }
 
-
+            //if card ability type is onplayed, run the ability
+            if (gameObject.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnPlayed)
+            {
+                gameObject.GetComponent<CardStats>().CardAsset.Ability.Invoke(_gameManager, GetComponent<CardStats>());
+            }
 
             _gameManager.ManaDecrease(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance); // run the mana decrease function
         }

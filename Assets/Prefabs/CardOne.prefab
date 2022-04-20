@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 257271527361350181}
   - component: {fileID: 7168327372764286176}
   m_Layer: 6
-  m_Name: Title_Text
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 112}
+  m_AnchoredPosition: {x: 0, y: 110}
   m_SizeDelta: {x: 110, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &257271527361350181
@@ -510,8 +510,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 8.5
+  m_fontSizeBase: 8.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 601902763749894980}
   - component: {fileID: 6798797048580636104}
   m_Layer: 6
-  m_Name: Description_Text
+  m_Name: DescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,8 +795,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 110, y: 45}
+  m_AnchoredPosition: {x: 0, y: -73}
+  m_SizeDelta: {x: 110, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &601902763749894980
 CanvasRenderer:
@@ -853,8 +853,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1227,6 +1227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
+  Red: {r: 0, g: 0, b: 0, a: 0}
+  Blue: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &3555824932705623313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,8 +1247,8 @@ MonoBehaviour:
   _isDragging: 0
   AttackingCard: {fileID: 0}
   CardToAttack: {fileID: 0}
-  Arrow: {fileID: 21300000, guid: b73cb5ea4a9859945a1e6ce3aa6eb130, type: 3}
-  Crosshair: {fileID: 21300000, guid: 6d759513a287bf541a0c33323bc34478, type: 3}
+  Pointer: {fileID: 0}
+  IsSelected: 0
 --- !u!114 &4751563756640624498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1432,12 +1434,14 @@ MonoBehaviour:
   Attack: 0
   Health: 0
   ZoneID: 0
+  IsDuplicate: 0
   BelongsToLocalPlayer: 0
   FirstTurnPlayed: 1
   CardNameText: {fileID: 7168327372764286176}
   ManaCostText: {fileID: 34328829130089339}
   AttackText: {fileID: 2090796141120252948}
   HealthText: {fileID: 7033114455718998677}
+  DescriptionText: {fileID: 6798797048580636104}
   CardImage: {fileID: 149687993726956949}
 --- !u!114 &-8389175650262524535
 MonoBehaviour:

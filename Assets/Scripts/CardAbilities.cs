@@ -24,7 +24,7 @@ public class CardAbilities : MonoBehaviour
 
     public static void DonaldAbility(GameManager gameManager, CardStats caster)
     {
-        int casterId = caster.GetComponent<CardStats>().ZoneID;
+        int casterId = caster.ZoneID;
 
         //Get opponent cards
         List<GameObject> targets = (caster.BelongsToLocalPlayer) ?

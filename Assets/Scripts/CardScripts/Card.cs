@@ -24,6 +24,17 @@ public class Card : ScriptableObject
     public Sprite CardImage;
     public string Description;
 
+    public enum CardAbilityTrigger
+    {
+        NoAbility = 0,
+        OnPlayed = 1,
+        OnDestroyed = 2,
+        OnAttacking = 3,
+        OnDefending = 4,
+        OnTurnEnd = 5
+    }
+
+    public CardAbilityTrigger AbilityTrigger;
     public CardAbility Ability = new CardAbility();
 
     Card()

@@ -18,6 +18,8 @@ MonoBehaviour:
   Attack: 3
   Health: 6
   CardImage: {fileID: 21300000, guid: ad5e5830d0efec84e8ef6d2a42cf01d9, type: 3}
-  Description: 
+  Description: "Howls at the end of the player\u2019s turn, reducing the HP and Damage
+    of any enemy units that hear three howls to 1"
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

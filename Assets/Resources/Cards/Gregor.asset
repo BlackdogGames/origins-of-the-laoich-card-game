@@ -17,7 +17,7 @@ MonoBehaviour:
   ManaCost: 4
   Attack: 2
   Health: 3
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: a013808bc3213314e9f2428bdda04771, type: 3}
   Description: 
   Ability:
     _PersistentCalls: []

@@ -244,8 +244,9 @@ public class GameManager : MonoBehaviour
     //function that gets the end turn button and calls the onclick function
     public void EndTurn()
     {
-        GameObject.Find("EndTurnButton").GetComponent<Button>().onClick.Invoke();
+        GameObject.Find("End Turn Button").GetComponent<EndTurnButton>().OnClick();
     }
+    
 }
 
 //class that implements monte carlo tree search

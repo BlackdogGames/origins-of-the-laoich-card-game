@@ -129,14 +129,20 @@ public class DragDropForDB : MonoBehaviour
 
         if (_isSelectZone && !IsDupe) //if its over the selection szone and is not a duplicared card (is from the deck building area)
         {
-            GameObject selectedCard = Instantiate(CardPrefab, transform); // create a new card
-            selectedCard.name = "duped card";
-            selectedCard.GetComponent<CardStats>().CardAsset = gameObject.GetComponent<CardStats>().CardAsset; // give the card the same assets
-           // selectedCard.GetComponent<CardStats>().IsDuplicate = true; // set it to be a duplicate card
-            selectedCard.GetComponent<DragDropForDB>().IsDupe = true;
-            selectedCard.transform.SetParent(SelectionScroll.transform, false);    // Place duped card in play area
-            
-            _cardList.Add(selectedCard);
+            if (_deckManager.CustomDeck.Count != 30)
+            {
+                GameObject selectedCard = Instantiate(CardPrefab, transform); // create a new card
+                selectedCard.name = "duped card";
+                selectedCard.GetComponent<CardStats>().CardAsset = gameObject.GetComponent<CardStats>().CardAsset; // give the card the same assets
+                                                                                                                   // selectedCard.GetComponent<CardStats>().IsDuplicate = true; // set it to be a duplicate card
+                selectedCard.GetComponent<DragDropForDB>().IsDupe = true;
+                selectedCard.transform.SetParent(SelectionScroll.transform, false);    // Place duped card in play area
+
+                //_cardList.Add(selectedCard);
+                _deckManager.CustomDeck.Add(selectedCard);
+               // Debug.Log(_deckManager.CustomDeck.Count);
+
+             }
 
             // put the original card back in it's place
             transform.position = _startPosition;

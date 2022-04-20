@@ -40,7 +40,11 @@ public class EndTurnButton : MonoBehaviour
 
             foreach (var card in _gameManager.Player.GetComponent<PlayerStats>().FieldCards)
             {
-                card.GetComponent<CardStats>().FirstTurnPlayed = false;
+                if (card != null)
+                {
+                    card.GetComponent<CardStats>().FirstTurnPlayed = false;
+                }
+                
             }
 
             if (_gameManager.OppStatsInstance.HandCards.Count < 7) // if the player has space, draw 1 new card
@@ -59,7 +63,10 @@ public class EndTurnButton : MonoBehaviour
             
             foreach (var card in _gameManager.Opponent.GetComponent<PlayerStats>().FieldCards)
             {
-                card.GetComponent<CardStats>().FirstTurnPlayed = false;
+                if (card != null)
+                {
+                    card.GetComponent<CardStats>().FirstTurnPlayed = false;
+                }
             }
             
             if (_gameManager.PlayerStatsInstance.HandCards.Count < 7)

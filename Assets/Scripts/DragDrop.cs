@@ -32,6 +32,8 @@ public class DragDrop : MonoBehaviour
     static bool _defendCardSelected = false;
     public bool IsSelected;
 
+    private int _lastZone;
+
     static List<GameObject> _cardList;  
     
     //
@@ -70,11 +72,16 @@ public class DragDrop : MonoBehaviour
             AudioManager.Instance.Play("SFX_Card_Placement");
         }
 
-       if (_attackCardSelected)
+        if (_attackCardSelected)
         {
             Pointer.GetComponent<Cursor>().SelectTarget(Input.mousePosition, _attackCardSelected, _cardList[0]);
         }
-        
+        if (!_attackCardSelected)
+        {
+            Pointer.GetComponent<Cursor>().Default();
+        }
+       
+
 
     }
     //
@@ -109,6 +116,7 @@ public class DragDrop : MonoBehaviour
                 {
                     _attackZone = collision.gameObject;
                     stats.ZoneID = _attackZone.GetComponent<CardAttackZone>().ZoneID;
+                    _lastZone = stats.ZoneID;
                     Debug.Log("oppponent Card in attack zone: " + stats.ZoneID);
                 }
 
@@ -143,6 +151,7 @@ public class DragDrop : MonoBehaviour
                 {
                     _attackZone = collision.gameObject;
                     stats.ZoneID = _attackZone.GetComponent<CardAttackZone>().ZoneID;
+                    _lastZone = stats.ZoneID; // the last zone the card was in
                     Debug.Log("player Card in attack zone: " + stats.ZoneID);
 
                 }
@@ -160,6 +169,7 @@ public class DragDrop : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        
 
         switch (_gameManager.PlayersTurn)
         {
@@ -172,6 +182,7 @@ public class DragDrop : MonoBehaviour
                     _dropZone = null;
                     _droppingGridZone = null;
                 }
+
 
                 break;
 
@@ -313,10 +324,13 @@ public class DragDrop : MonoBehaviour
                                                                                // clear flags //
                         _attackCardSelected = false;
                         _defendCardSelected = false;
-                        IsSelected = false;
+                        //IsSelected = false;
+                        _cardList[0].GetComponent<DragDrop>().IsSelected = false;
+                        _cardList[1].GetComponent<DragDrop>().IsSelected = false;
                         //
                         _cardList.Clear(); // clear the list 
                         Debug.Log("Card attack occured, list cleared");
+                        Debug.Log(IsSelected);
                     }
                     else
                     {
@@ -385,6 +399,8 @@ public class DragDrop : MonoBehaviour
                 _gameManager.OppStatsInstance.HandCards.Remove(gameObject);
                 _gameManager.OppStatsInstance.FieldCards.Add(gameObject);
             }
+
+
 
             _gameManager.ManaDecrease(gameObject, (_gameManager.PlayersTurn) ? _gameManager.PlayerStatsInstance : _gameManager.OppStatsInstance); // run the mana decrease function
         }

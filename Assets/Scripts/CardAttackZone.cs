@@ -7,3 +7,5 @@ public class CardAttackZone : MonoBehaviour
     public int ZoneID;
 
 }
+
+

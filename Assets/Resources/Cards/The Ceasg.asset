@@ -18,6 +18,7 @@ MonoBehaviour:
   Attack: 3
   Health: 3
   CardImage: {fileID: 0}
-  Description: 
+  Description: When placed, gives up to three Allies +1 HP
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

@@ -18,6 +18,8 @@ MonoBehaviour:
   Attack: 1
   Health: 4
   CardImage: {fileID: 0}
-  Description: 
+  Description: "Copies the Damage of the Unit Card they\u2019re attacking immediately
+    prior to dealing damage"
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

@@ -18,6 +18,7 @@ MonoBehaviour:
   Attack: 1
   Health: 2
   CardImage: {fileID: 21300000, guid: 1bc824cb4b407fb429300509b5fdab8e, type: 3}
-  Description: 
+  Description: When Played Empower 1 Ally (+1/+1) for 1 turn
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

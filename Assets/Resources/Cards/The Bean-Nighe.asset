@@ -18,6 +18,8 @@ MonoBehaviour:
   Attack: 3
   Health: 4
   CardImage: {fileID: 0}
-  Description: 
+  Description: Can be summoned for free if a Unit Card with a mana cost of 4 or more
+    is slain
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

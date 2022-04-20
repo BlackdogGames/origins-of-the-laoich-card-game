@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using System.Text;
 
 public class CSVToCards
 {
@@ -35,7 +37,10 @@ public class CSVToCards
             }
 
             // Checks will go here if code fails
-            string[] variables = s.Split(',');
+            string[] variables = SplitCSV(s);
+
+            //split the string s into substrings with a comma seperator, ignoring commas if they're prefixed with a backslash
+            //string[] variables = s.Split(new string[] { "," }, StringSplitOptions.None);
 
             Card newCard = ScriptableObject.CreateInstance<Card>();
             newCard.ID = int.Parse(variables[0]);
@@ -52,10 +57,44 @@ public class CSVToCards
                 newCard.Ability.AddPersistentCall(Delegate.CreateDelegate(typeof(CardDelegateAbility),
                     typeof(CardAbilities), variables[7]));
             }
+            
+            if (variables[8] != "")
+                newCard.AbilityTrigger =
+                    (Card.CardAbilityTrigger)Enum.Parse(typeof(Card.CardAbilityTrigger), variables[8]);
+            else
+                newCard.AbilityTrigger = Card.CardAbilityTrigger.NoAbility;
 
             AssetDatabase.CreateAsset(newCard, $"Assets/Resources/Cards/{newCard.CardName}.asset");
         }
 
         AssetDatabase.SaveAssets();
     }
+
+    //function that splits a string into substrings with a comma seperator
+    public static string[] SplitCSV(string line)
+    {
+        List<string> values = new List<string>();
+        bool inQuotes = false;
+        string value = "";
+
+        foreach (char c in line)
+        {
+            if (c == ',' && !inQuotes)
+            {
+                values.Add(value);
+                value = "";
+            }
+            else
+            {
+                if (c == '"')
+                    inQuotes = !inQuotes;
+                else
+                    value += c;
+            }
+        }
+        values.Add(value);
+
+        return values.ToArray();
+    }
 }
+

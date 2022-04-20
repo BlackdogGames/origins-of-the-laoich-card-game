@@ -18,6 +18,8 @@ MonoBehaviour:
   Attack: 1
   Health: 3
   CardImage: {fileID: 21300000, guid: cf0e7e49d228e3344a2a5be2e71dc001, type: 3}
-  Description: 
+  Description: "When placed on the board, hypnotise one Unit Card from the enemy\u2019s
+    board into moving over to your side for as long as this card remains active"
+  AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

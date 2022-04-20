@@ -22,6 +22,7 @@ public class CardStats : MonoBehaviour
     public TMP_Text ManaCostText;
     public TMP_Text AttackText;
     public TMP_Text HealthText;
+    public TMP_Text DescriptionText;
 
     public Image CardImage;
 
@@ -32,6 +33,7 @@ public class CardStats : MonoBehaviour
         Health = CardAsset.Health;
         CardImage.sprite = CardAsset.CardImage;
         CardNameText.text = CardAsset.CardName;
+        DescriptionText.text = CardAsset.Description;
 
         // name
         // image

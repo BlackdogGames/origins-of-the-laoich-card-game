@@ -83,8 +83,15 @@ public class DeckManager : MonoBehaviour
     public void ImportDeck()
     {
         string path = "Assets/Resources/Decks/" + ImportInput.text + ".txt";
-      //  string path = "Assets/Resources/Decks/id test deck.txt";
-        CustomDeck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (GameObject)Resources.Load("Cards/" + item));
+        //  string path = "Assets/Resources/Decks/id test deck.txt";
+        List<Card> cardList = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
+
+        foreach (Card card in cardList) {
+            GameObject enemyCard;
+            CustomDeck.Add(enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity));
+            enemyCard.GetComponent<CardStats>().CardAsset = card;
+        }
+
         for (int i = 0; i != CustomDeck.Count; i++)
         {
             CustomDeck[i].transform.SetParent(ScrollviewParent.transform, false); // set the cards as children of the scroll view

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EndTurnButton : MonoBehaviour
 {
@@ -19,9 +20,19 @@ public class EndTurnButton : MonoBehaviour
 
     private void Update()
     {
+        if (!_gameManager.PlayersTurn)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            GetComponent<Button>().interactable = true; 
+        }
+
         _turnTimer -= Time.deltaTime;
 
-       // TimerText.text = "TIME REMAINING: " + _turnTimer;
+        //display time remaining with no decimal place
+        TimerText.text = "TIME REMAINING: " + ((int)_turnTimer).ToString();
 
         if (_turnTimer < 0)
         {

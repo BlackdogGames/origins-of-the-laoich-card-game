@@ -43,4 +43,13 @@ public class CardAbilities : MonoBehaviour
             }
         }
     }
+
+    public static void MoragAbility(GameManager gameManager, CardStats caster)
+    {
+        GameObject target = DragDrop.CardList[1];
+
+        //Increase target health and attack by 1
+        target.GetComponent<CardStats>().Health++;
+        target.GetComponent<CardStats>().Attack++;
+    }
 }

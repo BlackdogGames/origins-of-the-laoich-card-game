@@ -17,7 +17,7 @@ MonoBehaviour:
   ManaCost: 5
   Attack: 6
   Health: 8
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 4d9f44ecff7a1444baf6753a69352afd, type: 3}
   Description: 
   AbilityTrigger: 0
   Ability:

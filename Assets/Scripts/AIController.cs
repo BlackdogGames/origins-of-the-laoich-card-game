@@ -142,7 +142,7 @@ public class AIController : MonoBehaviour
         int highestMana = 0;
         foreach (GameObject card in playerStats.HandCards)
         {
-            if (card.GetComponent<CardStats>().ManaCost > highestMana && card.GetComponent<CardStats>().ManaCost <= playerStats.Mana)
+            if (card.GetComponent<CardStats>().ManaCost >= highestMana && card.GetComponent<CardStats>().ManaCost <= playerStats.Mana)
             {
                 highestMana = card.GetComponent<CardStats>().ManaCost;
                 highestManaCard = card;

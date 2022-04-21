@@ -396,6 +396,15 @@ public class DragDrop : MonoBehaviour
 
     public void PlayCardToZone(GameObject zone)
     {
+        _droppingGridZone = zone;
+
+        if (!_gameManager.PlayersTurn)
+        {
+            _isOverDropZone = true;
+            _dropZone = GameObject.Find("OpponentDropZone");
+        }
+
+
         transform.SetParent(zone.transform, false); // Place card in play area
         zone.GetComponent<DroppingZone>().IsBeingUsed = true;
 

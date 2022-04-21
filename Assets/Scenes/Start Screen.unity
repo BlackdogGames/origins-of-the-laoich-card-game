@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6a5fb6c4c27bfe14abaf0eb511d1d545, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f96add2d87851049ae137b5e8276f3a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.01
 --- !u!222 &298717230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -901,9 +901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TabButtons: []
-  TabIdle: {fileID: 21300000, guid: 6a5fb6c4c27bfe14abaf0eb511d1d545, type: 3}
-  TabHover: {fileID: 21300000, guid: 88532eb57997daa428b6bc8131fd396a, type: 3}
-  TabActive: {fileID: 21300000, guid: 075070d29b3719740aeba062eaa923db, type: 3}
+  TabIdle: {fileID: 21300000, guid: 8f96add2d87851049ae137b5e8276f3a, type: 3}
+  TabHover: {fileID: 21300000, guid: beec394cdef7a8440a7e456105464d6f, type: 3}
+  TabActive: {fileID: 21300000, guid: bcc502f718c324f4499f10e6157e35a2, type: 3}
   SelectedTab: {fileID: 0}
   ObjectsToSwap: []
 --- !u!1 &1537248888

@@ -17,7 +17,7 @@ MonoBehaviour:
   ManaCost: 2
   Attack: 3
   Health: 4
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: e3ab19ac51e4a734a98446740ef614b3, type: 3}
   Description: Can be summoned for free if a Unit Card with a mana cost of 4 or more
     is slain
   AbilityTrigger: 0

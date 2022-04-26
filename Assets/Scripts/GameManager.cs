@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     // Used to randomise deck order
     System.Random _rng = new System.Random();
 
+
     void Start()
     {
         PlayersTurn = true;

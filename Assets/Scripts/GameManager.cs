@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     // Used to randomise deck order
     System.Random _rng = new System.Random();
 
+
     void Start()
     {
         PlayersTurn = true;
@@ -162,6 +163,11 @@ public class GameManager : MonoBehaviour
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)
         {
+            //remove card from field list
+            if (defendingCard.GetComponent<CardStats>().BelongsToLocalPlayer)
+                PlayerStatsInstance.FieldCards.Remove(defendingCard);
+            else
+                OppStatsInstance.FieldCards.Remove(defendingCard);
             Destroy(defendingCard);
             Debug.Log("dead");
         }
@@ -237,10 +243,16 @@ public class GameManager : MonoBehaviour
             if (playerStats.IsLocalPlayer)
             {
                 DefeatPanel.SetActive(true);
+                AudioManager.Instance.Stop("GameMusic");
+                AudioManager.Instance.Play("Victory_Defeat_Music");
+                AudioManager.Instance.Play("SFX_Defeat");
             }
             else
             {
                 VictoryPanel.SetActive(true);
+                AudioManager.Instance.Stop("GameMusic");
+                AudioManager.Instance.Play("Victory_Defeat_Music");
+                AudioManager.Instance.Play("SFX_Victory");
             }
         }
     }

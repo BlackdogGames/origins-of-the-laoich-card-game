@@ -62,6 +62,7 @@ public class EndTurnButton : MonoBehaviour
                 if (card != null)
                 {
                     card.GetComponent<CardStats>().FirstTurnPlayed = false;
+                    card.GetComponent<CardStats>().HasAttackedOpponent = false;
                 }
                 
             }
@@ -85,6 +86,7 @@ public class EndTurnButton : MonoBehaviour
                 if (card != null)
                 {
                     card.GetComponent<CardStats>().FirstTurnPlayed = false;
+                    card.GetComponent<CardStats>().HasAttackedOpponent = false;
                 }
             }
             

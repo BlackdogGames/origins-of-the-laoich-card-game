@@ -16,6 +16,7 @@ public class CardStats : MonoBehaviour
 
     public bool BelongsToLocalPlayer;
     public bool FirstTurnPlayed = true;
+    public bool HasAttackedOpponent = false;
 
     // Assigned through the inspector
     public TMP_Text CardNameText;

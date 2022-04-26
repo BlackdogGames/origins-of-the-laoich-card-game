@@ -38,7 +38,11 @@ public class DeckManager : MonoBehaviour
 
         // populate the grid with cards 
         Populate();
-        
+
+        //Do not ask why this is here, no idea either <3
+        //Go away.
+        GameObject.Find("Collection_Panel").SetActive(false);
+
     }
 
     void Populate() // populate grid

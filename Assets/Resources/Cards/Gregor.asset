@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 2
   Health: 3
   CardImage: {fileID: 21300000, guid: a013808bc3213314e9f2428bdda04771, type: 3}
-  Description: Cleanse all effects on 1 Ally
+  Description: Cleanse all effects on 1 Ally to the right
   AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

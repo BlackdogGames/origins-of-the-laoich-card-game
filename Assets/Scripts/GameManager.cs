@@ -242,10 +242,16 @@ public class GameManager : MonoBehaviour
             if (playerStats.IsLocalPlayer)
             {
                 DefeatPanel.SetActive(true);
+                AudioManager.Instance.Stop("GameMusic");
+                AudioManager.Instance.Play("Victory_Defeat_Music");
+                AudioManager.Instance.Play("SFX_Defeat");
             }
             else
             {
                 VictoryPanel.SetActive(true);
+                AudioManager.Instance.Stop("GameMusic");
+                AudioManager.Instance.Play("Victory_Defeat_Music");
+                AudioManager.Instance.Play("SFX_Victory");
             }
         }
     }

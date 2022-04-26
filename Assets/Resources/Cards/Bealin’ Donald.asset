@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 2
   Health: 4
   CardImage: {fileID: 21300000, guid: f7611535c80db504ab373dedc6f672cc, type: 3}
-  Description: When played, the card directly across deals -2 Damage, and cards adjacent
+  Description: When played, the zone directly across deals -2 Damage, and zones adjacent
     to it deal -1 Damage
   AbilityTrigger: 1
   Ability:
@@ -27,7 +27,7 @@ MonoBehaviour:
       _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null.DonaldAbility
       _PersistentArguments:
-      - _Type: 13
+      - _Type: 14
         _Int: 0
         _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
@@ -36,8 +36,8 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-      - _Type: 13
-        _Int: 0
+      - _Type: 14
+        _Int: 1
         _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         _X: 0
         _Y: 0

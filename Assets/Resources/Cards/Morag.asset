@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 1
   Health: 2
   CardImage: {fileID: 21300000, guid: 1bc824cb4b407fb429300509b5fdab8e, type: 3}
-  Description: When Played Empower 1 Ally (+1/+1) for 1 turn
+  Description: When Played Empower 1 Ally to the left (+1/+1)
   AbilityTrigger: 1
   Ability:
     _PersistentCalls:
@@ -26,7 +26,7 @@ MonoBehaviour:
       _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null.MoragAbility
       _PersistentArguments:
-      - _Type: 13
+      - _Type: 14
         _Int: 0
         _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
@@ -35,8 +35,8 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-      - _Type: 13
-        _Int: 0
+      - _Type: 14
+        _Int: 1
         _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         _X: 0
         _Y: 0

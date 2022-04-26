@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 	public bool IsLocalPlayer;
 
 	public bool IsFirstTurn = true;
+	
 
 	public int Health;
 	public int Mana;

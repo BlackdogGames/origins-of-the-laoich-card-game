@@ -162,6 +162,11 @@ public class GameManager : MonoBehaviour
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)
         {
+            //remove card from field list
+            if (defendingCard.GetComponent<CardStats>().BelongsToLocalPlayer)
+                PlayerStatsInstance.FieldCards.Remove(defendingCard);
+            else
+                OppStatsInstance.FieldCards.Remove(defendingCard);
             Destroy(defendingCard);
             Debug.Log("dead");
         }

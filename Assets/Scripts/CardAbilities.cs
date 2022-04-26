@@ -122,10 +122,10 @@ public class CardAbilities : MonoBehaviour
             gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID) :
             gameManager.Player.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID);
 
-        //if target is not null, decrease its health by 1
+        //if target is not null, decrease its attack by 1
         if (target != null)
         {
-            target.GetComponent<CardStats>().Health--;
+            target.GetComponent<CardStats>().Attack--;
         }
     }
 

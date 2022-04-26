@@ -20,6 +20,27 @@ MonoBehaviour:
   CardImage: {fileID: 21300000, guid: ad5e5830d0efec84e8ef6d2a42cf01d9, type: 3}
   Description: "Howls at the end of the player\u2019s turn, reducing the HP and Damage
     of any enemy units that attacked. "
-  AbilityTrigger: 0
+  AbilityTrigger: 5
   Ability:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null.CuSithAbility
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}

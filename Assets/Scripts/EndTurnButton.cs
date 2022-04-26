@@ -44,9 +44,17 @@ public class EndTurnButton : MonoBehaviour
     {
         if (_gameManager.PlayersTurn) // if it is the players turn that is ending
         {
+            // get all cards from field cards for player and if their card ability trigger is on turn end, invoke their ability
+            foreach (GameObject card in _gameManager.Player.GetComponent<PlayerStats>().FieldCards)
+            {
+                if (card.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnTurnEnd)
+                {
+                    card.GetComponent<CardStats>().CardAsset.Ability.Invoke(_gameManager, card.GetComponent<CardStats>());
+                }
+            }
+
             _gameManager.ManaIncrease(_gameManager.Player);
 
-            //TODO : This and the coupling line below should not work this way, something is wrong here
             _gameManager.PlayerStatsInstance.IsFirstTurn = false;
 
             foreach (var card in _gameManager.Player.GetComponent<PlayerStats>().FieldCards)

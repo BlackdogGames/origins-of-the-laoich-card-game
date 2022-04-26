@@ -18,8 +18,7 @@ MonoBehaviour:
   Attack: 2
   Health: 2
   CardImage: {fileID: 21300000, guid: 4db4620360428f048a3138f2e4e0db7d, type: 3}
-  Description: When played, summons 2 Blue Men with 1HP and 1 Damage, if there are
-    free zones
+  Description: 
   AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

@@ -148,6 +148,18 @@ public class GameManager : MonoBehaviour
 
     public void CardAttackCard(GameObject attackingCard, GameObject defendingCard)
     {
+        if (attackingCard.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnAttacking)
+        {
+            //call card ability
+            attackingCard.GetComponent<CardStats>().CardAsset.Ability.Invoke(this, defendingCard.GetComponent<CardStats>());
+        }
+        
+        if (defendingCard.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnDefending)
+        {
+            //call card ability
+            defendingCard.GetComponent<CardStats>().CardAsset.Ability.Invoke(this, defendingCard.GetComponent<CardStats>());
+        }
+
         //check if input gameobjects are cards by checking if GetComponent<CardStats>() returns null
 
         // Subtracts the attacking cards attack damage from the defending cards health
@@ -168,6 +180,11 @@ public class GameManager : MonoBehaviour
                 PlayerStatsInstance.FieldCards.Remove(defendingCard);
             else
                 OppStatsInstance.FieldCards.Remove(defendingCard);
+            if (defendingCard.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnDestroyed)
+            {
+                //call card ability
+                defendingCard.GetComponent<CardStats>().CardAsset.Ability.Invoke(this, defendingCard.GetComponent<CardStats>());
+            }
             Destroy(defendingCard);
             Debug.Log("dead");
         }

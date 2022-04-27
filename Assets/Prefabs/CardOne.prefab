@@ -1513,6 +1513,7 @@ MonoBehaviour:
   IsDuplicate: 0
   BelongsToLocalPlayer: 0
   FirstTurnPlayed: 1
+  HasAttackedOpponent: 0
   CardNameText: {fileID: 7168327372764286176}
   ManaCostText: {fileID: 34328829130089339}
   AttackText: {fileID: 2090796141120252948}

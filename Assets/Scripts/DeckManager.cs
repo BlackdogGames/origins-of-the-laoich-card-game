@@ -89,11 +89,11 @@ public class DeckManager : MonoBehaviour
         string path = "Assets/Resources/Decks/" + ImportInput.text + ".txt";
         //  string path = "Assets/Resources/Decks/id test deck.txt";
         List<Card> cardList = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
-
+        
         foreach (Card card in cardList) {
-            GameObject enemyCard;
-            CustomDeck.Add(enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity));
-            enemyCard.GetComponent<CardStats>().CardAsset = card;
+            GameObject playerCard;
+            CustomDeck.Add(playerCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity));
+            playerCard.GetComponent<CardStats>().CardAsset = card;
         }
 
         for (int i = 0; i != CustomDeck.Count; i++)

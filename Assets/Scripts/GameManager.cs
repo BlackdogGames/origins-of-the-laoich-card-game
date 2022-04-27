@@ -41,7 +41,10 @@ public class GameManager : MonoBehaviour
         OppStatsInstance = Opponent.GetComponent<PlayerStats>();
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
 
+        string deckName = DropdownScript.FileName; // <3
+
         PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        
         OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
 
         // Randomise player deck order
@@ -54,6 +57,9 @@ public class GameManager : MonoBehaviour
             DrawCard(Opponent);
         }
     }
+    
+    
+    
 
     public void ClearCardSelection()
     {

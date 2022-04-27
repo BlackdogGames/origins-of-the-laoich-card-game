@@ -247,26 +247,31 @@ public class DragDrop : MonoBehaviour
                                 {
                                     if ((belongsToPlayer && !_player.GetComponent<PlayerStats>().IsFirstTurn) || (!belongsToPlayer && !_opponent.GetComponent<PlayerStats>().IsFirstTurn) && !CardList[0].GetComponent<CardStats>().FirstTurnPlayed)
                                     {
-                                        CardList.Add(enemyCardinZone); // add it into the list 
-                                        _defendCardSelected = true; // defend card is selected
+                                        if (gameObject.GetComponent<CardStats>().HasAttackedOpponent == false)
+                                        {
 
-                                        Debug.Log("Opponent Card Selected; is in Defendant Slot");
-                                        // run the attack with both cards in the list 
-                                        _gameManager.CardAttackCard(CardList[0], CardList[1]);
-                                        // clear flags //
-                                        _attackCardSelected = false;
-                                        _defendCardSelected = false;
-                                        //
-                                        CardList[0].GetComponent<DragDrop>().IsSelected = false;
-                                        CardList[1].GetComponent<DragDrop>().IsSelected = false;
-                                        //
-                                        // clear the list 
-                                        CardList.Clear();
-                                        Debug.Log("Card attack occured, list cleared");
-                                        Debug.Log(IsSelected);
-                                        //
-                                        IsSelected = false; // this specific gameobject is not selected anymore
-                                        gameObject.GetComponent<CardStats>().HasAttackedOpponent = true; // this card has attacked an opponent/opp card
+                                            CardList.Add(enemyCardinZone); // add it into the list 
+                                            _defendCardSelected = true; // defend card is selected
+
+                                            Debug.Log("Opponent Card Selected; is in Defendant Slot");
+                                            // run the attack with both cards in the list 
+                                            _gameManager.CardAttackCard(CardList[0], CardList[1]);
+                                            // clear flags //
+                                            _attackCardSelected = false;
+                                            _defendCardSelected = false;
+                                            //
+                                            CardList[0].GetComponent<DragDrop>().IsSelected = false;
+                                            CardList[1].GetComponent<DragDrop>().IsSelected = false;
+                                            //
+                                            // clear the list 
+                                            CardList.Clear();
+                                            Debug.Log("Card attack occured, list cleared");
+                                            Debug.Log(IsSelected);
+                                            //
+                                            IsSelected = false; // this specific gameobject is not selected anymore
+                                            gameObject.GetComponent<CardStats>().HasAttackedOpponent = true; // this card has attacked an opponent/opp card
+                                        }
+                                        
                                     }
                                     else
                                     {
@@ -307,7 +312,6 @@ public class DragDrop : MonoBehaviour
                     
                     break;
 
-                
 
             }
 

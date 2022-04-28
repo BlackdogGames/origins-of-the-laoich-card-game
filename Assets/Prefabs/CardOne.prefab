@@ -1470,7 +1470,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 215, y: 300}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &3341440265347781210
 Rigidbody2D:
@@ -1513,6 +1513,7 @@ MonoBehaviour:
   IsDuplicate: 0
   BelongsToLocalPlayer: 0
   FirstTurnPlayed: 1
+  HasAttackedOpponent: 0
   CardNameText: {fileID: 7168327372764286176}
   ManaCostText: {fileID: 34328829130089339}
   AttackText: {fileID: 2090796141120252948}

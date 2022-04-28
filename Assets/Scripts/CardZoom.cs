@@ -43,6 +43,14 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             gameObject.GetComponent<Outline>().effectColor = Blue;
         }
+
+        if (_zoomCard)
+        {
+            //get zoom card cardstats component and set the health, attack and mana to this cards stats
+            _zoomCard.GetComponent<CardStats>().Health = GetComponent<CardStats>().Health;
+            _zoomCard.GetComponent<CardStats>().Attack = GetComponent<CardStats>().Attack;
+            _zoomCard.GetComponent<CardStats>().ManaCost = GetComponent<CardStats>().ManaCost;
+        }
     }
 
     public void HoverOver()
@@ -77,6 +85,8 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         _zoomCard = Instantiate(gameObject, cardPosition, Quaternion.identity);
         _zoomCard.GetComponent<BoxCollider2D>().enabled = false;
+        
+
         RectTransform rect = _zoomCard.GetComponent<RectTransform>();
         rect.anchorMax = new Vector2(0.5f, 0.5f);
         rect.anchorMin = new Vector2(0.5f, 0.5f);

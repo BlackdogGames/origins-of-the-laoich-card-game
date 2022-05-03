@@ -112,17 +112,33 @@ public class CardAbilities : MonoBehaviour
 
     public static void LachlanAbility(GameManager gameManager, CardStats caster)
     {
-        //TODO: Assign Zone ID properly
+        GameObject zoneSummon = null;
+        GameObject newCard = null;
+        //check if caster belongs to player
+        if (caster.GetComponent<CardStats>().BelongsToLocalPlayer)
+        {
+            zoneSummon = gameManager.PlayerZones[caster.GetComponent<CardStats>().ZoneID - 1];
+            int zoneId = caster.GetComponent<CardStats>().ZoneID;
+            newCard = Instantiate(gameManager.CardPrefab);
 
-        GameObject zoneSummon = gameManager.OpponentZones[caster.GetComponent<CardStats>().ZoneID - 1];
-        int zoneId = caster.GetComponent<CardStats>().ZoneID;
-        GameObject newCard = Instantiate(gameManager.CardPrefab);
+            newCard.GetComponent<CardStats>().CardAsset = (Card)Resources.Load("Cards/" + "Changeling");
+            newCard.transform.SetParent(gameManager.PlayerArea.transform, false);
+            newCard.GetComponent<CardStats>().ZoneID = zoneId;
 
-        newCard.GetComponent<CardStats>().CardAsset = (Card)Resources.Load("Cards/" + "Changeling");
-        newCard.transform.SetParent(gameManager.OpponentArea.transform, false);
-        newCard.GetComponent<CardStats>().ZoneID = zoneId;
+            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+        }
+        else
+        {
+            zoneSummon = gameManager.OpponentZones[caster.GetComponent<CardStats>().ZoneID - 1];
+            int zoneId = caster.GetComponent<CardStats>().ZoneID;
+            newCard = Instantiate(gameManager.CardPrefab);
 
-        gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+            newCard.GetComponent<CardStats>().CardAsset = (Card)Resources.Load("Cards/" + "Changeling");
+            newCard.transform.SetParent(gameManager.OpponentArea.transform, false);
+            newCard.GetComponent<CardStats>().ZoneID = zoneId;
+
+            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+        }
 
         newCard.GetComponent<DragDrop>().PlayCardToZone(zoneSummon);
     }

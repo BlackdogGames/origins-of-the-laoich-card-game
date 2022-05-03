@@ -11,7 +11,7 @@ public class CardStats : MonoBehaviour
     public int ManaCost;
     public int Attack;
     public int Health;
-    public int ZoneID; // attack zone ID
+    public int ZoneID = 0; // attack zone ID
     public bool IsDuplicate; // is a duped card - used in deckbuilding
 
     public bool BelongsToLocalPlayer;
@@ -43,8 +43,6 @@ public class CardStats : MonoBehaviour
         ManaCostText.text = ManaCost.ToString();
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();
-
-        ZoneID = 0; // by default a card is not in the attack zone
     }
 
     private void Update()

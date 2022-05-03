@@ -657,6 +657,34 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - ClipName: SFX_Card_Ability_Generic
+    Clip: {fileID: 8300000, guid: 90add720522154147a8d3e109c3bd7ff, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - ClipName: SFX_Card_Ability_Heal
+    Clip: {fileID: 8300000, guid: c8d65f8c124276a4db65050992656f16, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - ClipName: SFX_Card_Ability_Howl
+    Clip: {fileID: 8300000, guid: e22092417b45a894da16f9e402608809, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - ClipName: SFX_Card_Spell_TidalWave
+    Clip: {fileID: 8300000, guid: 1efab72219f82244dae6037cf32bc32b, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   AudioMixer: {fileID: 24100000, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
 --- !u!1 &1305781368
 GameObject:

@@ -41,10 +41,11 @@ public class GameManager : MonoBehaviour
         OppStatsInstance = Opponent.GetComponent<PlayerStats>();
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
 
-        string deckName = DropdownScript.FileName; // <3
+        string deckName = DropdownScript.FileName; // get the selected file name fromm the dropdown menu
+        string path = "Assets/Resources/Decks/" + deckName; // append the filepath
+        //  PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        PlayerStatsInstance.Deck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
 
-        PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
-        
         OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
 
         // Randomise player deck order
@@ -80,6 +81,11 @@ public class GameManager : MonoBehaviour
                 PlayerStatsInstance.HandCards.Remove(card);
             }
 
+            card.SendMessage("ClearSelectionList");
+        }
+
+        foreach (var card in PlayerStatsInstance.FieldCards)
+        {
             card.SendMessage("ClearSelectionList");
         }
     }

@@ -52,15 +52,24 @@ public class GameManager : MonoBehaviour
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
 
+        //look through the deck and move the first card with a mana cost of 0 to the top of the deck
+        for (int i = 0; i < PlayerStatsInstance.Deck.Count; i++)
+        {
+            if (PlayerStatsInstance.Deck[i].ManaCost == 0)
+            {
+                Card temp = PlayerStatsInstance.Deck[i];
+                PlayerStatsInstance.Deck.RemoveAt(i);
+                PlayerStatsInstance.Deck.Insert(0, temp);
+                break;
+            }
+        }
+
         for (int i = 0; i < 5; i++)
         {
             DrawCard(Player);
             DrawCard(Opponent);
         }
     }
-    
-    
-    
 
     public void ClearCardSelection()
     {

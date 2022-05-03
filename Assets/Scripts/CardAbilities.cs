@@ -133,8 +133,13 @@ public class CardAbilities : MonoBehaviour
     {
         List<GameObject> targets = new List<GameObject>();
 
+        //get count of cards in fieldcards of opponent
+        int count = (caster.BelongsToLocalPlayer) ?
+            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count :
+            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count;
+
         //get 3 ally field cards at random and add them to target list, not adding the same card twice
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Mathf.Min(count, 3); i++)
         {
             GameObject target;
 

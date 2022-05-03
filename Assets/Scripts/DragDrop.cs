@@ -245,7 +245,8 @@ public class DragDrop : MonoBehaviour
                                 
                                 if (enemyCardinZone != null) // if there is an enemy card in the zone ahead
                                 {
-                                    if ((belongsToPlayer && !_player.GetComponent<PlayerStats>().IsFirstTurn) || (!belongsToPlayer && !_opponent.GetComponent<PlayerStats>().IsFirstTurn) && !CardList[0].GetComponent<CardStats>().FirstTurnPlayed)
+                                    if ((belongsToPlayer && !_player.GetComponent<PlayerStats>().IsFirstTurn) || 
+                                        (!belongsToPlayer && !_opponent.GetComponent<PlayerStats>().IsFirstTurn) && !CardList[0].GetComponent<CardStats>().FirstTurnPlayed)
                                     {
                                         if (gameObject.GetComponent<CardStats>().HasAttackedOpponent == false)
                                         {
@@ -287,11 +288,19 @@ public class DragDrop : MonoBehaviour
                                 }
                                 else // if there is not an enemy card in the zone ahead
                                 {
-                                    if (gameObject.GetComponent<CardStats>().HasAttackedOpponent == false)
+                                    if (gameObject.GetComponent<CardStats>().HasAttackedOpponent == false && !CardList[0].GetComponent<CardStats>().FirstTurnPlayed)
                                     {
                                         gameObject.GetComponent<CardStats>().HasAttackedOpponent = true;
                                         IsSelected = false;
                                         _gameManager.CardAttackPlayer(CardList[0], _opponent);
+                                        
+                                        // clear flags //
+                                        _attackCardSelected = false;
+                                        _defendCardSelected = false;
+                                        IsSelected = false;
+                                        //gameObject.GetComponent<CardStats>().HasAttackedOpponent = false;
+                                        //
+                                        CardList.Clear();
                                         Debug.Log("No Enemy Card in Zone, attack opp directly instead");
                                     }
                                     

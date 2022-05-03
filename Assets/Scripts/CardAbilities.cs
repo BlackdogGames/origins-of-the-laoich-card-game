@@ -112,7 +112,15 @@ public class CardAbilities : MonoBehaviour
 
     public static void LachlanAbility(GameManager gameManager, CardStats caster)
     {
+        GameObject zoneSummon = gameManager.OpponentZones[caster.GetComponent<CardStats>().ZoneID - 1];
 
+        GameObject newCard = Instantiate(gameManager.CardPrefab);
+
+        newCard.GetComponent<CardStats>().CardAsset = (Card)Resources.Load("Cards/" + "Changeling");
+        newCard.transform.SetParent(gameManager.OpponentArea.transform, false);
+        newCard.GetComponent<CardStats>().ZoneID = caster.GetComponent<CardStats>().ZoneID;
+
+        newCard.GetComponent<DragDrop>().PlayCardToZone(zoneSummon);
     }
 
     public static void EachyAbility(GameManager gameManager, CardStats caster)

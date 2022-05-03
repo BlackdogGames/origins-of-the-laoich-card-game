@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour
     public GameObject OpponentArea;
 
     public GameObject VictoryPanel, DefeatPanel;
-    
+
+    public GameObject[] PlayerZones;
+    public GameObject[] OpponentZones;
+
     // Used to randomise deck order
     System.Random _rng = new System.Random();
 
@@ -198,9 +201,18 @@ public class GameManager : MonoBehaviour
         {
             //remove card from field list
             if (defendingCard.GetComponent<CardStats>().BelongsToLocalPlayer)
+            {
                 PlayerStatsInstance.FieldCards.Remove(defendingCard);
+                PlayerZones[defendingCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
+                    .IsBeingUsed = false;
+            }
             else
+            {
                 OppStatsInstance.FieldCards.Remove(defendingCard);
+                OpponentZones[defendingCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
+                    .IsBeingUsed = false;
+            }
+
             if (defendingCard.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnDestroyed)
             {
                 //call card ability

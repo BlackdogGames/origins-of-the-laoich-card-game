@@ -1429,16 +1429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b78bf66dc1a036449c9edff91349704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerZone1: {fileID: 220297043}
-  PlayerZone2: {fileID: 697561171}
-  PlayerZone3: {fileID: 33906565}
-  PlayerZone4: {fileID: 1827482454}
-  PlayerZone5: {fileID: 1862250329}
-  OpponentZone1: {fileID: 2063806717}
-  OpponentZone2: {fileID: 1559477571}
-  OpponentZone3: {fileID: 1573447046}
-  OpponentZone4: {fileID: 807802285}
-  OpponentZone5: {fileID: 1038751683}
   GameManager: {fileID: 0}
   TimeSinceStartOfTurn: 0
   playerStats: {fileID: 0}
@@ -5589,6 +5579,18 @@ MonoBehaviour:
   OpponentArea: {fileID: 1835987412}
   VictoryPanel: {fileID: 978701771}
   DefeatPanel: {fileID: 230045555}
+  PlayerZones:
+  - {fileID: 220297043}
+  - {fileID: 697561171}
+  - {fileID: 33906565}
+  - {fileID: 1827482454}
+  - {fileID: 1862250329}
+  OpponentZones:
+  - {fileID: 2063806717}
+  - {fileID: 1559477571}
+  - {fileID: 1573447046}
+  - {fileID: 807802285}
+  - {fileID: 1038751683}
 --- !u!4 &1620199647
 Transform:
   m_ObjectHideFlags: 0

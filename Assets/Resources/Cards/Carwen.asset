@@ -19,6 +19,7 @@ MonoBehaviour:
   Health: 4
   CardImage: {fileID: 21300000, guid: 245eb0937dedc5c4ca1e439a93987b2b, type: 3}
   Description: 
+  IsMonster: 1
   AbilityTrigger: 0
   Ability:
     _PersistentCalls: []

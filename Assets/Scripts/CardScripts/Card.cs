@@ -23,6 +23,7 @@ public class Card : ScriptableObject
     public int Health;
     public Sprite CardImage;
     public string Description;
+    public bool IsMonster;
 
     public enum CardAbilityTrigger
     {

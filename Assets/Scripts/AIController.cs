@@ -4,18 +4,6 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    public GameObject PlayerZone1;
-    public GameObject PlayerZone2;
-    public GameObject PlayerZone3;
-    public GameObject PlayerZone4;
-    public GameObject PlayerZone5;
-
-    public GameObject OpponentZone1;
-    public GameObject OpponentZone2;
-    public GameObject OpponentZone3;
-    public GameObject OpponentZone4;
-    public GameObject OpponentZone5;
-
     public delegate bool Rule();
     public delegate void Action();
 
@@ -149,36 +137,27 @@ public class AIController : MonoBehaviour
             }
         }
 
-        //get card drag drop component
-        DragDrop dragDrop = highestManaCard.GetComponent<DragDrop>();
-        if (!OpponentZone1.GetComponent<DroppingZone>().IsBeingUsed)
-        {
-            dragDrop.PlayCardToZone(OpponentZone1);
-            highestManaCard.GetComponent<CardStats>().ZoneID = 1;
-        } 
-        else if (!OpponentZone2.GetComponent<DroppingZone>().IsBeingUsed)
-        {
-            dragDrop.PlayCardToZone(OpponentZone2);
-            highestManaCard.GetComponent<CardStats>().ZoneID = 2;
-        } 
-        else if (!OpponentZone3.GetComponent<DroppingZone>().IsBeingUsed)
-        {
-            dragDrop.PlayCardToZone(OpponentZone3);
-            highestManaCard.GetComponent<CardStats>().ZoneID = 3;
-        }
-        else if (!OpponentZone4.GetComponent<DroppingZone>().IsBeingUsed)
-        {
-            dragDrop.PlayCardToZone(OpponentZone4);
-            highestManaCard.GetComponent<CardStats>().ZoneID = 4;
-        }
-        else if (!OpponentZone5.GetComponent<DroppingZone>().IsBeingUsed)
-        {
-            dragDrop.PlayCardToZone(OpponentZone5);
-            highestManaCard.GetComponent<CardStats>().ZoneID = 5;
-        }
+        PlayCardInFirstAvailableZone(highestManaCard);
 
-
+        
     }
+
+    private void PlayCardInFirstAvailableZone(GameObject card)
+    {
+        //get card drag drop component
+        DragDrop dragDrop = card.GetComponent<DragDrop>();
+        
+        for (int i = 0; i < 5; i++)
+        {
+            if (!GameManager.OpponentZones[i].GetComponent<DroppingZone>().IsBeingUsed)
+            {
+                dragDrop.PlayCardToZone(GameManager.OpponentZones[i]);
+                card.GetComponent<CardStats>().ZoneID = i + 1;
+                break;
+            }
+        }
+    }
+
     #endregion
 
 }

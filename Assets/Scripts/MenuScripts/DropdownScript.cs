@@ -11,6 +11,8 @@ public class DropdownScript : MonoBehaviour
     private DirectoryInfo dir = new DirectoryInfo("Assets/Resources/Decks/");
     public  TMP_Dropdown Dropper;
 
+    public static string FileName;
+
     private void Start()
     {
         List<string> m_DropOptions = new List<string>();
@@ -19,12 +21,20 @@ public class DropdownScript : MonoBehaviour
 
         foreach (FileInfo f in info)
         {
-            Debug.Log(f.Name.ToString());
+           // Debug.Log(f.Name.ToString());
             m_DropOptions.Add(f.Name.ToString());
         }
 
         Dropper.AddOptions(m_DropOptions);
         //Dropper.
+    }
+
+    private void Update()
+    {
+        
+        FileName = Dropper.options[Dropper.value].text;
+      
+        //Debug.Log(fileName);
     }
 
 }

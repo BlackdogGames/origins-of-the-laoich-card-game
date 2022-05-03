@@ -41,12 +41,28 @@ public class GameManager : MonoBehaviour
         OppStatsInstance = Opponent.GetComponent<PlayerStats>();
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
 
-        PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        string deckName = DropdownScript.FileName; // get the selected file name fromm the dropdown menu
+        string path = "Assets/Resources/Decks/" + deckName; // append the filepath
+        //  PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        PlayerStatsInstance.Deck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
+
         OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
 
         // Randomise player deck order
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
+
+        //look through the deck and move the first card with a mana cost of 0 to the top of the deck
+        for (int i = 0; i < PlayerStatsInstance.Deck.Count; i++)
+        {
+            if (PlayerStatsInstance.Deck[i].ManaCost == 0)
+            {
+                Card temp = PlayerStatsInstance.Deck[i];
+                PlayerStatsInstance.Deck.RemoveAt(i);
+                PlayerStatsInstance.Deck.Insert(0, temp);
+                break;
+            }
+        }
 
         for (int i = 0; i < 5; i++)
         {
@@ -74,6 +90,11 @@ public class GameManager : MonoBehaviour
                 PlayerStatsInstance.HandCards.Remove(card);
             }
 
+            card.SendMessage("ClearSelectionList");
+        }
+
+        foreach (var card in PlayerStatsInstance.FieldCards)
+        {
             card.SendMessage("ClearSelectionList");
         }
     }

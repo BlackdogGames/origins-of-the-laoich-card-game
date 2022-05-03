@@ -601,6 +601,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - ClipName: UI_Hover
+    Clip: {fileID: 8300000, guid: 9e4c6d9bbc1ef6b408c973d94caea730, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - ClipName: SFX_Card_Placement
     Clip: {fileID: 8300000, guid: 67e69f956e7084d42b208eb3f4f232a7, type: 3}
     AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}

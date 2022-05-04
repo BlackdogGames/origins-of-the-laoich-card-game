@@ -14,6 +14,7 @@ public class GameMenuManager : MonoBehaviour
     {
         // Calls AudioManager to PLay a requested Sound
         AudioManager.Instance.Play("GameMusic");
+        AudioManager.Instance.Play("SFX_Card_DeckShuffle");
     }
 
     private void Update()

@@ -608,6 +608,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - ClipName: SFX_Card_DeckShuffle
+    Clip: {fileID: 8300000, guid: ab0dd6c6513a756488654619e1650a37, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - ClipName: SFX_Card_Placement
     Clip: {fileID: 8300000, guid: 67e69f956e7084d42b208eb3f4f232a7, type: 3}
     AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
@@ -631,6 +638,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - ClipName: SFX_Card_Block
     Clip: {fileID: 8300000, guid: 1f5f3a9880416cd49b5e147234d06009, type: 3}
+    AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
+    Volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - ClipName: SFX_Card_Destroyed
+    Clip: {fileID: 8300000, guid: d06fe8b053187e548aa3ff8fb280ea7a, type: 3}
     AudioMixerGroup: {fileID: 2247602584960387291, guid: 0cc886be7c7a4bf4294a4c442290f339, type: 2}
     Volume: 1
     pitch: 1

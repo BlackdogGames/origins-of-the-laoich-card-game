@@ -32,7 +32,7 @@ public class EndTurnButton : MonoBehaviour
         _turnTimer -= Time.deltaTime;
 
         //display time remaining with no decimal place
-        TimerText.text = "TIME REMAINING: " + ((int)_turnTimer).ToString();
+        TimerText.text = ((int)_turnTimer).ToString();
 
         if (_turnTimer < 0)
         {

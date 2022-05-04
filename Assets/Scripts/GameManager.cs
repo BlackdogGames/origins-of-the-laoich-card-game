@@ -206,6 +206,7 @@ public class GameManager : MonoBehaviour
                 //call card ability
                 defendingCard.GetComponent<CardStats>().CardAsset.Ability.Invoke(this, defendingCard.GetComponent<CardStats>());
             }
+            AudioManager.Instance.Play("SFX_Card_Destroyed");
             Destroy(defendingCard);
             Debug.Log("dead");
         }
@@ -217,6 +218,7 @@ public class GameManager : MonoBehaviour
         _attackingCard = attackingCard.GetComponent<CardStats>();
         PlayerStats defendingPlayerStats = defendingPlayer.GetComponent<PlayerStats>();
         defendingPlayerStats.Health -= _attackingCard.Attack;
+        AudioManager.Instance.Play("SFX_Card_Attack");
 
         // If player dies, display defeat panel 
         if (defendingPlayerStats.Health <= 0)

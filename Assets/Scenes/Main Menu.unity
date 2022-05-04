@@ -5164,11 +5164,9 @@ MonoBehaviour:
   LoadingScreen: {fileID: 78440234}
   LoadingBar: {fileID: 233775489}
   LoadingTips:
-  - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  - Proin luctus lectus in lacus auctor convallis.
-  - Sed sollicitudin diam eget tellus finibus, in sagittis lorem sagittis.
-  - Cras eget sem pharetra, tincidunt justo et, mattis quam.
-  - Aliquam iaculis massa non auctor dapibus.
+  - Destroy your opponent's cards to claim victory!
+  - The first to run out of cards is defeated!
+  - You only have 30 seconds to take your turn, use it wisely!
   LoadingText: {fileID: 238946035}
 --- !u!4 &613299089
 Transform:

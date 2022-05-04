@@ -286,12 +286,12 @@ TextureImporter:
       name: Defeat spritesheet(15fps) (1)_0
       rect:
         serializedVersion: 2
-        x: 91
+        x: 0
         y: 0
-        width: 804
+        width: 980
         height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,12 +307,12 @@ TextureImporter:
       name: Defeat spritesheet(15fps) (1)_1
       rect:
         serializedVersion: 2
-        x: 1192
-        y: 158
-        width: 574
-        height: 764
+        x: 980
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: Defeat spritesheet(15fps) (1)_8
       rect:
         serializedVersion: 2
-        x: 7053
-        y: 182
-        width: 589
-        height: 645
+        x: 7840
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -346,148 +346,148 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_10
+      name: Defeat spritesheet(15fps) (1)_2
       rect:
         serializedVersion: 2
-        x: 8039
-        y: 201
-        width: 622
-        height: 626
+        x: 1960
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 404817da47c1ad230800000000000000
-      internalID: 3664272534271001604
+      spriteID: 4a6e7f8e07fac2bb0800000000000000
+      internalID: -4959396190162000220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_12
+      name: Defeat spritesheet(15fps) (1)_3
       rect:
         serializedVersion: 2
-        x: 2273
-        y: 258
-        width: 392
-        height: 535
+        x: 2940
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f52485a9cf6cda450800000000000000
-      internalID: 6101751858380423775
+      spriteID: a4c69573d9dfe71c0800000000000000
+      internalID: -4503883725643617206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_15
+      name: Defeat spritesheet(15fps) (1)_4
       rect:
         serializedVersion: 2
-        x: 3249
-        y: 244
-        width: 402
-        height: 549
+        x: 3920
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6bbb274b24703db0800000000000000
-      internalID: -4814220272432596116
+      spriteID: 16829ec5c63040090800000000000000
+      internalID: -8069320868390950815
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_18
+      name: Defeat spritesheet(15fps) (1)_5
       rect:
         serializedVersion: 2
-        x: 4197
-        y: 210
-        width: 459
-        height: 583
+        x: 4900
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22852df7b0584b3c0800000000000000
-      internalID: -4344701456070059998
+      spriteID: 4716447fa556dea50800000000000000
+      internalID: 6552004474263855476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_20
+      name: Defeat spritesheet(15fps) (1)_6
       rect:
         serializedVersion: 2
-        x: 5144
-        y: 177
-        width: 522
-        height: 616
+        x: 5880
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aef73229bada21c50800000000000000
-      internalID: 6634556153472974826
+      spriteID: 9c1288b1e71476100800000000000000
+      internalID: 101121526522716617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_22
+      name: Defeat spritesheet(15fps) (1)_7
       rect:
         serializedVersion: 2
-        x: 6130
-        y: 177
-        width: 531
-        height: 621
+        x: 6860
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f32465e9ae280a9c0800000000000000
-      internalID: -3917987731621920193
+      spriteID: fee53a09d4e98ef90800000000000000
+      internalID: -6924110371105841425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Defeat spritesheet(15fps) (1)_25
+      name: Defeat spritesheet(15fps) (1)_9
       rect:
         serializedVersion: 2
-        x: 9135
-        y: 258
-        width: 392
-        height: 535
+        x: 8820
+        y: 0
+        width: 980
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67b1256cf1f7ed6e0800000000000000
-      internalID: -1810870225708377226
+      spriteID: f38966a18aa1e4230800000000000000
+      internalID: 3624864059379587135
       vertices: []
       indices: 
       edges: []

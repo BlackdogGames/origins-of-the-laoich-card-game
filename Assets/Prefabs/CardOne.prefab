@@ -936,8 +936,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: THE ALL POWERFULL
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e18e3e3f5b5ea654990951db38ad12db, type: 2}
+  m_sharedMaterial: {fileID: 2362189530254848171, guid: e18e3e3f5b5ea654990951db38ad12db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

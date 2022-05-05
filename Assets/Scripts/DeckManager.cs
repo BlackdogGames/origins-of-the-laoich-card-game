@@ -25,6 +25,8 @@ public class DeckManager : MonoBehaviour
 
     public GameObject ScrollviewParent; // the selection zone
 
+    public TMP_Text CardCounter;
+
 
 
     void Start()
@@ -43,6 +45,8 @@ public class DeckManager : MonoBehaviour
         //Go away.
         GameObject.Find("Collection_Panel").SetActive(false);
 
+        CardCounter.text = "0";
+
     }
 
     void Populate() // populate grid
@@ -54,8 +58,8 @@ public class DeckManager : MonoBehaviour
         for (int i = 0; i != PlayerStatsInstance.Deck.Count; i++)
         {
             GameObject playerCard = Instantiate(CardPrefab, transform); //  where a card is instantiated from the list
-            playerCard.transform.SetParent(CardArea.transform, false); // set the parent to the grid
             playerCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[i]; // give the card it's stats
+            playerCard.transform.SetParent(CardArea.transform, false); // set the parent to the grid
             
             CardList.Add(playerCard); // add all of the cards in a list to keep track
            
@@ -67,10 +71,10 @@ public class DeckManager : MonoBehaviour
    
     void Update()
     {
-        //
+        CardCounter.text = CustomDeck.Count.ToString();
     }
 
-
+    
     public void CleanDeck()
     {
         CustomDeck.Clear();
@@ -103,12 +107,33 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    
+    //a function that checks if cardlist has duplicate cards and stores how many duplicate cards there are
+    public int CheckDuplicates(GameObject currentCard)
+    {
+        int duplicates = 0;
 
-    ////a function to export all Card stats in CustomDeck to a spreadsheet
-    //public void ExportDeckStats()
-    //{
-    //    string path = "Assets/Resources/Decks/" + DeckNameInput.text + ".csv";
-    //    System.IO.File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name + "," + x.GetComponent<CardStats>().CardAsset.ManaCost + "," + x.GetComponent<CardStats>().CardAsset.Attack + "," + x.GetComponent<CardStats>().CardAsset.Health).ToArray());
-    //}
+        string orignalCard = currentCard.GetComponent<CardStats>().CardNameText.text;
+        
+         for (int i = 0; i != CustomDeck.Count; i++)
+         {
+            string dupedCard = CustomDeck[i].GetComponent<CardStats>().CardNameText.text;
+
+            if (dupedCard == orignalCard)
+             {
+                 duplicates++;
+             }
+
+           // Debug.Log(CustomDeck[i].GetComponent<CardStats>().CardNameText.ToString());
+          //  Debug.Log(orignalCard.ToString());
+         //   Debug.Log(dupedCard.ToString());
+          }
+      
+        Debug.Log("Duplicates: " + duplicates);
+
+        return duplicates;
+           
+    }
+
 
 }

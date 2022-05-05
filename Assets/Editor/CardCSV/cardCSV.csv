@@ -7,20 +7,20 @@ Id,Name,Mana Cost,Attack,Health,Card Image,Description,Effect,Ability Trigger,Is
 6,Matthew,5,3,3,img_matthew,"""When summoned Weaken an Enemy Attacker by -2 Damage.""",MatthewAbility,OnPlayed,1
 7,Lachlan,6,3,4,img_lachlan,"""When Destroyed replace with a 2/2 Changeling""",LachlanAbility,OnDestroyed,1
 8,Changeling,0,2,2,img_changeling,,,,1
-9,Arvil,7,5,4,img_arvil,,,,1
-10,Carwen,7,5,4,img_carwen,,,,1
+9,Arvil,7,5,4,img_arvil,"""When Destroyed summon Carwen in Hand""",ArvilAbility,OnDestroyed,1
+10,Carwen,7,5,4,img_carwen,"""When Destroyed summon Carwen in Hand""",CarwenAbility,OnDestroyed,1
 11,Bealin’ Donald,6,2,4,img_bealin,"""When played, the zone directly across deals -2 Damage, and zones adjacent to it deal -1 Damage""",DonaldAbility,OnPlayed,1
 15,The Eachy,4,2,2,img_eachy,"""On attack, decrease the attacked cards attack by 1""",EachyAbility,OnAttacking,1
 16,The Bean-Nighe,2,3,4,img_beannighe,,,,1
-17,Blue Men of the Minch,3,2,2,img_bluemen,,,,1
+17,Blue Men of the Minch,3,2,2,img_bluemen,"""When played, summons 2 Blue Men with 1HP and 1 Damage, if there are free zones""",BlueMenAbility,OnPlayed,1
 18,The Ceasg,3,3,3,img_ceasg,"""When played, gives up to three Allies +1HP""",CeasgAbility,OnPlayed,1
 19,The Cu-Sith,5,3,6,img_cusith,"""Howls at the end of the player’s turn, reducing the HP and Damage of any enemy units that attacked. """,CuSithAbility,OnTurnEnd,1
 20,Coliunn Gun Cheann,5,6,8,img_coliunn,,,,1
 21,The Boobrie,3,3,4,img_boobrie,,,,1
 23,Stoor Worm,9,9,9,img_stoorworm,,,,1
-27,Phantom Piper,8,1,3,img_piper,,,,1
+27,Phantom Piper,8,1,3,img_piper,"""When played,  turns one enemy unit to the player’s side""",PhantomPiperAbility,OnPlayed,1
 28,Blue Man,0,2,2,img_blueman,,,,1
-29,Water Healing,2,0,0,img_waterhealing,"""Heal 1 Ally to the right for +1HP""",,OnPlayed,0
+29,Water Healing,2,0,0,img_waterhealing,"""Heal 1 Ally to the right for +1HP""",WaterHealingAbility,OnPlayed,0
 30,Water Bubble,4,0,0,img_waterbubble,"""Enemy Unit infront Cannot Attack this Turn""",,OnPlayed,0
 31,Tidal Wave,8,0,0,img_tidalwave,"""Deal 2 Damage to all Enemy Units. Heal all your Units by +2HP""",,OnPlayed,0
 32,Take Aim,2,0,0,img_takeaim,"""Deals 2 Direct Damage to the player""",,OnPlayed,0

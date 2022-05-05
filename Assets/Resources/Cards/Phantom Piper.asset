@@ -18,8 +18,29 @@ MonoBehaviour:
   Attack: 1
   Health: 3
   CardImage: {fileID: 21300000, guid: cf0e7e49d228e3344a2a5be2e71dc001, type: 3}
-  Description: 
+  Description: "When played,  turns one enemy unit to the player\u2019s side"
   IsMonster: 1
-  AbilityTrigger: 0
+  AbilityTrigger: 1
   Ability:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null.PhantomPiperAbility
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}

@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: 28
   CardName: Blue Man
   ManaCost: 0
-  Attack: 2
-  Health: 2
+  Attack: 1
+  Health: 1
   CardImage: {fileID: 21300000, guid: 6803caab25e86b94997a7e4748fd40a1, type: 3}
   Description: 
   IsMonster: 1

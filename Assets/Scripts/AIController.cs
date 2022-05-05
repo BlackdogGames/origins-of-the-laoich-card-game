@@ -151,8 +151,16 @@ public class AIController : MonoBehaviour
         {
             if (!GameManager.OpponentZones[i].GetComponent<DroppingZone>().IsBeingUsed)
             {
-                dragDrop.PlayCardToZone(GameManager.OpponentZones[i]);
                 card.GetComponent<CardStats>().ZoneID = i + 1;
+                if (card.GetComponent<CardStats>().BelongsToLocalPlayer)
+                {
+                    dragDrop.PlayCardToZone(GameManager.PlayerZones[i]);
+                }
+                else 
+                {
+                    dragDrop.PlayCardToZone(GameManager.OpponentZones[i]);
+                }
+                
                 break;
             }
         }

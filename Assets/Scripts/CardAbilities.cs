@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class CardAbilities : MonoBehaviour
 {
@@ -140,7 +141,7 @@ public class CardAbilities : MonoBehaviour
             gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
         }
 
-        newCard.GetComponent<DragDrop>().PlayCardToZone(zoneSummon);
+        newCard.GetComponent<DragDrop>().PlayCardToZone(zoneSummon, false);
     }
 
     public static void EachyAbility(GameManager gameManager, CardStats caster)
@@ -203,6 +204,260 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Attack--;
                 target.GetComponent<CardStats>().Health--;
             }
+        }
+    }
+
+    public static void ArvilAbility(GameManager gameManager, CardStats caster)
+    {
+        if (caster.BelongsToLocalPlayer)
+        {
+            foreach (GameObject card in gameManager.Player.GetComponent<PlayerStats>().HandCards)
+            {
+                if (card.GetComponent<CardStats>().CardAsset.CardName == "Carwen")
+                {
+                    foreach (GameObject zone in gameManager.PlayerZones)
+                    {
+                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
+                        {
+                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
+                            card.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+                            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(card);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject card in gameManager.Opponent.GetComponent<PlayerStats>().HandCards)
+            {
+                if (card.GetComponent<CardStats>().CardAsset.CardName == "Carwen")
+                {
+                    foreach (GameObject zone in gameManager.OpponentZones)
+                    {
+                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
+                        {
+                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
+                            card.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+                            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(card);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public static void CarwenAbility(GameManager gameManager, CardStats caster)
+    {
+        if (caster.BelongsToLocalPlayer)
+        {
+            foreach (GameObject card in gameManager.Player.GetComponent<PlayerStats>().HandCards)
+            {
+                if (card.GetComponent<CardStats>().CardAsset.CardName == "Arvil")
+                {
+                    foreach (GameObject zone in gameManager.PlayerZones)
+                    {
+                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
+                        {
+                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
+                            card.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+                            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(card);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (GameObject card in gameManager.Opponent.GetComponent<PlayerStats>().HandCards)
+            {
+                if (card.GetComponent<CardStats>().CardAsset.CardName == "Arvil")
+                {
+                    foreach (GameObject zone in gameManager.OpponentZones)
+                    {
+                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
+                        {
+                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
+                            card.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+                            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(card);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public static void BlueMenAbility(GameManager gameManager, CardStats caster)
+    {
+        int i = 1;
+        int numOfBlueMenSummoned = 0;
+        int numOfBlueMenToSummon = 2;
+
+        if (!caster.BelongsToLocalPlayer)
+        {
+            foreach (GameObject zone in gameManager.OpponentZones)
+            {
+                if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
+                {
+                    GameObject newCard;
+                    newCard = Instantiate(gameManager.CardPrefab);
+
+                    newCard.GetComponent<CardStats>().CardAsset = (Card)Resources.Load("Cards/" + "Blue Man");
+                    newCard.transform.SetParent(gameManager.OpponentArea.transform, false);
+                    newCard.GetComponent<CardStats>().ZoneID = i;
+
+                    //gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+
+                    newCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+                    newCard.GetComponent<DragDrop>().PlayCardToZone(zone, false);
+
+                    numOfBlueMenSummoned++;
+                    if (numOfBlueMenSummoned == numOfBlueMenToSummon)
+                    {
+                        break;
+                    }
+                }
+
+                i++;
+            }
+        }
+        else
+        {
+            foreach (GameObject zone in gameManager.PlayerZones)
+            {
+                if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
+                {
+                    GameObject newCard;
+                    newCard = Instantiate(gameManager.CardPrefab);
+
+                    newCard.GetComponent<CardStats>().CardAsset = (Card)Resources.Load("Cards/" + "Blue Man");
+                    newCard.transform.SetParent(gameManager.PlayerArea.transform, false);
+                    newCard.GetComponent<CardStats>().ZoneID = i;
+
+                    //gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+
+                    newCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+                    newCard.GetComponent<DragDrop>().PlayCardToZone(zone, false);
+
+                    numOfBlueMenSummoned++;
+                    if (numOfBlueMenSummoned == numOfBlueMenToSummon)
+                    {
+                        break;
+                    }
+                }
+
+                i++;
+            }
+        }
+    }
+
+    public static void PhantomPiperAbility(GameManager gameManager, CardStats caster)
+    {
+        if (caster.BelongsToLocalPlayer)
+        {
+            //pick random card in opponent zones and spawn it on players side
+            if (gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count != 5)
+            {
+                GameObject stolenCard;
+
+                int count = UnityEngine.Random.Range(0, gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count - 1);
+                stolenCard = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards[count];
+
+                //gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(
+                //    stolenCard
+                //);
+
+                gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Remove(
+                    stolenCard
+                );
+
+                gameManager.OpponentZones[stolenCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
+                    .IsBeingUsed = false;
+
+                stolenCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!gameManager.PlayerZones[i].GetComponent<DroppingZone>().IsBeingUsed)
+                    {
+                        stolenCard.GetComponent<CardStats>().ZoneID = i + 1;
+                        stolenCard.GetComponent<DragDrop>().PlayCardToZone(gameManager.PlayerZones[i], false);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            //pick random card in opponent zones and spawn it on players side
+            if (gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count != 5)
+            {
+                GameObject stolenCard;
+
+                int count = UnityEngine.Random.Range(0, gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count - 1);
+                stolenCard = gameManager.Player.GetComponent<PlayerStats>().FieldCards[count];
+
+                //gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(
+                //    stolenCard
+                //);
+
+                gameManager.Player.GetComponent<PlayerStats>().FieldCards.Remove(
+                    stolenCard
+                );
+
+                gameManager.PlayerZones[stolenCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
+                    .IsBeingUsed = false;
+
+                stolenCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!gameManager.OpponentZones[i].GetComponent<DroppingZone>().IsBeingUsed)
+                    {
+                        stolenCard.GetComponent<CardStats>().ZoneID = i + 1;
+                        stolenCard.GetComponent<DragDrop>().PlayCardToZone(gameManager.OpponentZones[i], false);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public static void WaterHealingAbility(GameManager gameManager, CardStats caster)
+    {
+        if (caster.BelongsToLocalPlayer)
+        {
+            int targetId = caster.ZoneID + 1;
+
+            foreach (GameObject card in gameManager.Player.GetComponent<PlayerStats>().FieldCards)
+            {
+                if (card.GetComponent<CardStats>().ZoneID == targetId)
+                {
+                    card.GetComponent<CardStats>().Health++;
+                }
+            }
+
+            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Remove(caster.gameObject);
+            gameManager.PlayerZones[caster.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
+            Destroy(caster.gameObject);
+        }
+        else
+        {
+            int targetId = caster.ZoneID - 1;
+
+            foreach (GameObject card in gameManager.Opponent.GetComponent<PlayerStats>().FieldCards)
+            {
+                if (card.GetComponent<CardStats>().ZoneID == targetId)
+                {
+                    card.GetComponent<CardStats>().Health++;
+                }
+            }
+
+            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Remove(caster.gameObject);
+            gameManager.OpponentZones[caster.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
+            Destroy(caster.gameObject);
         }
     }
 }

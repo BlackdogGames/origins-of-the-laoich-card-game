@@ -258,9 +258,8 @@ public class GameManager : MonoBehaviour
         if (playerStats.MaxMana < 9)
         {
             playerStats.MaxMana += 1;    // Increment max mana by 1 every round.
-            playerStats.Mana = playerStats.MaxMana;   // Set mana to the new max at the start of the new round
         }
-       
+        playerStats.Mana = playerStats.MaxMana;   // Set mana to the new max at the start of the new round
     }
 
     public void DrawCard(GameObject player)

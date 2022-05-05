@@ -129,7 +129,9 @@ public class DragDropForDB : MonoBehaviour
 
         if (_isSelectZone && !IsDupe) //if its over the selection szone and is not a duplicared card (is from the deck building area)
         {
-            if (_deckManager.CustomDeck.Count != 30)
+           int duplicates = _deckManager.CheckDuplicates(gameObject); // check dupe cards
+            
+            if (_deckManager.CustomDeck.Count != 30 && duplicates !=3) // if the deck doesnt contain thirty cards and doesnt contain three of the same card already
             {
                 GameObject selectedCard = Instantiate(CardPrefab, transform); // create a new card
                 selectedCard.name = "duped card";
@@ -149,7 +151,7 @@ public class DragDropForDB : MonoBehaviour
             transform.SetParent(DefaultScroll.transform, false);
 
         }
-        else if (_isDefaultZone) // if tis over the deck building zoen
+        else if (_isDefaultZone) // if its over the deck building zoen
         {
            // bool dupe = gameObject.GetComponent<CardStats>().IsDuplicate;
 
@@ -159,6 +161,7 @@ public class DragDropForDB : MonoBehaviour
             }
             else
             {
+                transform.position = _startPosition;
                 transform.SetParent(DefaultScroll.transform, false);
             }
 

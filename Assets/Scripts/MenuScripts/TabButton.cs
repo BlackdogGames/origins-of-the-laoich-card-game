@@ -31,6 +31,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public void OnPointerEnter(PointerEventData eventData) // When mouse enters UI element, call OnTabEnter
     {
         TabGroup.OnTabEnter(this);
+        AudioManager.Instance.Play("UI_Hover");
     }
 
     public void OnPointerExit(PointerEventData eventData) // When mouse exits UI element, call OnTabExit

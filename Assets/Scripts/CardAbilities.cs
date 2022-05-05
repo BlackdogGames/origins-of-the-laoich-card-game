@@ -20,6 +20,7 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Health++;
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
     public static void DonaldAbility(GameManager gameManager, CardStats caster)
@@ -42,6 +43,7 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Health -= 1;
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void MoragAbility(GameManager gameManager, CardStats caster)
@@ -65,6 +67,7 @@ public class CardAbilities : MonoBehaviour
             target.GetComponent<CardStats>().Health++;
             target.GetComponent<CardStats>().Attack++;
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void GregorAbility(GameManager gameManager, CardStats caster)
@@ -89,6 +92,7 @@ public class CardAbilities : MonoBehaviour
             target.GetComponent<CardStats>().Attack = target.GetComponent<CardStats>().CardAsset.Attack;
             target.GetComponent<CardStats>().ManaCost = target.GetComponent<CardStats>().CardAsset.ManaCost;
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void MatthewAbility(GameManager gameManager, CardStats caster)
@@ -108,6 +112,7 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Attack -= 2;
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void LachlanAbility(GameManager gameManager, CardStats caster)
@@ -127,6 +132,7 @@ public class CardAbilities : MonoBehaviour
         {
             target.GetComponent<CardStats>().Attack--;
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void CeasgAbility(GameManager gameManager, CardStats caster)
@@ -163,6 +169,7 @@ public class CardAbilities : MonoBehaviour
         {
             target.GetComponent<CardStats>().Health++;
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
     public static void CuSithAbility(GameManager gameManager, CardStats caster)
@@ -176,5 +183,6 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Health--;
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Howl");
     }
 }

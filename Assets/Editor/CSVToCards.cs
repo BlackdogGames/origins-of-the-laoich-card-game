@@ -64,6 +64,15 @@ public class CSVToCards
             else
                 newCard.AbilityTrigger = Card.CardAbilityTrigger.NoAbility;
 
+            if (variables[9] == "1")
+            {
+                newCard.IsMonster = true;
+            }
+            else
+            {
+                newCard.IsMonster = false;
+            }
+
             AssetDatabase.CreateAsset(newCard, $"Assets/Resources/Cards/{newCard.CardName}.asset");
         }
 

@@ -1742,6 +1742,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5892133183396400697, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
   m_PrefabInstance: {fileID: 436977973}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &436977975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1961121707952055142, guid: 5478905734b3b3944a400bbd1eb80fff, type: 3}
+  m_PrefabInstance: {fileID: 436977973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436977974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8b9555353d5ee47b3de1cbec475fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &436977977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1754,16 +1765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b78bf66dc1a036449c9edff91349704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerZone1: {fileID: 220297043}
-  PlayerZone2: {fileID: 697561171}
-  PlayerZone3: {fileID: 33906565}
-  PlayerZone4: {fileID: 1827482454}
-  PlayerZone5: {fileID: 1862250329}
-  OpponentZone1: {fileID: 2063806717}
-  OpponentZone2: {fileID: 1559477571}
-  OpponentZone3: {fileID: 1573447046}
-  OpponentZone4: {fileID: 807802285}
-  OpponentZone5: {fileID: 1038751683}
   GameManager: {fileID: 0}
   TimeSinceStartOfTurn: 0
   playerStats: {fileID: 0}
@@ -2857,6 +2858,7 @@ GameObject:
   - component: {fileID: 621176588}
   - component: {fileID: 621176590}
   - component: {fileID: 621176589}
+  - component: {fileID: 621176591}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -2907,10 +2909,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 3
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 3
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &621176590
@@ -2921,6 +2923,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621176587}
   m_CullTransparentMesh: 1
+--- !u!114 &621176591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621176587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c558c71a763e4f99f23bc6fbef404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 436977975}
 --- !u!1001 &692247722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3419,6 +3434,7 @@ GameObject:
   - component: {fileID: 857937672}
   - component: {fileID: 857937674}
   - component: {fileID: 857937673}
+  - component: {fileID: 857937675}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -3469,10 +3485,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 3
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 3
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &857937674
@@ -3483,6 +3499,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857937671}
   m_CullTransparentMesh: 1
+--- !u!114 &857937675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857937671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c558c71a763e4f99f23bc6fbef404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1533412566}
 --- !u!224 &901798125 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2860870022725097239, guid: c62b9ae7cf1bf5447a6574db459963d2, type: 3}
@@ -4047,6 +4076,7 @@ GameObject:
   - component: {fileID: 1112325531}
   - component: {fileID: 1112325533}
   - component: {fileID: 1112325532}
+  - component: {fileID: 1112325534}
   m_Layer: 5
   m_Name: Mana
   m_TagString: Untagged
@@ -4097,10 +4127,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 3
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1112325533
@@ -4111,6 +4141,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112325530}
   m_CullTransparentMesh: 1
+--- !u!114 &1112325534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112325530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054dd5efdd941fe48bab7c647fa601b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1533412566}
 --- !u!224 &1113719321 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3307692179540635882, guid: 8736e14c53a69be4c87420fadc8587c9, type: 3}
@@ -5775,6 +5818,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7107778094463872314, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
   m_PrefabInstance: {fileID: 1533412564}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1533412566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6836940897929112798, guid: 20861e7d61eb721459313f46ccf018d0, type: 3}
+  m_PrefabInstance: {fileID: 1533412564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533412565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8b9555353d5ee47b3de1cbec475fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1535819384
 GameObject:
   m_ObjectHideFlags: 0
@@ -6468,6 +6522,18 @@ MonoBehaviour:
   OpponentArea: {fileID: 1835987412}
   VictoryPanel: {fileID: 978701771}
   DefeatPanel: {fileID: 230045555}
+  PlayerZones:
+  - {fileID: 220297043}
+  - {fileID: 697561171}
+  - {fileID: 33906565}
+  - {fileID: 1827482454}
+  - {fileID: 1862250329}
+  OpponentZones:
+  - {fileID: 2063806717}
+  - {fileID: 1559477571}
+  - {fileID: 1573447046}
+  - {fileID: 807802285}
+  - {fileID: 1038751683}
 --- !u!4 &1620199647
 Transform:
   m_ObjectHideFlags: 0
@@ -6933,6 +6999,7 @@ GameObject:
   - component: {fileID: 1767118368}
   - component: {fileID: 1767118370}
   - component: {fileID: 1767118369}
+  - component: {fileID: 1767118371}
   m_Layer: 5
   m_Name: Mana
   m_TagString: Untagged
@@ -6983,10 +7050,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 3
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1767118370
@@ -6997,6 +7064,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767118367}
   m_CullTransparentMesh: 1
+--- !u!114 &1767118371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767118367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054dd5efdd941fe48bab7c647fa601b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 436977975}
 --- !u!1001 &1780669362
 PrefabInstance:
   m_ObjectHideFlags: 0

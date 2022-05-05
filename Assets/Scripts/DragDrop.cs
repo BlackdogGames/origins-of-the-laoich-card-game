@@ -12,6 +12,7 @@ public class DragDrop : MonoBehaviour
     [SerializeField]
     private bool _isDragging = false;
     private Vector2 _startPosition;
+    [SerializeField]
     private bool _isOverDropZone = false;
    
     private GameObject _dropZone;
@@ -177,7 +178,7 @@ public class DragDrop : MonoBehaviour
 
             case (false): // opponents turn
 
-                if (collision.gameObject.tag == "Dropping Zone") // if theyre no longer in the drop zone snap them back to opponents hand
+                if (collision.gameObject.tag == "Dropping Zone" && !_opponent.GetComponent<PlayerStats>().FieldCards.Contains(gameObject)) // if theyre no longer in the drop zone snap them back to opponents hand
                 {
                     _isOverDropZone = false;
                     _dropZone = null;
@@ -189,7 +190,7 @@ public class DragDrop : MonoBehaviour
 
 
             case (true): // local player's turn
-                if (collision.gameObject.tag == "Dropping Zone") // if theyre no longer in the drop zone snap them back to players hand
+                if (collision.gameObject.tag == "Dropping Zone" && !_player.GetComponent<PlayerStats>().FieldCards.Contains(gameObject)) // if theyre no longer in the drop zone snap them back to players hand
                 {
                     _isOverDropZone = false;
                     _dropZone = null;
@@ -379,14 +380,16 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    public void PlayCardToZone(GameObject zone)
+    public void PlayCardToZone(GameObject zone, bool depleteMana = true)
     {
-        _droppingGridZone = zone;
 
-        if (!_gameManager.PlayersTurn)
+        if (!GetComponent<CardStats>().BelongsToLocalPlayer)
         {
-            _isOverDropZone = true;
             _dropZone = GameObject.Find("OpponentDropZone");
+        }
+        else
+        {
+            _dropZone = GameObject.Find("Main Canvas/DropZone");
         }
 
 
@@ -394,7 +397,7 @@ public class DragDrop : MonoBehaviour
         zone.GetComponent<DroppingZone>().IsBeingUsed = true;
 
         //if players turn, remove card from hand list and add it to field list
-        if (_gameManager.PlayersTurn)
+        if (GetComponent<CardStats>().BelongsToLocalPlayer)
         {
             _gameManager.PlayerStatsInstance.HandCards.Remove(gameObject);
             _gameManager.PlayerStatsInstance.FieldCards.Add(gameObject);
@@ -411,10 +414,17 @@ public class DragDrop : MonoBehaviour
             gameObject.GetComponent<CardStats>().CardAsset.Ability.Invoke(_gameManager, GetComponent<CardStats>());
         }
 
-        _gameManager.ManaDecrease(gameObject,
-            (_gameManager.PlayersTurn)
-                ? _gameManager.PlayerStatsInstance
-                : _gameManager.OppStatsInstance); // run the mana decrease function
+        if (depleteMana)
+        {
+            _gameManager.ManaDecrease(gameObject,
+                (GetComponent<CardStats>().BelongsToLocalPlayer)
+                    ? _gameManager.PlayerStatsInstance
+                    : _gameManager.OppStatsInstance); // run the mana decrease function
+        }
+
+
+        _droppingGridZone = zone;
+        _isOverDropZone = true;
     }
     //
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   ManaCost: 4
   Attack: 0
   Health: 0
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 9f7212330181ef84ebee8cc727d410d2, type: 3}
   Description: Enemy Unit infront Cannot Attack this Turn
   IsMonster: 0
   AbilityTrigger: 1

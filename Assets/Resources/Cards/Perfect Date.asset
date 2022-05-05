@@ -17,7 +17,7 @@ MonoBehaviour:
   ManaCost: 6
   Attack: 0
   Health: 0
-  CardImage: {fileID: 0}
+  CardImage: {fileID: 21300000, guid: 394997f56354bb3418cb52b5719debb8, type: 3}
   Description: "Both players\u2019 most recent Unit Card become linked. If one is
     defeated, discarded, or otherwise removed, the other card does the same"
   IsMonster: 0

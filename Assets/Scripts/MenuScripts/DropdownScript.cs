@@ -8,21 +8,36 @@ using UnityEngine;
 
 public class DropdownScript : MonoBehaviour
 {
-    private DirectoryInfo dir = new DirectoryInfo("Assets/Resources/Decks/");
+    private DirectoryInfo dir;
     public  TMP_Dropdown Dropper;
 
     public static string FileName;
 
+    //New bits
+    private FileInfo[] fileInfo;
+    private List<string> m_DropOptions = new List<string>();
+
     private void Start()
     {
-        List<string> m_DropOptions = new List<string>();
 
-        FileInfo[] info = dir.GetFiles("*.txt");
+        dir = new DirectoryInfo(Application.persistentDataPath + "/Decks/");
 
-        foreach (FileInfo f in info)
+        fileInfo = dir.GetFiles("*.txt");
+
+        foreach (FileInfo f in fileInfo)
         {
-           // Debug.Log(f.Name.ToString());
             m_DropOptions.Add(f.Name.ToString());
+            Debug.Log(f.Name.ToString());
+        }
+
+        foreach (var x in m_DropOptions)
+        {
+            string[] cards = File.ReadAllLines(Application.persistentDataPath + "/Decks/" + x);
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                Debug.Log(cards[i]);
+            }
         }
 
         Dropper.AddOptions(m_DropOptions);

@@ -83,14 +83,14 @@ public class DeckManager : MonoBehaviour
     // a function to export CustomDeck to a text file
     public void ExportDeck()
     {
-        string path = "Assets/Resources/Decks/" + DeckNameInput.text + ".txt";
+        string path = Application.persistentDataPath + "/Decks/" + DeckNameInput.text + ".txt";
         System.IO.File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
     }
 
     // a function to import a text file to CustomDeck
     public void ImportDeck()
     {
-        string path = "Assets/Resources/Decks/" + ImportInput.text + ".txt";
+        string path = Application.persistentDataPath + "/Decks/" + ImportInput.text + ".txt";
         //  string path = "Assets/Resources/Decks/id test deck.txt";
         List<Card> cardList = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
         

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
 
         string deckName = DropdownScript.FileName; // get the selected file name fromm the dropdown menu
-        string path = "Assets/Resources/Decks/" + deckName; // append the filepath
+        string path = Application.persistentDataPath + "/Decks/" + deckName; // append the filepath
         //  PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
         PlayerStatsInstance.Deck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
 

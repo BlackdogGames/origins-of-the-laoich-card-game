@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System.IO;
 using TMPro; 
 
 
@@ -84,7 +85,15 @@ public class DeckManager : MonoBehaviour
     public void ExportDeck()
     {
         string path = Application.persistentDataPath + "/Decks/" + DeckNameInput.text + ".txt";
-        System.IO.File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
+        if (Directory.Exists(Application.persistentDataPath + "/Decks"))
+        {
+            File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
+        }
+        else
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Decks");
+            File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
+        }
     }
 
     // a function to import a text file to CustomDeck

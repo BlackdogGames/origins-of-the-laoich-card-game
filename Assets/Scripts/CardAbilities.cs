@@ -255,6 +255,7 @@ public class CardAbilities : MonoBehaviour
                 }
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
     public static void CarwenAbility(GameManager gameManager, CardStats caster)
     {
@@ -296,6 +297,7 @@ public class CardAbilities : MonoBehaviour
                 }
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
     public static void BlueMenAbility(GameManager gameManager, CardStats caster)
     {
@@ -359,6 +361,7 @@ public class CardAbilities : MonoBehaviour
                 i++;
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void PhantomPiperAbility(GameManager gameManager, CardStats caster)
@@ -431,6 +434,7 @@ public class CardAbilities : MonoBehaviour
                 }
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void WaterHealingAbility(GameManager gameManager, CardStats caster)
@@ -467,5 +471,6 @@ public class CardAbilities : MonoBehaviour
             gameManager.OpponentZones[caster.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
             Destroy(caster.gameObject);
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 }

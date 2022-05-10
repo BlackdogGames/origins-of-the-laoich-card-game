@@ -524,7 +524,7 @@ public class CardAbilities : MonoBehaviour
         // Damage all field cards of the other player by 2
         foreach (GameObject card in otherPlayerFieldCards)
         {
-            card.GetComponent<CardStats>().Damage() 2;
+            card.GetComponent<CardStats>().Damage(2);
         }
 
         // Get field cards of the local player

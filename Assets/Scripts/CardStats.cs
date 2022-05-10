@@ -13,6 +13,7 @@ public class CardStats : MonoBehaviour
     public int Health;
     public int ZoneID = 0; // attack zone ID
     public bool IsDuplicate; // is a duped card - used in deckbuilding
+    public bool isMonster; // true is a monster, false is a spell
 
     public string CardName;
 
@@ -41,6 +42,7 @@ public class CardStats : MonoBehaviour
         CardImage.sprite = CardAsset.CardImage;
         CardNameText.text = CardAsset.CardName;
         DescriptionText.text = CardAsset.Description;
+        isMonster = CardAsset.IsMonster;
 
         // name
         CardName = CardAsset.CardName; // name of card

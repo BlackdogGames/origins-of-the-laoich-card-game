@@ -272,6 +272,7 @@ public class CardAbilities : MonoBehaviour
                 }
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void CarwenAbility(GameManager gameManager, CardStats caster)
@@ -314,6 +315,7 @@ public class CardAbilities : MonoBehaviour
                 }
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void BlueMenAbility(GameManager gameManager, CardStats caster)
@@ -378,6 +380,7 @@ public class CardAbilities : MonoBehaviour
                 i++;
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void PhantomPiperAbility(GameManager gameManager, CardStats caster)
@@ -452,6 +455,7 @@ public class CardAbilities : MonoBehaviour
                 }
             }
         }
+        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void WaterHealingAbility(GameManager gameManager, CardStats caster)
@@ -484,6 +488,7 @@ public class CardAbilities : MonoBehaviour
         }
         // Destroy spell card
         DestroySpell(gameManager, caster);
+        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
     public static void WaterBubbleAbility(GameManager gameManager, CardStats caster)

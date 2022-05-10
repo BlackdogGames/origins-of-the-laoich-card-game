@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System.IO;
 using TMPro; 
 
 
@@ -32,7 +33,7 @@ public class DeckManager : MonoBehaviour
     void Start()
     {
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
-        PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        PlayerStatsInstance.Deck = Resources.LoadAll("DBCards").ToList().ConvertAll(item => (Card)item);
 
         // set the text field to interactable input
         DeckNameInput.interactable = true;
@@ -83,14 +84,22 @@ public class DeckManager : MonoBehaviour
     // a function to export CustomDeck to a text file
     public void ExportDeck()
     {
-        string path = "Assets/Resources/Decks/" + DeckNameInput.text + ".txt";
-        System.IO.File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
+        string path = Application.persistentDataPath + "/Decks/" + DeckNameInput.text + ".txt";
+        if (Directory.Exists(Application.persistentDataPath + "/Decks"))
+        {
+            File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
+        }
+        else
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Decks");
+            File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
+        }
     }
 
     // a function to import a text file to CustomDeck
     public void ImportDeck()
     {
-        string path = "Assets/Resources/Decks/" + ImportInput.text + ".txt";
+        string path = Application.persistentDataPath + "/Decks/" + ImportInput.text + ".txt";
         //  string path = "Assets/Resources/Decks/id test deck.txt";
         List<Card> cardList = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
         
@@ -111,11 +120,11 @@ public class DeckManager : MonoBehaviour
     //a function that checks if cardlist has duplicate cards and stores how many duplicate cards there are
     public int CheckDuplicates(GameObject currentCard)
     {
-        int duplicates = 0;
+        int duplicates = 0; // counter
 
         string orignalCard = currentCard.GetComponent<CardStats>().CardNameText.text;
-        
-         for (int i = 0; i != CustomDeck.Count; i++)
+
+        for (int i = 0; i != CustomDeck.Count; i++)
          {
             string dupedCard = CustomDeck[i].GetComponent<CardStats>().CardNameText.text;
 
@@ -124,15 +133,35 @@ public class DeckManager : MonoBehaviour
                  duplicates++;
              }
 
+           // debug code
            // Debug.Log(CustomDeck[i].GetComponent<CardStats>().CardNameText.ToString());
-          //  Debug.Log(orignalCard.ToString());
-         //   Debug.Log(dupedCard.ToString());
+           // Debug.Log(orignalCard.ToString());
+           // Debug.Log(dupedCard.ToString());
           }
       
         Debug.Log("Duplicates: " + duplicates);
 
         return duplicates;
            
+    }
+
+    public int CheckForSpells(GameObject currentCard)
+    {
+        int spellCards = 0; // counter
+
+        bool isSpell = currentCard.GetComponent<CardStats>().isMonster;
+
+        for (int i = 0; i != CustomDeck.Count; i++)
+        {
+            if (CustomDeck[i].GetComponent<CardStats>().isMonster == false) 
+            {
+                spellCards++; // if there is a spell card add to the counter
+            }
+
+        }
+
+            return spellCards;
+        
     }
 
 

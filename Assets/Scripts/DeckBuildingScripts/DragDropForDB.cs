@@ -130,9 +130,17 @@ public class DragDropForDB : MonoBehaviour
         if (_isSelectZone && !IsDupe) //if its over the selection szone and is not a duplicared card (is from the deck building area)
         {
            int duplicates = _deckManager.CheckDuplicates(gameObject); // check dupe cards
-            
-            if (_deckManager.CustomDeck.Count != 30 && duplicates !=3) // if the deck doesnt contain thirty cards and doesnt contain three of the same card already
+           int spellCards = 0; // defaults to zero every time
+
+
+            if (gameObject.GetComponent<CardStats>().isMonster == false) // only incrememnt if a spell card is used
             {
+                spellCards = _deckManager.CheckForSpells(gameObject); // check for spellcards
+            }
+            
+            if (_deckManager.CustomDeck.Count != 30 && duplicates !=3 && spellCards != 8) // if the deck doesnt contain thirty cards, doesnt contain three of the same card already, and doesnt contain eight spell cards
+            {
+                
                 GameObject selectedCard = Instantiate(CardPrefab, transform); // create a new card
                 selectedCard.name = "duped card";
                 selectedCard.GetComponent<CardStats>().CardAsset = gameObject.GetComponent<CardStats>().CardAsset; // give the card the same assets
@@ -157,6 +165,7 @@ public class DragDropForDB : MonoBehaviour
 
             if (IsDupe == true)
             {
+                _deckManager.CustomDeck.Remove(gameObject);
                 Destroy(gameObject);
             }
             else

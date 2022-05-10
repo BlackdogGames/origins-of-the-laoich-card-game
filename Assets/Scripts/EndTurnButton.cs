@@ -67,9 +67,18 @@ public class EndTurnButton : MonoBehaviour
                 
             }
 
-            if (_gameManager.OppStatsInstance.HandCards.Count < 7) // if the player has space, draw 1 new card
+            // If any cards in opponent's field are invincible, set invincible to false
+            foreach (var card in _gameManager.Opponent.GetComponent<PlayerStats>().FieldCards)
             {
-                _gameManager.DrawCard(_gameManager.Opponent);
+                if (card != null)
+                {
+                    card.GetComponent<CardStats>().Invincible = false;
+                }
+            }
+
+            if (_gameManager.PlayerStatsInstance.HandCards.Count < 7) // if the player has space, draw 1 new card
+            {
+                _gameManager.DrawCard(_gameManager.Player);
                 // Calls AudioManager to Play requested sound effect.
                 AudioManager.Instance.Play("SFX_Card_Pickup");
             }
@@ -90,9 +99,18 @@ public class EndTurnButton : MonoBehaviour
                 }
             }
             
-            if (_gameManager.PlayerStatsInstance.HandCards.Count < 7)
+            // If any cards in players's field are invincible, set invincible to false
+            foreach (var card in _gameManager.Player.GetComponent<PlayerStats>().FieldCards)
             {
-                _gameManager.DrawCard(_gameManager.Player);
+                if (card != null)
+                {
+                    card.GetComponent<CardStats>().Invincible = false;
+                }
+            }
+
+            if (_gameManager.OppStatsInstance.HandCards.Count < 7)
+            {
+                _gameManager.DrawCard(_gameManager.Opponent);
                 // Calls AudioManager to Play requested sound effect.
                 AudioManager.Instance.Play("SFX_Card_Pickup");
             }

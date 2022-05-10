@@ -20,6 +20,8 @@ public class CardStats : MonoBehaviour
     public bool FirstTurnPlayed = true;
     public bool HasAttackedOpponent = false;
 
+    public bool Invincible = false;
+
     // Assigned through the inspector
     public TMP_Text CardNameText;
     public TMP_Text ManaCostText;
@@ -54,5 +56,19 @@ public class CardStats : MonoBehaviour
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();
     }
-    
+
+    public void Damage(int amount)
+    {
+        if (!Invincible)
+        {
+            Health -= amount;
+            // Calls AudioManager to PLay a requested Sound.
+            AudioManager.Instance.Play("SFX_Card_Attack");
+        }
+        else
+        {
+            // Calls AudioManager to PLay a requested Sound.
+            AudioManager.Instance.Play("SFX_Card_Block");
+        }
+    }
 }

@@ -157,6 +157,7 @@ public class DragDropForDB : MonoBehaviour
 
             if (IsDupe == true)
             {
+                _deckManager.CustomDeck.Remove(gameObject);
                 Destroy(gameObject);
             }
             else

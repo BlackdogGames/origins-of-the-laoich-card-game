@@ -33,7 +33,7 @@ public class DeckManager : MonoBehaviour
     void Start()
     {
         PlayerStatsInstance = Player.GetComponent<PlayerStats>();
-        PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        PlayerStatsInstance.Deck = Resources.LoadAll("DBCards").ToList().ConvertAll(item => (Card)item);
 
         // set the text field to interactable input
         DeckNameInput.interactable = true;

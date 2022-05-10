@@ -471,6 +471,6 @@ public class CardAbilities : MonoBehaviour
             gameManager.OpponentZones[caster.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
             Destroy(caster.gameObject);
         }
-        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
+        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 }

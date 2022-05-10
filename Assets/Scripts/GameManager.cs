@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
 
-        //look through the deck and move the first card with a mana cost of 0 to the top of the deck
+        //look through the deck and move the first card with a mana cost of 1 to the top of the deck
         for (int i = 0; i < PlayerStatsInstance.Deck.Count; i++)
         {
-            if (PlayerStatsInstance.Deck[i].ManaCost == 0)
+            if (PlayerStatsInstance.Deck[i].ManaCost == 1)
             {
                 Card temp = PlayerStatsInstance.Deck[i];
                 PlayerStatsInstance.Deck.RemoveAt(i);
@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+
+        // Set player and opponent maxmana to 1
+        PlayerStatsInstance.MaxMana = 1;
+        OppStatsInstance.MaxMana = 1;
 
         for (int i = 0; i < 5; i++)
         {
@@ -236,7 +240,11 @@ public class GameManager : MonoBehaviour
                 AudioManager.Instance.Play("SFX_Defeat"); // Can't test
             }
 
-            // TODO: VictoryPanel.SetActive(true) for the winning player
+            else if (defendingPlayerStats == OppStatsInstance)
+            {
+                VictoryPanel.SetActive(true);
+                AudioManager.Instance.Play("SFX_Victory"); // Can't test
+            }
 
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

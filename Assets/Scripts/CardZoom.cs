@@ -12,6 +12,8 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private GameObject _zoomCard;
     public Color Red;
     public Color Blue;
+
+    GameManager _gameManager;
     //
 
     //
@@ -28,6 +30,9 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         Canvas = GameObject.Find("Main Canvas");
         gameObject.GetComponent<Outline>().enabled = false;
+
+        //Assign gamemanager
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void Update()
@@ -78,6 +83,12 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        // if gameobject is not in opponent handlist
+        if (_gameManager.Opponent.GetComponent<PlayerStats>().HandCards.Contains(gameObject))
+        {
+            return;
+        }
+
         gameObject.GetComponent<Outline>().enabled = true; // enable highlight 
 
         Vector2 cardPosition = RectTransformUtility.PixelAdjustRect(GetComponent<RectTransform>(), Canvas.GetComponent<Canvas>()).position;

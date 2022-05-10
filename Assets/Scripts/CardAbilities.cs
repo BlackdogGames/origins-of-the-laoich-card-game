@@ -9,9 +9,9 @@ public class CardAbilities : MonoBehaviour
     public static void EffieAbility(GameManager gameManager, CardStats caster)
     {
         //Get ally cards
-        List<GameObject> targets = (caster.BelongsToLocalPlayer) ? 
-            gameManager.Player.GetComponent<PlayerStats>().FieldCards :
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards;
+        List<GameObject> targets = (caster.BelongsToLocalPlayer)
+            ? gameManager.Player.GetComponent<PlayerStats>().FieldCards
+            : gameManager.Opponent.GetComponent<PlayerStats>().FieldCards;
 
         foreach (GameObject target in targets)
         {
@@ -21,6 +21,7 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Health++;
             }
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
@@ -29,37 +30,41 @@ public class CardAbilities : MonoBehaviour
         int casterId = caster.ZoneID;
 
         //Get opponent cards
-        List<GameObject> targets = (caster.BelongsToLocalPlayer) ?
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards :
-            gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+        List<GameObject> targets = (caster.BelongsToLocalPlayer)
+            ? gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+            : gameManager.Player.GetComponent<PlayerStats>().FieldCards;
 
         foreach (var target in targets)
         {
             if (casterId == target.GetComponent<CardStats>().ZoneID)
             {
-                target.GetComponent<CardStats>().Health -= 2;
-            } else if (casterId - 1 == target.GetComponent<CardStats>().ZoneID ||
-                       casterId + 1 == target.GetComponent<CardStats>().ZoneID)
+                target.GetComponent<CardStats>().Damage(2);
+            }
+            else if (casterId - 1 == target.GetComponent<CardStats>().ZoneID ||
+                     casterId + 1 == target.GetComponent<CardStats>().ZoneID)
             {
-                target.GetComponent<CardStats>().Health -= 1;
+                target.GetComponent<CardStats>().Damage(1);
             }
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void MoragAbility(GameManager gameManager, CardStats caster)
     {
         GameObject target;
-        
+
         if (caster.BelongsToLocalPlayer)
         {
             //find card in fieldcards with the zoneid of the caster - 1
-            target = gameManager.Player.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
+            target = gameManager.Player.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
         }
         else
         {
             //find card in fieldcards with the zoneid of the caster + 1
-            target = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
+            target = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
         }
 
         if (target != null)
@@ -68,6 +73,7 @@ public class CardAbilities : MonoBehaviour
             target.GetComponent<CardStats>().Health++;
             target.GetComponent<CardStats>().Attack++;
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
@@ -78,12 +84,14 @@ public class CardAbilities : MonoBehaviour
         if (caster.BelongsToLocalPlayer)
         {
             //find card in fieldcards with the zoneid of the caster - 1
-            target = gameManager.Player.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
+            target = gameManager.Player.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
         }
         else
         {
             //find card in fieldcards with the zoneid of the caster + 1
-            target = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
+            target = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
         }
 
         //reset target cardstats health, attack and mana cost back to their default values
@@ -93,6 +101,7 @@ public class CardAbilities : MonoBehaviour
             target.GetComponent<CardStats>().Attack = target.GetComponent<CardStats>().CardAsset.Attack;
             target.GetComponent<CardStats>().ManaCost = target.GetComponent<CardStats>().CardAsset.ManaCost;
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
@@ -101,9 +110,9 @@ public class CardAbilities : MonoBehaviour
         int casterId = caster.ZoneID;
 
         //Get opponent cards
-        List<GameObject> targets = (caster.BelongsToLocalPlayer) ?
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards :
-            gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+        List<GameObject> targets = (caster.BelongsToLocalPlayer)
+            ? gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+            : gameManager.Player.GetComponent<PlayerStats>().FieldCards;
 
         foreach (var target in targets)
         {
@@ -113,6 +122,7 @@ public class CardAbilities : MonoBehaviour
                 target.GetComponent<CardStats>().Attack -= 2;
             }
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
@@ -152,15 +162,18 @@ public class CardAbilities : MonoBehaviour
     public static void EachyAbility(GameManager gameManager, CardStats caster)
     {
         //get card from opponent with matching zoneid
-        GameObject target = (caster.BelongsToLocalPlayer) ?
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID) :
-            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID);
+        GameObject target = (caster.BelongsToLocalPlayer)
+            ? gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID)
+            : gameManager.Player.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID);
 
         //if target is not null, decrease its attack by 1
         if (target != null)
         {
             target.GetComponent<CardStats>().Attack--;
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
@@ -169,9 +182,9 @@ public class CardAbilities : MonoBehaviour
         List<GameObject> targets = new List<GameObject>();
 
         //get count of cards in fieldcards of opponent
-        int count = (caster.BelongsToLocalPlayer) ?
-            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count :
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count;
+        int count = (caster.BelongsToLocalPlayer)
+            ? gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count
+            : gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count;
 
         //get 3 ally field cards at random and add them to target list, not adding the same card twice
         for (int i = 0; i < Mathf.Min(count, 3); i++)
@@ -179,9 +192,11 @@ public class CardAbilities : MonoBehaviour
             GameObject target;
 
             //set target to random card in ally fieldcards
-            target = (caster.BelongsToLocalPlayer) ? 
-                gameManager.Player.GetComponent<PlayerStats>().FieldCards[UnityEngine.Random.Range(0, gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count)] : 
-                gameManager.Opponent.GetComponent<PlayerStats>().FieldCards[UnityEngine.Random.Range(0, gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count)];
+            target = (caster.BelongsToLocalPlayer)
+                ? gameManager.Player.GetComponent<PlayerStats>().FieldCards[
+                    UnityEngine.Random.Range(0, gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count)]
+                : gameManager.Opponent.GetComponent<PlayerStats>().FieldCards[
+                    UnityEngine.Random.Range(0, gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count)];
 
             if (target != null && !targets.Contains(target))
             {
@@ -198,6 +213,7 @@ public class CardAbilities : MonoBehaviour
         {
             target.GetComponent<CardStats>().Health++;
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
@@ -209,9 +225,10 @@ public class CardAbilities : MonoBehaviour
             if (target.GetComponent<CardStats>().HasAttackedOpponent)
             {
                 target.GetComponent<CardStats>().Attack--;
-                target.GetComponent<CardStats>().Health--;
+                target.GetComponent<CardStats>().Damage(1);
             }
         }
+
         AudioManager.Instance.Play("SFX_Card_Ability_Howl");
     }
 
@@ -256,6 +273,7 @@ public class CardAbilities : MonoBehaviour
             }
         }
     }
+
     public static void CarwenAbility(GameManager gameManager, CardStats caster)
     {
         if (caster.BelongsToLocalPlayer)
@@ -297,6 +315,7 @@ public class CardAbilities : MonoBehaviour
             }
         }
     }
+
     public static void BlueMenAbility(GameManager gameManager, CardStats caster)
     {
         int i = 1;
@@ -370,7 +389,8 @@ public class CardAbilities : MonoBehaviour
             {
                 GameObject stolenCard;
 
-                int count = UnityEngine.Random.Range(0, gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count - 1);
+                int count = UnityEngine.Random.Range(0,
+                    gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Count - 1);
                 stolenCard = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards[count];
 
                 //gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(
@@ -404,7 +424,8 @@ public class CardAbilities : MonoBehaviour
             {
                 GameObject stolenCard;
 
-                int count = UnityEngine.Random.Range(0, gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count - 1);
+                int count = UnityEngine.Random.Range(0,
+                    gameManager.Player.GetComponent<PlayerStats>().FieldCards.Count - 1);
                 stolenCard = gameManager.Player.GetComponent<PlayerStats>().FieldCards[count];
 
                 //gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(
@@ -446,10 +467,7 @@ public class CardAbilities : MonoBehaviour
                     card.GetComponent<CardStats>().Health++;
                 }
             }
-
-            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Remove(caster.gameObject);
-            gameManager.PlayerZones[caster.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
-            Destroy(caster.gameObject);
+            
         }
         else
         {
@@ -463,9 +481,224 @@ public class CardAbilities : MonoBehaviour
                 }
             }
 
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Remove(caster.gameObject);
-            gameManager.OpponentZones[caster.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
-            Destroy(caster.gameObject);
         }
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void WaterBubbleAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get the player that is not the local player
+        GameObject otherPlayer = isLocalPlayer ? gameManager.Opponent : gameManager.Player;
+
+        // Get field cards of the other player
+        List<GameObject> otherPlayerFieldCards = otherPlayer.GetComponent<PlayerStats>().FieldCards;
+
+        // Find fieldcard that's matches zoneid of caster
+        GameObject fieldCard = otherPlayerFieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID);
+
+        // If fieldcard is found, set firstturnplayed to true
+        if (fieldCard != null)
+        {
+            fieldCard.GetComponent<CardStats>().FirstTurnPlayed = true;
+        }
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void TidalWaveAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get the player that is not the local player
+        GameObject otherPlayer = isLocalPlayer ? gameManager.Opponent : gameManager.Player;
+
+        // Get field cards of the other player
+        List<GameObject> otherPlayerFieldCards = otherPlayer.GetComponent<PlayerStats>().FieldCards;
+
+        // Damage all field cards of the other player by 2
+        foreach (GameObject card in otherPlayerFieldCards)
+        {
+            card.GetComponent<CardStats>().Damage(2);
+        }
+
+        // Get field cards of the local player
+        List<GameObject> localPlayerFieldCards = gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+
+        // Heal all field cards of the local player by 2
+        foreach (GameObject card in localPlayerFieldCards)
+        {
+            card.GetComponent<CardStats>().Health += 2;
+        }
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void TakeAimAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get the player that is not the local player
+        GameObject otherPlayer = isLocalPlayer ? gameManager.Opponent : gameManager.Player;
+
+        // Deal 2 damage to other player
+        otherPlayer.GetComponent<PlayerStats>().Health -= 2;
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void TargeAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get the player that is not the local player
+        GameObject otherPlayer = isLocalPlayer ? gameManager.Opponent : gameManager.Player;
+
+        // Get field cards of the local player
+        List<GameObject> localPlayerFieldCards = gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+
+        // Heal all field cards of the local player by 2
+        foreach (GameObject card in localPlayerFieldCards)
+        {
+            card.GetComponent<CardStats>().Health += 2;
+        }
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void OtterAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get both field card lists
+        List<GameObject> localPlayerFieldCards = gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+        List<GameObject> otherPlayerFieldCards = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards;
+
+        // Temporary variable
+        int healthIncrease = 1;
+
+        // If any card in the field card lists is named "The Boobrie", return true
+        foreach (GameObject card in localPlayerFieldCards)
+        {
+            if (card.GetComponent<CardStats>().CardName == "The Boobrie")
+            {
+                healthIncrease = 2;
+                break;
+            }
+        }
+        
+        foreach (GameObject card in otherPlayerFieldCards)
+        {
+            if (card.GetComponent<CardStats>().CardName == "The Boobrie")
+            {
+                healthIncrease = 2;
+                break;
+            }
+        }
+
+        // Get card to the right of the caster
+        GameObject cardToTheRight;
+        if (isLocalPlayer)
+        {
+            cardToTheRight = localPlayerFieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
+        }
+        else
+        {
+            cardToTheRight = otherPlayerFieldCards.Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
+        }
+
+        // Heal card to the right of the caster by healthIncrease
+        if (cardToTheRight != null)
+        {
+            cardToTheRight.GetComponent<CardStats>().Health += healthIncrease;
+        }
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void PerfectDateAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get card to the right of the caster
+        GameObject cardToTheRight;
+        if (isLocalPlayer)
+        {
+            cardToTheRight = gameManager.Player.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
+        }
+        else
+        {
+            cardToTheRight = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
+        }
+
+        // If card to the right is found, set invincible to true
+        if (cardToTheRight != null)
+        {
+            cardToTheRight.GetComponent<CardStats>().Invincible = true;
+        }
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void ConservationAbility(GameManager gameManager, CardStats caster)
+    {
+        // Get which players turn it is
+        bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+        // Get card to the left of the caster
+        GameObject cardToTheLeft;
+        if (isLocalPlayer)
+        {
+            cardToTheLeft = gameManager.Player.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID - 1);
+        }
+        else
+        {
+            cardToTheLeft = gameManager.Opponent.GetComponent<PlayerStats>().FieldCards
+                .Find(x => x.GetComponent<CardStats>().ZoneID == caster.ZoneID + 1);
+        }
+
+        // If card to the left is found, set invincible to true
+        if (cardToTheLeft != null)
+        {
+            cardToTheLeft.GetComponent<CardStats>().Invincible = true;
+        }
+
+        // Destroy spell card
+        DestroySpell(gameManager, caster);
+    }
+
+    public static void DestroySpell(GameManager gameManager, CardStats card)
+    {
+        // If card belongs to local player, remove it from the field card list
+        if (card.BelongsToLocalPlayer)
+        {
+            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Remove(card.gameObject);
+            gameManager.PlayerZones[card.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
+            Destroy(card.gameObject);
+        }
+        else
+        {
+            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Remove(card.gameObject);
+            gameManager.OpponentZones[card.ZoneID - 1].GetComponent<DroppingZone>().IsBeingUsed = false;
+            Destroy(card.gameObject);
+        }
+        
     }
 }

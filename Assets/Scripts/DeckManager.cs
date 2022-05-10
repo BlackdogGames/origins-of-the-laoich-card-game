@@ -120,11 +120,11 @@ public class DeckManager : MonoBehaviour
     //a function that checks if cardlist has duplicate cards and stores how many duplicate cards there are
     public int CheckDuplicates(GameObject currentCard)
     {
-        int duplicates = 0;
+        int duplicates = 0; // counter
 
         string orignalCard = currentCard.GetComponent<CardStats>().CardNameText.text;
-        
-         for (int i = 0; i != CustomDeck.Count; i++)
+
+        for (int i = 0; i != CustomDeck.Count; i++)
          {
             string dupedCard = CustomDeck[i].GetComponent<CardStats>().CardNameText.text;
 
@@ -133,15 +133,35 @@ public class DeckManager : MonoBehaviour
                  duplicates++;
              }
 
+           // debug code
            // Debug.Log(CustomDeck[i].GetComponent<CardStats>().CardNameText.ToString());
-          //  Debug.Log(orignalCard.ToString());
-         //   Debug.Log(dupedCard.ToString());
+           // Debug.Log(orignalCard.ToString());
+           // Debug.Log(dupedCard.ToString());
           }
       
         Debug.Log("Duplicates: " + duplicates);
 
         return duplicates;
            
+    }
+
+    public int CheckForSpells(GameObject currentCard)
+    {
+        int spellCards = 0; // counter
+
+        bool isSpell = currentCard.GetComponent<CardStats>().isMonster;
+
+        for (int i = 0; i != CustomDeck.Count; i++)
+        {
+            if (CustomDeck[i].GetComponent<CardStats>().isMonster == false) 
+            {
+                spellCards++; // if there is a spell card add to the counter
+            }
+
+        }
+
+            return spellCards;
+        
     }
 
 

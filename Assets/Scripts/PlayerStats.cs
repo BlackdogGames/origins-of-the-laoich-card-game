@@ -11,7 +11,7 @@ public class PlayerStats : MonoBehaviour
 
 	public int Health;
 	public int Mana;
-	public int MaxMana;
+	public int MaxMana = 1;
 
 	public List<GameObject> HandCards = new List<GameObject>();
 	public List<GameObject> FieldCards = new List<GameObject>();

@@ -67,10 +67,17 @@ public class AIController : MonoBehaviour
             {
                 foreach (RuleActionPair pair in ruleActionPairs)
                 {
-                    if (pair.rule())
+                    try
                     {
-                        pair.action();
-                        break;
+                        if (pair.rule())
+                        {
+                            pair.action();
+                            break;
+                        }
+
+                    } catch (System.Exception e)
+                    {
+                        EndTurn();
                     }
                 }
             }

@@ -21,6 +21,8 @@ public class DeckManager : MonoBehaviour
     public List<GameObject> CardList;
     public List<GameObject> CustomDeck;
 
+    public List<Card> DefaultDeckList;
+
     public TMP_InputField DeckNameInput;
     public TMP_InputField ImportInput;
 
@@ -100,7 +102,7 @@ public class DeckManager : MonoBehaviour
 
     public void LoadDefaultDeck()
     {
-       List<Card> defaultDeck = Resources.LoadAll("DefaultDeck").ToList().ConvertAll(item => (Card)item);
+       List<Card> defaultDeck = DefaultDeckList;
 
         string path = Application.persistentDataPath + "/Decks/" + "Default" + ".txt";
         if (Directory.Exists(Application.persistentDataPath + "/Decks"))

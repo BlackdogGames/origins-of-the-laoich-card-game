@@ -93,7 +93,7 @@ public class CardStats : MonoBehaviour
 
     public void Damage(int amount)
     {
-        if (!Invincible && amount > 0)
+        if (!Invincible && amount >= 0)
         {
             Health -= amount;
             // Calls AudioManager to PLay a requested Sound.

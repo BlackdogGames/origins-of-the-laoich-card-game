@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
         //  PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
         PlayerStatsInstance.Deck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
 
-        OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
-
         // Randomise player deck order
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
         OppStatsInstance.Deck = OppStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
@@ -283,7 +281,15 @@ public class GameManager : MonoBehaviour
             playerCard.transform.SetParent((playerStats.IsLocalPlayer) ? PlayerArea.transform : OpponentArea.transform, false); // when object is instantiated, set it as child of PlayerArea
             playerStats.HandCards.Add(playerCard);
 
-            playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+            // if player stats is the local player, set the card belongs to local player to true
+            if (playerStats.IsLocalPlayer)
+            {
+                playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+            }
+            else
+            {
+                playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+            }
         }
 
         if (playerStats.Deck.Count == 0)

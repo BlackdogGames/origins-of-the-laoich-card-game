@@ -13,6 +13,6 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         _playerStats = Player.GetComponent<PlayerStats>();
-        HealthText.text = "HEALTH: " + _playerStats.Health.ToString();
+        HealthText.text = "" + _playerStats.Health.ToString();
     }
 }

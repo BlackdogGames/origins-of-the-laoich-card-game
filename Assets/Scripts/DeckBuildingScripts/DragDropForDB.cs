@@ -38,7 +38,7 @@ public class DragDropForDB : MonoBehaviour
     //
     private void Awake()
     {
-        Canvas = GameObject.Find("Main Canvas");
+        Canvas = GameObject.Find("Collection_Panel");
 
         PlayerDropZone = GameObject.Find("Selection Grid");
         DeckDropZone = GameObject.Find("Card Grid");
@@ -62,9 +62,8 @@ public class DragDropForDB : MonoBehaviour
     {
         if (_isDragging)
         {
-           
             transform.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            transform.SetParent(Canvas.transform, true);
+            //transform.SetParent(Canvas.transform, true);
             // Calls AudioManager to Play requested sound effect.
             AudioManager.Instance.Play("SFX_Card_Placement");
         }

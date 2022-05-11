@@ -7776,6 +7776,33 @@ MonoBehaviour:
   CardStats: {fileID: 0}
   CardList: []
   CustomDeck: []
+  DefaultDeckList:
+  - {fileID: 11400000, guid: e196ed424451ab341936fd1cc4b791dc, type: 2}
+  - {fileID: 11400000, guid: d3a64b1080485f9468a4147e0d87e239, type: 2}
+  - {fileID: 11400000, guid: 195a8673376c2a041bbcf6847e9f84cc, type: 2}
+  - {fileID: 11400000, guid: 01dde5a607c675d4c9cf5c58504811a1, type: 2}
+  - {fileID: 11400000, guid: 96886ae2ed1a2734c8c69b33289ee319, type: 2}
+  - {fileID: 11400000, guid: dfe1085e0af2a85428a0696a68398dc3, type: 2}
+  - {fileID: 11400000, guid: 048e7e7be9a182146841c59563f8b79b, type: 2}
+  - {fileID: 11400000, guid: ab262da147e7a9d4dbc46ebdddaa72ef, type: 2}
+  - {fileID: 11400000, guid: 5249bd535673d63468f4eb97ac3d4c7b, type: 2}
+  - {fileID: 11400000, guid: d77984ae5fded2b41afbc412fdfda826, type: 2}
+  - {fileID: 11400000, guid: 3f2087241d84e1343a04af23c37392c9, type: 2}
+  - {fileID: 11400000, guid: f1b0f19c2a80ee040b94c0cc9c0fe0af, type: 2}
+  - {fileID: 11400000, guid: 09d2ea7b8a0709242b9509a9e0c16369, type: 2}
+  - {fileID: 11400000, guid: 95673d8c72be8e84583ce9d011646df8, type: 2}
+  - {fileID: 11400000, guid: 38a013bae868f8945bf00b6fb68df716, type: 2}
+  - {fileID: 11400000, guid: 2b7b39bdd0602bf45b910d38d8201eb0, type: 2}
+  - {fileID: 11400000, guid: c96d7d7b4cfc59d4980848b942ba8251, type: 2}
+  - {fileID: 11400000, guid: b206f41c5f72a23489bcb83ccc9fb235, type: 2}
+  - {fileID: 11400000, guid: bbee86bd16dce81419f5e4423848e49c, type: 2}
+  - {fileID: 11400000, guid: f87242d4791ce5b4ab06d57337a4cc33, type: 2}
+  - {fileID: 11400000, guid: 6f6c8591d921e184bab6477cc13da436, type: 2}
+  - {fileID: 11400000, guid: da8305a856d408f46ba17e4c08a54060, type: 2}
+  - {fileID: 11400000, guid: a08e7a4c3a989a94fb65b69fdf4c74b0, type: 2}
+  - {fileID: 11400000, guid: 2b7b39bdd0602bf45b910d38d8201eb0, type: 2}
+  - {fileID: 11400000, guid: 2b7b39bdd0602bf45b910d38d8201eb0, type: 2}
+  - {fileID: 11400000, guid: 01dde5a607c675d4c9cf5c58504811a1, type: 2}
   DeckNameInput: {fileID: 2118915634}
   ImportInput: {fileID: 1508114453}
   ScrollviewParent: {fileID: 785940653}

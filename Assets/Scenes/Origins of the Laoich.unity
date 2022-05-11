@@ -867,6 +867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpponentDropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -958,6 +962,22 @@ PrefabInstance:
     - target: {fileID: 1218497803306939240, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: isPlayerZone
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
@@ -2970,6 +2990,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3053,6 +3077,22 @@ PrefabInstance:
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
@@ -3984,7 +4024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774645403886483565, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
@@ -4659,7 +4699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774645403886483565, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
@@ -5044,7 +5084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -20.000793, y: 70}
+  m_AnchoredPosition: {x: -20.000854, y: 70}
   m_SizeDelta: {x: 450, y: 450}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1255838833
@@ -6647,6 +6687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OpponentDropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6738,6 +6782,22 @@ PrefabInstance:
     - target: {fileID: 1218497803306939240, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: isPlayerZone
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
@@ -7514,6 +7574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7598,6 +7662,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
 --- !u!1 &1827482454 stripped
@@ -7625,6 +7705,10 @@ PrefabInstance:
     - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Name
       value: OpponentDropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
@@ -7717,6 +7801,22 @@ PrefabInstance:
     - target: {fileID: 1218497803306939240, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: isPlayerZone
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
@@ -7863,7 +7963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -20.000793, y: -85}
+  m_AnchoredPosition: {x: -20.000854, y: -85}
   m_SizeDelta: {x: 450, y: 450}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1867576631
@@ -8213,7 +8313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774645403886483565, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
@@ -8357,7 +8457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774645403886483565, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
@@ -8756,6 +8856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8840,6 +8944,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
 --- !u!1 &2063806717 stripped
@@ -8857,6 +8977,10 @@ PrefabInstance:
     - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Name
       value: DropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
@@ -8942,6 +9066,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
 --- !u!1001 &2093292734
@@ -8954,6 +9094,10 @@ PrefabInstance:
     - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Name
       value: OpponentDropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
@@ -9047,6 +9191,22 @@ PrefabInstance:
       propertyPath: isPlayerZone
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
 --- !u!1001 &2131512393
@@ -9059,6 +9219,10 @@ PrefabInstance:
     - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Name
       value: OpponentDropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
@@ -9151,6 +9315,22 @@ PrefabInstance:
     - target: {fileID: 1218497803306939240, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: isPlayerZone
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
@@ -9271,7 +9451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3774645403886483565, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2fb1dd3486d778479b8a397e3949dae, type: 3}
@@ -9285,6 +9465,10 @@ PrefabInstance:
     - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Name
       value: DropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939238, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_Pivot.x
@@ -9369,6 +9553,22 @@ PrefabInstance:
     - target: {fileID: 1218497803306939239, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a9ff0ed14f94d74a9bd9abf5f399b51, type: 3}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218497803306939243, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f159bb69b11734ca6bcfdb8c5375c3, type: 3}

@@ -39,6 +39,8 @@ public class DeckManager : MonoBehaviour
         DeckNameInput.interactable = true;
         ImportInput.interactable = true;
 
+        LoadDefaultDeck();
+
         // populate the grid with cards 
         Populate();
 
@@ -95,6 +97,23 @@ public class DeckManager : MonoBehaviour
             File.WriteAllLines(path, CustomDeck.Select(x => x.GetComponent<CardStats>().CardAsset.name).ToArray());
         }
     }
+
+    public void LoadDefaultDeck()
+    {
+       List<Card> defaultDeck = Resources.LoadAll("DefaultDeck").ToList().ConvertAll(item => (Card)item);
+
+        string path = Application.persistentDataPath + "/Decks/" + "Default" + ".txt";
+        if (Directory.Exists(Application.persistentDataPath + "/Decks"))
+        {
+            File.WriteAllLines(path, defaultDeck.Select(x => x.CardName).ToArray());
+        }
+        else
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Decks");
+            File.WriteAllLines(path, defaultDeck.Select(x => x.CardName).ToArray());
+        }        
+
+    }    
 
     // a function to import a text file to CustomDeck
     public void ImportDeck()

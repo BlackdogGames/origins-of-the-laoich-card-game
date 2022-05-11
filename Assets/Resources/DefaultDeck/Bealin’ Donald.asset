@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1230d1b6837afa44833456761a4070a, type: 3}
+  m_Name: "Bealin\u2019 Donald"
+  m_EditorClassIdentifier: 
+  ID: 11
+  CardName: "Bealin\u2019 Donald"
+  ManaCost: 6
+  Attack: 2
+  Health: 4
+  CardImage: {fileID: 21300000, guid: f7611535c80db504ab373dedc6f672cc, type: 3}
+  Description: When played, the zone directly across deals -2 Damage, and zones adjacent
+    to it deal -1 Damage
+  IsMonster: 1
+  AbilityTrigger: 1
+  Ability:
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null.DonaldAbility
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}

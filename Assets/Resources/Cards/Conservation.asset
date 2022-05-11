@@ -18,8 +18,29 @@ MonoBehaviour:
   Attack: 0
   Health: 0
   CardImage: {fileID: 21300000, guid: 736d2c0b6e6e580409002668bf57ea4b, type: 3}
-  Description: Prevents one ally from taking Damage for one turn
+  Description: Prevents 1 Ally to the left from taking Damage for one turn
   IsMonster: 0
   AbilityTrigger: 1
   Ability:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: CardAbilities, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null.ConservationAbility
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: GameManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: CardStats, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}

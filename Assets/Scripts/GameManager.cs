@@ -201,29 +201,35 @@ public class GameManager : MonoBehaviour
         // Check for death of cards, delete from scene if dead
         if (_defendingCard.Health <= 0)
         {
-            //remove card from field list
-            if (defendingCard.GetComponent<CardStats>().BelongsToLocalPlayer)
-            {
-                PlayerStatsInstance.FieldCards.Remove(defendingCard);
-                PlayerZones[defendingCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
-                    .IsBeingUsed = false;
-            }
-            else
-            {
-                OppStatsInstance.FieldCards.Remove(defendingCard);
-                OpponentZones[defendingCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
-                    .IsBeingUsed = false;
-            }
-
-            if (defendingCard.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnDestroyed)
-            {
-                //call card ability
-                defendingCard.GetComponent<CardStats>().CardAsset.Ability.Invoke(this, defendingCard.GetComponent<CardStats>());
-            }
-            AudioManager.Instance.Play("SFX_Card_Destroyed");
-            Destroy(defendingCard);
-            Debug.Log("dead");
+            DestroyCard(defendingCard);
         }
+    }
+
+    public void DestroyCard(GameObject defendingCard)
+    {
+        //remove card from field list
+        if (defendingCard.GetComponent<CardStats>().BelongsToLocalPlayer)
+        {
+            PlayerStatsInstance.FieldCards.Remove(defendingCard);
+            PlayerZones[defendingCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
+                .IsBeingUsed = false;
+        }
+        else
+        {
+            OppStatsInstance.FieldCards.Remove(defendingCard);
+            OpponentZones[defendingCard.GetComponent<CardStats>().ZoneID - 1].GetComponent<DroppingZone>()
+                .IsBeingUsed = false;
+        }
+
+        if (defendingCard.GetComponent<CardStats>().CardAsset.AbilityTrigger == Card.CardAbilityTrigger.OnDestroyed)
+        {
+            //call card ability
+            defendingCard.GetComponent<CardStats>().CardAsset.Ability.Invoke(this, defendingCard.GetComponent<CardStats>());
+        }
+
+        AudioManager.Instance.Play("SFX_Card_Destroyed");
+        Destroy(defendingCard);
+        Debug.Log("dead");
     }
 
     public void CardAttackPlayer(GameObject attackingCard, GameObject defendingPlayer)
@@ -282,6 +288,9 @@ public class GameManager : MonoBehaviour
             playerCard.transform.SetParent((playerStats.IsLocalPlayer) ? PlayerArea.transform : OpponentArea.transform, false); // when object is instantiated, set it as child of PlayerArea
             playerStats.HandCards.Add(playerCard);
 
+            //set playercard firstturnplayed to false
+            playerCard.GetComponent<CardStats>().FirstTurnPlayed = false;
+
             // if player stats is the local player, set the card belongs to local player to true
             if (playerStats.IsLocalPlayer)
             {
@@ -326,6 +335,5 @@ public class GameManager : MonoBehaviour
     {
         GameObject.Find("End Turn Button").GetComponent<EndTurnButton>().OnClick();
     }
-    
 }
 

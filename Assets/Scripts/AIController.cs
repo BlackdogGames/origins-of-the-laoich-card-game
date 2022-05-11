@@ -47,7 +47,7 @@ public class AIController : MonoBehaviour
         //runs through the cards in handcards and enables cardback
         foreach (GameObject card in playerStats.HandCards)
         {
-            card.GetComponent<CardStats>().CardBack.SetActive(true);
+            //card.GetComponent<CardStats>().CardBack.SetActive(true);
             card.GetComponent<DragDrop>().enabled = false;
         }
 

@@ -232,39 +232,31 @@ public class CardAbilities : MonoBehaviour
     {
         if (caster.BelongsToLocalPlayer)
         {
-            foreach (GameObject card in gameManager.Player.GetComponent<PlayerStats>().HandCards)
+            // look through player deck and if card is named carwin, move to top of deck
+            for (int i = 0; i < gameManager.Player.GetComponent<PlayerStats>().Deck.Count; i++)
             {
-                if (card.GetComponent<CardStats>().CardAsset.CardName == "Carwen")
+                if (gameManager.Player.GetComponent<PlayerStats>().Deck[i].CardName == "Carwen")
                 {
-                    foreach (GameObject zone in gameManager.PlayerZones)
-                    {
-                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
-                        {
-                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
-                            card.GetComponent<CardStats>().BelongsToLocalPlayer = true;
-                            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(card);
-                            break;
-                        }
-                    }
+                    gameManager.Player.GetComponent<PlayerStats>().Deck
+                        .Insert(0, gameManager.Player.GetComponent<PlayerStats>().Deck[i]);
+                    gameManager.Player.GetComponent<PlayerStats>().Deck.RemoveAt(i);
+                    gameManager.DrawCard(gameManager.Player);
+                    break;
                 }
             }
         }
         else
         {
-            foreach (GameObject card in gameManager.Opponent.GetComponent<PlayerStats>().HandCards)
+            // look through player deck and if card is named carwin, move to top of deck
+            for (int i = 0; i < gameManager.Opponent.GetComponent<PlayerStats>().Deck.Count; i++)
             {
-                if (card.GetComponent<CardStats>().CardAsset.CardName == "Carwen")
+                if (gameManager.Opponent.GetComponent<PlayerStats>().Deck[i].CardName == "Carwen")
                 {
-                    foreach (GameObject zone in gameManager.OpponentZones)
-                    {
-                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
-                        {
-                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
-                            card.GetComponent<CardStats>().BelongsToLocalPlayer = false;
-                            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(card);
-                            break;
-                        }
-                    }
+                    gameManager.Opponent.GetComponent<PlayerStats>().Deck
+                        .Insert(0, gameManager.Opponent.GetComponent<PlayerStats>().Deck[i]);
+                    gameManager.Opponent.GetComponent<PlayerStats>().Deck.RemoveAt(i);
+                    gameManager.DrawCard(gameManager.Opponent);
+                    break;
                 }
             }
         }
@@ -275,39 +267,31 @@ public class CardAbilities : MonoBehaviour
     {
         if (caster.BelongsToLocalPlayer)
         {
-            foreach (GameObject card in gameManager.Player.GetComponent<PlayerStats>().HandCards)
+            // look through player deck and if card is named carwin, move to top of deck
+            for (int i = 0; i < gameManager.Player.GetComponent<PlayerStats>().Deck.Count; i++)
             {
-                if (card.GetComponent<CardStats>().CardAsset.CardName == "Arvil")
+                if (gameManager.Player.GetComponent<PlayerStats>().Deck[i].CardName == "Arvil")
                 {
-                    foreach (GameObject zone in gameManager.PlayerZones)
-                    {
-                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
-                        {
-                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
-                            card.GetComponent<CardStats>().BelongsToLocalPlayer = true;
-                            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(card);
-                            break;
-                        }
-                    }
+                    gameManager.Player.GetComponent<PlayerStats>().Deck
+                        .Insert(0, gameManager.Player.GetComponent<PlayerStats>().Deck[i]);
+                    gameManager.Player.GetComponent<PlayerStats>().Deck.RemoveAt(i);
+                    gameManager.DrawCard(gameManager.Player);
+                    break;
                 }
             }
         }
         else
         {
-            foreach (GameObject card in gameManager.Opponent.GetComponent<PlayerStats>().HandCards)
+            // look through player deck and if card is named carwin, move to top of deck
+            for (int i = 0; i < gameManager.Opponent.GetComponent<PlayerStats>().Deck.Count; i++)
             {
-                if (card.GetComponent<CardStats>().CardAsset.CardName == "Arvil")
+                if (gameManager.Opponent.GetComponent<PlayerStats>().Deck[i].CardName == "Arvil")
                 {
-                    foreach (GameObject zone in gameManager.OpponentZones)
-                    {
-                        if (!zone.GetComponent<DroppingZone>().IsBeingUsed)
-                        {
-                            card.GetComponent<DragDrop>().PlayCardToZone(zone, false);
-                            card.GetComponent<CardStats>().BelongsToLocalPlayer = false;
-                            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(card);
-                            break;
-                        }
-                    }
+                    gameManager.Opponent.GetComponent<PlayerStats>().Deck
+                        .Insert(0, gameManager.Opponent.GetComponent<PlayerStats>().Deck[i]);
+                    gameManager.Opponent.GetComponent<PlayerStats>().Deck.RemoveAt(i);
+                    gameManager.DrawCard(gameManager.Opponent);
+                    break;
                 }
             }
         }

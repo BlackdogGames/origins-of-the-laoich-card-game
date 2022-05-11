@@ -18,7 +18,7 @@ public class CardStats : MonoBehaviour
     public string CardName;
 
     public bool BelongsToLocalPlayer;
-    public bool FirstTurnPlayed = true;
+    public bool FirstTurnPlayed = false;
     public bool HasAttackedOpponent = false;
 
     public bool Invincible = false;
@@ -89,6 +89,11 @@ public class CardStats : MonoBehaviour
         ManaCostText.text = ManaCost.ToString();
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();
+
+        if (!isMonster && FirstTurnPlayed && ZoneID != 0)
+        {
+            Damage(999);
+        }
     }
 
     public void Damage(int amount)
@@ -103,6 +108,13 @@ public class CardStats : MonoBehaviour
         {
             // Calls AudioManager to PLay a requested Sound.
             AudioManager.Instance.Play("SFX_Card_Block");
+        }
+
+
+        //if health is lower than or equal to 0, remove card from players fieldlist, set zone used to false, and destroy card
+        if (Health <= 0)
+        {
+            GameObject.Find("GameManager").GetComponent<GameManager>().DestroyCard(gameObject);
         }
     }
 }

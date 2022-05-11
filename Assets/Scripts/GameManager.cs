@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         string path = Application.persistentDataPath + "/Decks/" + deckName; // append the filepath
         //  PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
         PlayerStatsInstance.Deck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
+        OppStatsInstance.Deck = System.IO.File.ReadAllLines(Application.persistentDataPath + "/Decks/Default.txt").ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
 
         // Randomise player deck order
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();

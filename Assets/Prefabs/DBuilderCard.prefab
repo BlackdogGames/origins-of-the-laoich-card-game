@@ -1319,7 +1319,6 @@ GameObject:
   - component: {fileID: 8568467314820635913}
   - component: {fileID: 2324592390211477317}
   - component: {fileID: 6939564763260484915}
-  - component: {fileID: 400287586270220438}
   m_Layer: 6
   m_Name: DBuilderCard
   m_TagString: Untagged
@@ -1538,10 +1537,14 @@ MonoBehaviour:
   Health: 0
   ZoneID: 0
   IsDuplicate: 0
+  isMonster: 0
   CardName: 
   BelongsToLocalPlayer: 0
   FirstTurnPlayed: 1
   HasAttackedOpponent: 0
+  Invincible: 0
+  MonsterObjects: []
+  SpellObjects: []
   CardNameText: {fileID: 1607624615394539970}
   ManaCostText: {fileID: 5935881021024080899}
   AttackText: {fileID: 8750811206786983228}
@@ -1549,21 +1552,6 @@ MonoBehaviour:
   DescriptionText: {fileID: 3019313308113452486}
   CardBack: {fileID: 0}
   CardImage: {fileID: 4706527636588620104}
---- !u!114 &400287586270220438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8790778130984887567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.1327753, g: 0, b: 1, a: 1}
-  m_EffectDistance: {x: 0.5, y: 0.1}
-  m_UseGraphicAlpha: 0
 --- !u!1 &9186342190521048919
 GameObject:
   m_ObjectHideFlags: 0

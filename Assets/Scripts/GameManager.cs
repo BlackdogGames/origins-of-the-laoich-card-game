@@ -48,8 +48,7 @@ public class GameManager : MonoBehaviour
         string path = Application.persistentDataPath + "/Decks/" + deckName; // append the filepath
         //  PlayerStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
         PlayerStatsInstance.Deck = System.IO.File.ReadAllLines(path).ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
-
-        OppStatsInstance.Deck = Resources.LoadAll("Cards").ToList().ConvertAll(item => (Card)item);
+        OppStatsInstance.Deck = System.IO.File.ReadAllLines(Application.persistentDataPath + "/Decks/Default.txt").ToList().ConvertAll(item => (Card)Resources.Load("Cards/" + item));
 
         // Randomise player deck order
         PlayerStatsInstance.Deck = PlayerStatsInstance.Deck.OrderBy(card => _rng.Next()).ToList();
@@ -70,6 +69,10 @@ public class GameManager : MonoBehaviour
         // Set player and opponent maxmana to 1
         PlayerStatsInstance.MaxMana = 1;
         OppStatsInstance.MaxMana = 1;
+
+        // Set player and opponent current mana to 1
+        PlayerStatsInstance.Mana = PlayerStatsInstance.MaxMana;
+        OppStatsInstance.Mana = OppStatsInstance.MaxMana;
 
         for (int i = 0; i < 5; i++)
         {
@@ -271,24 +274,23 @@ public class GameManager : MonoBehaviour
     {
         PlayerStats playerStats = player.GetComponent<PlayerStats>();
 
-        if (playerStats.Deck.Count > 0 && playerStats.IsLocalPlayer)
+        if (playerStats.Deck.Count > 0)
         {
             GameObject playerCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity); //  where a random card is instantiated from the list
-            playerCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
+            playerCard.GetComponent<CardStats>().CardAsset = playerStats.Deck[0];
             playerStats.Deck.RemoveAt(0);
-            playerCard.transform.SetParent(PlayerArea.transform, false); // when object is instantiated, set it as child of PlayerArea
+            playerCard.transform.SetParent((playerStats.IsLocalPlayer) ? PlayerArea.transform : OpponentArea.transform, false); // when object is instantiated, set it as child of PlayerArea
             playerStats.HandCards.Add(playerCard);
 
-            playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
-        } else if (playerStats.Deck.Count > 0 && !playerStats.IsLocalPlayer)
-        {
-            GameObject enemyCard = Instantiate(CardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            enemyCard.GetComponent<CardStats>().CardAsset = PlayerStatsInstance.Deck[0];
-            playerStats.Deck.RemoveAt(0);
-            enemyCard.transform.SetParent(OpponentArea.transform, false); // child of opponent area
-            playerStats.HandCards.Add(enemyCard);
-
-            enemyCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+            // if player stats is the local player, set the card belongs to local player to true
+            if (playerStats.IsLocalPlayer)
+            {
+                playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = true;
+            }
+            else
+            {
+                playerCard.GetComponent<CardStats>().BelongsToLocalPlayer = false;
+            }
         }
 
         if (playerStats.Deck.Count == 0)
@@ -327,63 +329,3 @@ public class GameManager : MonoBehaviour
     
 }
 
-//class that implements monte carlo tree search
-//public class MCTS
-//{
-//    private int maxDepth = 5;
-//    private int maxIterations = 100;
-//    private int maxSimulations = 10;
-//
-//    public int MaxDepth
-//    {
-//        get { return maxDepth; }
-//        set { maxDepth = value; }
-//    }
-//
-//    public int MaxIterations
-//    {
-//        get { return maxIterations; }
-//        set { maxIterations = value; }
-//    }
-//
-//    public int MaxSimulations
-//    {
-//        get { return maxSimulations; }
-//        set { maxSimulations = value; }
-//    }
-//
-//    public int Evaluate(GameState state)
-//    {
-//        //return state.Evaluate();
-//        return 0;
-//    }
-//
-//    public GameState Select(GameState state)
-//    {
-//        //return state.Select();
-//        return null;
-//    }
-//
-//    public GameState Simulate(GameState state)
-//    {
-//        //return state.Simulate();
-//        return null;
-//    }
-//
-//    public GameState Search(GameState state)
-//    {
-//        int iterations = 0;
-//        int simulations = 0;
-//
-//        while (iterations < maxIterations && simulations < maxSimulations)
-//        {
-//            GameState selected = Select(state);
-//            GameState simulated = Simulate(selected);
-//            int score = Evaluate(simulated);
-//            state.Update(score);
-//            simulations++;
-//        }
-//
-//        return state;
-//    }
-//}

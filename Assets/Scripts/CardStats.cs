@@ -23,6 +23,9 @@ public class CardStats : MonoBehaviour
 
     public bool Invincible = false;
 
+    public GameObject[] MonsterObjects;
+    public GameObject[] SpellObjects;
+
     // Assigned through the inspector
     public TMP_Text CardNameText;
     public TMP_Text ManaCostText;
@@ -50,6 +53,35 @@ public class CardStats : MonoBehaviour
         ManaCostText.text = ManaCost.ToString();
         AttackText.text = Attack.ToString();
         HealthText.text = Health.ToString();
+
+        if (CardAsset.IsMonster)
+        {
+            // Enable monster objects
+            for (int i = 0; i < MonsterObjects.Length; i++)
+            {
+                MonsterObjects[i].SetActive(true);
+            }
+
+            // Disable spell objects
+            for (int i = 0; i < SpellObjects.Length; i++)
+            {
+                SpellObjects[i].SetActive(false);
+            }
+        }
+        else
+        {
+            // Enable spell objects
+            for (int i = 0; i < SpellObjects.Length; i++)
+            {
+                SpellObjects[i].SetActive(true);
+            }
+
+            // Disable monster objects
+            for (int i = 0; i < MonsterObjects.Length; i++)
+            {
+                MonsterObjects[i].SetActive(false);
+            }
+        }
     }
 
     private void Update()
@@ -61,7 +93,7 @@ public class CardStats : MonoBehaviour
 
     public void Damage(int amount)
     {
-        if (!Invincible)
+        if (!Invincible && amount >= 0)
         {
             Health -= amount;
             // Calls AudioManager to PLay a requested Sound.

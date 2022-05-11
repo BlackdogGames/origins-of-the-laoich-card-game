@@ -19,10 +19,10 @@ public class CardAbilities : MonoBehaviour
             if (target.GetComponent<CardStats>().Health < target.GetComponent<CardStats>().CardAsset.Health)
             {
                 target.GetComponent<CardStats>().Health++;
+                AudioManager.Instance.Play("SFX_Card_Ability_Heal");
+
             }
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
     public static void DonaldAbility(GameManager gameManager, CardStats caster)
@@ -39,15 +39,15 @@ public class CardAbilities : MonoBehaviour
             if (casterId == target.GetComponent<CardStats>().ZoneID)
             {
                 target.GetComponent<CardStats>().Damage(2);
+                AudioManager.Instance.Play("SFX_Card_Ability_Generic");
             }
             else if (casterId - 1 == target.GetComponent<CardStats>().ZoneID ||
                      casterId + 1 == target.GetComponent<CardStats>().ZoneID)
             {
                 target.GetComponent<CardStats>().Damage(1);
+                AudioManager.Instance.Play("SFX_Card_Ability_Generic");
             }
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void MoragAbility(GameManager gameManager, CardStats caster)
@@ -72,9 +72,8 @@ public class CardAbilities : MonoBehaviour
             //Increase target health and attack by 1
             target.GetComponent<CardStats>().Health++;
             target.GetComponent<CardStats>().Attack++;
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void GregorAbility(GameManager gameManager, CardStats caster)
@@ -100,9 +99,8 @@ public class CardAbilities : MonoBehaviour
             target.GetComponent<CardStats>().Health = target.GetComponent<CardStats>().CardAsset.Health;
             target.GetComponent<CardStats>().Attack = target.GetComponent<CardStats>().CardAsset.Attack;
             target.GetComponent<CardStats>().ManaCost = target.GetComponent<CardStats>().CardAsset.ManaCost;
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void MatthewAbility(GameManager gameManager, CardStats caster)
@@ -120,10 +118,9 @@ public class CardAbilities : MonoBehaviour
             if (casterId == target.GetComponent<CardStats>().ZoneID)
             {
                 target.GetComponent<CardStats>().Attack -= 2;
+                AudioManager.Instance.Play("SFX_Card_Ability_Generic");
             }
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void LachlanAbility(GameManager gameManager, CardStats caster)
@@ -142,6 +139,7 @@ public class CardAbilities : MonoBehaviour
             newCard.GetComponent<CardStats>().ZoneID = zoneId;
 
             gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
         else
         {
@@ -154,6 +152,7 @@ public class CardAbilities : MonoBehaviour
             newCard.GetComponent<CardStats>().ZoneID = zoneId;
 
             gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
 
         newCard.GetComponent<DragDrop>().PlayCardToZone(zoneSummon, false);
@@ -172,9 +171,8 @@ public class CardAbilities : MonoBehaviour
         if (target != null)
         {
             target.GetComponent<CardStats>().Attack--;
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Generic");
     }
 
     public static void CeasgAbility(GameManager gameManager, CardStats caster)
@@ -212,9 +210,8 @@ public class CardAbilities : MonoBehaviour
         foreach (GameObject target in targets)
         {
             target.GetComponent<CardStats>().Health++;
+            AudioManager.Instance.Play("SFX_Card_Ability_Heal");
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
     public static void CuSithAbility(GameManager gameManager, CardStats caster)
@@ -226,10 +223,9 @@ public class CardAbilities : MonoBehaviour
             {
                 target.GetComponent<CardStats>().Attack--;
                 target.GetComponent<CardStats>().Damage(1);
+                AudioManager.Instance.Play("SFX_Card_Ability_Howl");
             }
         }
-
-        AudioManager.Instance.Play("SFX_Card_Ability_Howl");
     }
 
     public static void ArvilAbility(GameManager gameManager, CardStats caster)
@@ -469,6 +465,7 @@ public class CardAbilities : MonoBehaviour
                 if (card.GetComponent<CardStats>().ZoneID == targetId)
                 {
                     card.GetComponent<CardStats>().Health++;
+                    AudioManager.Instance.Play("SFX_Card_Ability_Heal");
                 }
             }
             
@@ -482,13 +479,13 @@ public class CardAbilities : MonoBehaviour
                 if (card.GetComponent<CardStats>().ZoneID == targetId)
                 {
                     card.GetComponent<CardStats>().Health++;
+                    AudioManager.Instance.Play("SFX_Card_Ability_Heal");
                 }
             }
 
         }
         // Destroy spell card
         DestroySpell(gameManager, caster);
-        AudioManager.Instance.Play("SFX_Card_Ability_Heal");
     }
 
     public static void WaterBubbleAbility(GameManager gameManager, CardStats caster)
@@ -509,8 +506,8 @@ public class CardAbilities : MonoBehaviour
         if (fieldCard != null)
         {
             fieldCard.GetComponent<CardStats>().FirstTurnPlayed = true;
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
-
         // Destroy spell card
         DestroySpell(gameManager, caster);
     }
@@ -530,6 +527,7 @@ public class CardAbilities : MonoBehaviour
         foreach (GameObject card in otherPlayerFieldCards)
         {
             card.GetComponent<CardStats>().Damage(2);
+            AudioManager.Instance.Play("SFX_Card_Attack");
         }
 
         // Get field cards of the local player
@@ -539,8 +537,8 @@ public class CardAbilities : MonoBehaviour
         foreach (GameObject card in localPlayerFieldCards)
         {
             card.GetComponent<CardStats>().Health += 2;
+            AudioManager.Instance.Play("SFX_Card_Ability_Heal");
         }
-
         // Destroy spell card
         DestroySpell(gameManager, caster);
     }
@@ -555,7 +553,7 @@ public class CardAbilities : MonoBehaviour
 
         // Deal 2 damage to other player
         otherPlayer.GetComponent<PlayerStats>().Health -= 2;
-
+        AudioManager.Instance.Play("SFX_Card_Attack");
         // Destroy spell card
         DestroySpell(gameManager, caster);
     }
@@ -575,8 +573,8 @@ public class CardAbilities : MonoBehaviour
         foreach (GameObject card in localPlayerFieldCards)
         {
             card.GetComponent<CardStats>().Health += 2;
+            AudioManager.Instance.Play("SFX_Card_Ability_Heal");
         }
-
         // Destroy spell card
         DestroySpell(gameManager, caster);
     }
@@ -599,6 +597,7 @@ public class CardAbilities : MonoBehaviour
             if (card.GetComponent<CardStats>().CardName == "The Boobrie")
             {
                 healthIncrease = 2;
+                AudioManager.Instance.Play("SFX_Card_Ability_Heal");
                 break;
             }
         }
@@ -608,6 +607,7 @@ public class CardAbilities : MonoBehaviour
             if (card.GetComponent<CardStats>().CardName == "The Boobrie")
             {
                 healthIncrease = 2;
+                AudioManager.Instance.Play("SFX_Card_Ability_Heal");
                 break;
             }
         }
@@ -627,6 +627,7 @@ public class CardAbilities : MonoBehaviour
         if (cardToTheRight != null)
         {
             cardToTheRight.GetComponent<CardStats>().Health += healthIncrease;
+            AudioManager.Instance.Play("SFX_Card_Ability_Heal");
         }
 
         // Destroy spell card
@@ -655,8 +656,8 @@ public class CardAbilities : MonoBehaviour
         if (cardToTheRight != null)
         {
             cardToTheRight.GetComponent<CardStats>().Invincible = true;
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
-
         // Destroy spell card
         DestroySpell(gameManager, caster);
     }
@@ -683,6 +684,7 @@ public class CardAbilities : MonoBehaviour
         if (cardToTheLeft != null)
         {
             cardToTheLeft.GetComponent<CardStats>().Invincible = true;
+            AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
 
         // Destroy spell card

@@ -13,6 +13,6 @@ public class ManaBar : MonoBehaviour
     void Update()
     {
         _playerStats = Player.GetComponent<PlayerStats>();
-        ManaText.text = "MANA: " + _playerStats.Mana.ToString();
+        ManaText.text = "" + _playerStats.Mana.ToString();
     }
 }

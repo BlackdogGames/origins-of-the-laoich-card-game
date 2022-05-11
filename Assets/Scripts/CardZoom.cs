@@ -12,6 +12,7 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private GameObject _zoomCard;
     public Color Red;
     public Color Blue;
+    public Color Grey;
 
     GameManager _gameManager;
     //
@@ -27,6 +28,8 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         Red = new Color(1, 0, 0, 1);
         Blue = new Color(0, 0, 1, 1);
+        Grey = new Color(0.5f, 0.5f, 0.5f, 1);
+
 
         Canvas = GameObject.Find("Main Canvas");
         gameObject.GetComponent<Outline>().enabled = false;
@@ -46,7 +49,15 @@ public class CardZoom : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
         else
         {
-            gameObject.GetComponent<Outline>().effectColor = Blue;
+            if (gameObject.GetComponent<CardStats>().ManaCost > _gameManager.PlayerStatsInstance.Mana) // if the card mana cost is more than the players current mana
+            {
+                gameObject.GetComponent<Outline>().effectColor = Grey; //  grey the card out 
+            }
+            else
+            {
+                gameObject.GetComponent<Outline>().effectColor = Blue;
+            }
+           
         }
 
         if (_zoomCard)

@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 2
   Health: 2
   CardImage: {fileID: 21300000, guid: 4c73dcd1afe9e6c49a6dd375f9054cc9, type: 3}
-  Description: On attack, decrease the attacked cards attack by 1
+  Description: On attack, Decrease the attacked cards attack by -1D
   IsMonster: 1
   AbilityTrigger: 3
   Ability:

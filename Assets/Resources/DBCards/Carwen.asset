@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 5
   Health: 4
   CardImage: {fileID: 21300000, guid: 245eb0937dedc5c4ca1e439a93987b2b, type: 3}
-  Description: When Destroyed summon Arvil in Hand
+  Description: When Destroyed, Draw Arvil to Hand provided they are in your Deck
   IsMonster: 1
   AbilityTrigger: 2
   Ability:

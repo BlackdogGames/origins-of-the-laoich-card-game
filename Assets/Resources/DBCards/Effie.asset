@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 3
   Health: 3
   CardImage: {fileID: 21300000, guid: 18f52ab1477c7744baea4190e9917ce5, type: 3}
-  Description: When played, Heal all Damaged Allies by +1
+  Description: When Played, Heal all Damaged Allies by +1HP
   IsMonster: 1
   AbilityTrigger: 1
   Ability:

@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 1
   Health: 2
   CardImage: {fileID: 21300000, guid: 1bc824cb4b407fb429300509b5fdab8e, type: 3}
-  Description: When Played Empower 1 Ally to the left (+1/+1)
+  Description: When Played, Empower 1 Ally to the left +1HP/+1D
   IsMonster: 1
   AbilityTrigger: 1
   Ability:

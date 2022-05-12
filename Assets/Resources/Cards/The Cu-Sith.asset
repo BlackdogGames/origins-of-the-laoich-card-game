@@ -19,7 +19,7 @@ MonoBehaviour:
   Health: 6
   CardImage: {fileID: 21300000, guid: ad5e5830d0efec84e8ef6d2a42cf01d9, type: 3}
   Description: "Howls at the end of the player\u2019s turn, reducing the HP and Damage
-    of any enemy units that attacked. "
+    of any enemy units that attacked."
   IsMonster: 1
   AbilityTrigger: 5
   Ability:

@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 0
   Health: 0
   CardImage: {fileID: 21300000, guid: 6cf68d4c1e01dbd48bf35095d3a29bef, type: 3}
-  Description: Deals 2 Direct Damage to the player
+  Description: Deals 2D to the Opponent
   IsMonster: 0
   AbilityTrigger: 1
   Ability:

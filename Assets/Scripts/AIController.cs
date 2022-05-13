@@ -11,6 +11,11 @@ public class AIController : MonoBehaviour
 
     public float TimeSinceStartOfTurn;
 
+    public float MinTimeBetweenActions = 1f;
+    public float MaxTimeBetweenActions = 3f;
+
+    public bool IsActive = false;
+
     //pair of rule and action
     public class RuleActionPair
     {
@@ -38,6 +43,7 @@ public class AIController : MonoBehaviour
 
         ruleActionPairs = new List<RuleActionPair>();
         ruleActionPairs.Add(new RuleActionPair(CheckIfPlayableCard, GetHighestManaCard));
+        ruleActionPairs.Add(new RuleActionPair(CheckIfAttackableCard, AttackWithAllCards));
         ruleActionPairs.Add(new RuleActionPair(AlwaysTrue, EndTurn));
     }
 
@@ -57,34 +63,32 @@ public class AIController : MonoBehaviour
             card.GetComponent<CardStats>().CardBack.SetActive(false);
         }
 
-        TimeSinceStartOfTurn += Time.deltaTime;
-
         //if players turn, check list of rules and actions and execute the first one that returns true
-        if ((playerStats.IsLocalPlayer && GameManager.PlayersTurn) || (!playerStats.IsLocalPlayer && !GameManager.PlayersTurn))
+        if ((playerStats.IsLocalPlayer && GameManager.PlayersTurn) ||
+            (!playerStats.IsLocalPlayer && !GameManager.PlayersTurn))
         {
-            //wait 2 seconds before checking rules
-            if (TimeSinceStartOfTurn > 2)
+            if (!IsActive)
             {
-                foreach (RuleActionPair pair in ruleActionPairs)
-                {
-                    try
-                    {
-                        if (pair.rule())
-                        {
-                            pair.action();
-                            break;
-                        }
-
-                    } catch (System.Exception e)
-                    {
-                        EndTurn();
-                    }
-                }
+                IsActive = true;
+                StartCoroutine(RunRules());
             }
         }
-        else
+    }
+
+    public IEnumerator RunRules()
+    {
+        foreach (RuleActionPair pair in ruleActionPairs)
         {
-            TimeSinceStartOfTurn = 0;
+            yield return new WaitForSeconds(Random.Range(MinTimeBetweenActions, MaxTimeBetweenActions));
+            if (pair.rule())
+            {
+                //yield for random amount of time between minactiontime and maxactiontime
+                pair.action();
+                break;
+            }
+            
+            yield return new WaitForSeconds(Random.Range(MinTimeBetweenActions, MaxTimeBetweenActions));
+            IsActive = false;
         }
     }
 
@@ -93,9 +97,38 @@ public class AIController : MonoBehaviour
         //Call card play function on drag drop component
     }
 
-    public void AttackWithCard()
+    public void AttackWithCard(GameObject card)
     {
         //Targeting logic
+
+        // find card in fieldcards of other player playerstats that matches the zoneid of card
+        if (gameObject == GameManager.Player)
+        {
+            //find card in fieldcards of opponent that matches the zoneid of card
+            foreach (GameObject opponentCard in GameManager.Opponent.GetComponent<PlayerStats>().FieldCards)
+            {
+                if (opponentCard.GetComponent<CardStats>().ZoneID == card.GetComponent<CardStats>().ZoneID)
+                {
+                    //call attack function on card
+                    GameManager.CardAttackCard(card, opponentCard);
+                    break;
+                }
+            }
+        }
+        else if
+            (gameObject == GameManager.Opponent)
+        {
+            //find card in fieldcards of player that matches the zoneid of card
+            foreach (GameObject playerCard in GameManager.Player.GetComponent<PlayerStats>().FieldCards)
+            {
+                if (playerCard.GetComponent<CardStats>().ZoneID == card.GetComponent<CardStats>().ZoneID)
+                {
+                    //call attack function on card
+                    GameManager.CardAttackCard(card, playerCard);
+                    break;
+                }
+            }
+        }
     }
 
     public void InvokeCardAbility()
@@ -121,6 +154,19 @@ public class AIController : MonoBehaviour
         foreach (GameObject card in playerStats.HandCards)
         {
             if (card.GetComponent<CardStats>().ManaCost <= playerStats.Mana)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //function that checks fieldcards and returns true if it has a card that can attack
+    public bool CheckIfAttackableCard()
+    {
+        foreach (GameObject card in playerStats.FieldCards)
+        {
+            if (!card.GetComponent<CardStats>().FirstTurnPlayed && !playerStats.IsFirstTurn)
             {
                 return true;
             }
@@ -170,6 +216,26 @@ public class AIController : MonoBehaviour
                 
                 break;
             }
+        }
+    }
+
+    //function that attacks with all available cards
+    public void AttackWithAllCards()
+    {
+        //get all cards that can attack
+        List<GameObject> attackableCards = new List<GameObject>();
+        foreach (GameObject card in playerStats.FieldCards)
+        {
+            if (!card.GetComponent<CardStats>().FirstTurnPlayed && !playerStats.IsFirstTurn)
+            {
+                attackableCards.Add(card);
+            }
+        }
+
+        //attack with each card
+        foreach (GameObject card in attackableCards)
+        {
+            AttackWithCard(card);
         }
     }
 

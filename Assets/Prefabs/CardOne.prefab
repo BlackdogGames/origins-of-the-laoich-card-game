@@ -1588,6 +1588,7 @@ GameObject:
   - component: {fileID: 3341440265347781210}
   - component: {fileID: 7949973896154394668}
   - component: {fileID: -8389175650262524535}
+  - component: {fileID: 7343926953406937998}
   m_Layer: 6
   m_Name: CardOne
   m_TagString: Untagged
@@ -1933,6 +1934,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0.1327753, g: 0, b: 1, a: 1}
   m_EffectDistance: {x: 0.5, y: 0.1}
   m_UseGraphicAlpha: 0
+--- !u!114 &7343926953406937998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638656579416893456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964289648b0594e4bb4dd1c1e7797738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8656526083582456250
 GameObject:
   m_ObjectHideFlags: 0

@@ -242,6 +242,8 @@ public class GameManager : MonoBehaviour
 
     public void CardAttackPlayer(GameObject attackingCard, GameObject defendingPlayer)
     {
+        attackingCard.GetComponent<CardAnimator>().AnimateCardAttack(); // play the card animation
+        
         // Subracts the cards attack damage from the player health
         _attackingCard = attackingCard.GetComponent<CardStats>();
         PlayerStats defendingPlayerStats = defendingPlayer.GetComponent<PlayerStats>();

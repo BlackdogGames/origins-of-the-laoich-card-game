@@ -8,7 +8,7 @@ public class CardAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentInParent<GridLayoutGroup>().enabled = true;
+        //GetComponentInParent<GridLayoutGroup>().enabled = true;
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class CardAnimator : MonoBehaviour
 
     public void AnimateCardAttack()
     {
-        StartCoroutine(AnimateCard());
+        StartCoroutine(AttackAnim());
     }
     public void AnimateCardHit()
     {
@@ -27,10 +27,12 @@ public class CardAnimator : MonoBehaviour
     }
     
     //coroutine
-    public IEnumerator AnimateCard()
+    public IEnumerator AttackAnim()
     {
         //disable parent object grid layout group component
         GetComponentInParent<GridLayoutGroup>().enabled = false;
+
+        int direction = GetComponent<CardStats>().BelongsToLocalPlayer ? 1 : -1;
 
         float timer = 0;
 
@@ -38,11 +40,11 @@ public class CardAnimator : MonoBehaviour
         float speed = 0.01f;
         float acceleration = 8.0f;
         float currentY = transform.position.y;
-        while (timer < .25f)
+        while (timer < 0.25f)
         {
             timer += Time.deltaTime;
             currentY += speed * Time.deltaTime;
-            speed += acceleration * Time.deltaTime;
+            speed += acceleration * Time.deltaTime * direction;
             transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
             yield return null;
         }
@@ -51,7 +53,7 @@ public class CardAnimator : MonoBehaviour
         {
             timer += Time.deltaTime;
             currentY -= speed * Time.deltaTime;
-            speed -= acceleration * Time.deltaTime;
+            speed -= acceleration * Time.deltaTime * direction;
             transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
             yield return null;
         }

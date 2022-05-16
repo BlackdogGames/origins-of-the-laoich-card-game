@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4948545848460276960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1907,11 +1907,9 @@ MonoBehaviour:
   - {fileID: 5441174843640840224}
   - {fileID: 4119932069177605146}
   - {fileID: 5822895718872259323}
-  - {fileID: 6907114054673665498}
   SpellObjects:
   - {fileID: 8015589685102716499}
   - {fileID: 4533510779061281817}
-  - {fileID: 3479940379744657545}
   CardNameText: {fileID: 7168327372764286176}
   ManaCostText: {fileID: 34328829130089339}
   AttackText: {fileID: 2090796141120252948}

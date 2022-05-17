@@ -227,7 +227,6 @@ public class CardAbilities : MonoBehaviour
             }
         }
     }
-
     public static void ArvilAbility(GameManager gameManager, CardStats caster)
     {
         if (caster.BelongsToLocalPlayer)
@@ -498,31 +497,42 @@ public class CardAbilities : MonoBehaviour
 
     public static void TidalWaveAbility(GameManager gameManager, CardStats caster)
     {
-        // Get which players turn it is
-        bool isLocalPlayer = caster.BelongsToLocalPlayer;
-
-        // Get the player that is not the local player
-        GameObject otherPlayer = isLocalPlayer ? gameManager.Opponent : gameManager.Player;
-
-        // Get field cards of the other player
-        List<GameObject> otherPlayerFieldCards = otherPlayer.GetComponent<PlayerStats>().FieldCards;
-
-        // Damage all field cards of the other player by 2
-        foreach (GameObject card in otherPlayerFieldCards)
+        try
         {
-            card.GetComponent<CardStats>().Damage(2);
-            AudioManager.Instance.Play("SFX_Card_Attack");
+            // Get which players turn it is
+            bool isLocalPlayer = caster.BelongsToLocalPlayer;
+
+            // Get the player that is not the local player
+            GameObject otherPlayer = isLocalPlayer ? gameManager.Opponent : gameManager.Player;
+
+            // Get field cards of the other player
+            List<GameObject> otherPlayerFieldCards = otherPlayer.GetComponent<PlayerStats>().FieldCards;
+
+            // Damage all field cards of the other player by 2
+            foreach (GameObject card in otherPlayerFieldCards)
+            {
+                card.GetComponent<CardStats>().Damage(2);
+                AudioManager.Instance.Play("SFX_Card_Attack");
+            }
+
+            // Get field cards of the local player
+            List<GameObject> localPlayerFieldCards = gameManager.Player.GetComponent<PlayerStats>().FieldCards;
+
+            // Heal all field cards of the local player by 2
+            foreach (GameObject card in localPlayerFieldCards)
+            {
+                card.GetComponent<CardStats>().Health += 2;
+                AudioManager.Instance.Play("SFX_Card_Ability_Heal");
+            }
+        }
+        catch (Exception e)
+        {
+            // Destroy spell card
+            DestroySpell(gameManager, caster);
+
+            return;
         }
 
-        // Get field cards of the local player
-        List<GameObject> localPlayerFieldCards = gameManager.Player.GetComponent<PlayerStats>().FieldCards;
-
-        // Heal all field cards of the local player by 2
-        foreach (GameObject card in localPlayerFieldCards)
-        {
-            card.GetComponent<CardStats>().Health += 2;
-            AudioManager.Instance.Play("SFX_Card_Ability_Heal");
-        }
         // Destroy spell card
         DestroySpell(gameManager, caster);
     }

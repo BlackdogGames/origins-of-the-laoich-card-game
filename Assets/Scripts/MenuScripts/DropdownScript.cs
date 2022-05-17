@@ -40,15 +40,21 @@ public class DropdownScript : MonoBehaviour
             }
         }
 
+        //remove the last 4 characters of each option in dropoptions
+        for (int i = 0; i < m_DropOptions.Count; i++)
+        {
+            m_DropOptions[i] = m_DropOptions[i].Remove(m_DropOptions[i].Length - 4);
+        }
+
         Dropper.AddOptions(m_DropOptions);
         //Dropper.
     }
 
     private void Update()
     {
-        
-        FileName = Dropper.options[Dropper.value].text;
-      
+
+        FileName = Dropper.options[Dropper.value].text + ".txt";
+
         //Debug.Log(fileName);
     }
 

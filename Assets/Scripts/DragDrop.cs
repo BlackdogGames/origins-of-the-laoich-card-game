@@ -64,7 +64,7 @@ public class DragDrop : MonoBehaviour
     //
     void Update()
     {
-        if (_isDragging)
+        if (_isDragging && !GetComponent<CardStats>().IsPlayed)
         {
             transform.position =
                 Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
@@ -369,7 +369,7 @@ public class DragDrop : MonoBehaviour
         //
         public void StartDrag()
         {
-            if (!_isOverDropZone)
+            if (!_isOverDropZone && !GetComponent<CardStats>().IsPlayed)
             {
                 _startParent = transform.parent.gameObject;
                 _startPosition = transform.position; // logs the start position (where the card would spawn)
@@ -388,11 +388,11 @@ public class DragDrop : MonoBehaviour
                     (_gameManager.PlayersTurn)
                         ? _gameManager.PlayerStatsInstance
                         : _gameManager
-                            .OppStatsInstance)) // Ternary statement: shorthand If statement. if the player has enough mana, play the card and decrease player mana
+                            .OppStatsInstance) && !GetComponent<CardStats>().IsPlayed) // Ternary statement: shorthand If statement. if the player has enough mana, play the card and decrease player mana
             {
                 PlayCardToZone(_droppingGridZone);
             }
-            else
+            else if (!GetComponent<CardStats>().IsPlayed)
             {
                 transform.position = _startPosition; // if the card isnt over the dropzone snap it back to the start pos
                 transform.SetParent(_startParent.transform, false);
@@ -402,6 +402,7 @@ public class DragDrop : MonoBehaviour
         public void PlayCardToZone(GameObject zone, bool depleteMana = true)
         {
             GetComponent<CardStats>().FirstTurnPlayed = true;
+            GetComponent<CardStats>().IsPlayed = true;
 
             if (!GetComponent<CardStats>().BelongsToLocalPlayer)
             {

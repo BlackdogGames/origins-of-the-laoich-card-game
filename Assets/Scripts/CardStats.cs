@@ -15,6 +15,8 @@ public class CardStats : MonoBehaviour
     public bool IsDuplicate; // is a duped card - used in deckbuilding
     public bool isMonster; // true is a monster, false is a spell
 
+    public bool IsPlayed = false; // is the card played?
+
     public string CardName;
 
     public bool BelongsToLocalPlayer;

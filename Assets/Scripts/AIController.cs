@@ -18,6 +18,8 @@ public class AIController : MonoBehaviour
 
     public bool IsActive = false;
 
+    public bool TutorialMode = false;
+
     //pair of rule and action
     public class RuleActionPair
     {
@@ -55,7 +57,8 @@ public class AIController : MonoBehaviour
         //runs through the cards in handcards and enables cardback
         foreach (GameObject card in playerStats.HandCards)
         {
-            //card.GetComponent<CardStats>().CardBack.SetActive(true);
+            if (!TutorialMode)
+                card.GetComponent<CardStats>().CardBack.SetActive(true);
             card.GetComponent<DragDrop>().enabled = false;
         }
 

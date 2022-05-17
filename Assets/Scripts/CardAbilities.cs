@@ -138,7 +138,7 @@ public class CardAbilities : MonoBehaviour
             newCard.transform.SetParent(gameManager.PlayerArea.transform, false);
             newCard.GetComponent<CardStats>().ZoneID = zoneId;
 
-            gameManager.Opponent.GetComponent<PlayerStats>().FieldCards.Add(newCard);
+            gameManager.Player.GetComponent<PlayerStats>().FieldCards.Add(newCard);
             AudioManager.Instance.Play("SFX_Card_Ability_Generic");
         }
         else

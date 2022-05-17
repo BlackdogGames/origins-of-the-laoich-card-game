@@ -17,7 +17,7 @@ MonoBehaviour:
   ManaCost: 4
   Attack: 0
   Health: 0
-  CardImage: {fileID: 21300000, guid: 736d2c0b6e6e580409002668bf57ea4b, type: 3}
+  CardImage: {fileID: 21300000, guid: be20672f260e70e4f8ed8bd4356c1d32, type: 3}
   Description: Prevents 1 Ally to the left from taking Damage for one turn
   IsMonster: 0
   AbilityTrigger: 1

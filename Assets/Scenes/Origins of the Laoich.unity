@@ -515,7 +515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 105.000015, y: 0}
+  m_AnchoredPosition: {x: 105, y: 0}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &179419470
@@ -1758,6 +1758,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 0}
   TimeSinceStartOfTurn: 0
+  MinTimeBetweenActions: 0
+  MaxTimeBetweenActions: 1
+  IsActive: 0
+  TutorialMode: 0
   playerStats: {fileID: 0}
 --- !u!1 &440590080
 GameObject:

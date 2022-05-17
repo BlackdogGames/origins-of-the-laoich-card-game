@@ -8837,7 +8837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aad8ad1830241f544b36eb5f5963221f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65f0c7b170da3994e995ec2033a56b99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17898,7 +17898,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1074438853}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22040819
+  m_Size: 0.22040816
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18740,7 +18740,7 @@ GameObject:
   - component: {fileID: 2078872411}
   - component: {fileID: 2078872410}
   m_Layer: 5
-  m_Name: Image_1
+  m_Name: The_Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18785,7 +18785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cc7e8d0099f98134e8bf9551b4aa43e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a26ce86c149ec94d8020274bf1d5fe4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -21,7 +21,7 @@ Id,Name,Mana Cost,Attack,Health,Card Image,Description,Effect,Ability Trigger,Is
 27,Phantom Piper,8,1,3,img_piper,"""When played, turns one enemy unit to the Player’s side""",PhantomPiperAbility,OnPlayed,1
 28,Blue Man,0,1,1,img_blueman,,,,1
 29,Water Healing,2,0,0,img_waterhealing,"""Heal 1 Ally to the right for 1HP""",WaterHealingAbility,OnPlayed,0
-30,Water Bubble,4,0,0,img_waterbubble,"""Enemy Unit infront Cannot Attack this Turn""",WaterBubbleAbility,OnPlayed,0
+30,Water Bubble,4,0,0,img_waterbubble,"""Enemy Unit in front Cannot Attack this Turn""",WaterBubbleAbility,OnPlayed,0
 31,Tidal Wave,8,0,0,img_tidalwave,"""Deal 2Damage to all Enemy Units. Heal all your Units by 2HP""",TidalWaveAbility,OnPlayed,0
 32,Take Aim,2,0,0,img_takeaim,"""Deals 2Damage to the Opponent""",TakeAimAbility,OnPlayed,0
 33,Targe,3,0,0,img_targe,"""Strengthen an Ally on each side by 2HP""",TargeAbility,OnPlayed,0

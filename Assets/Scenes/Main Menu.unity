@@ -7543,32 +7543,36 @@ MonoBehaviour:
   CardList: []
   CustomDeck: []
   DefaultDeckList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e196ed424451ab341936fd1cc4b791dc, type: 2}
+  - {fileID: 11400000, guid: e196ed424451ab341936fd1cc4b791dc, type: 2}
+  - {fileID: 11400000, guid: e196ed424451ab341936fd1cc4b791dc, type: 2}
+  - {fileID: 11400000, guid: 195a8673376c2a041bbcf6847e9f84cc, type: 2}
+  - {fileID: 11400000, guid: 01dde5a607c675d4c9cf5c58504811a1, type: 2}
+  - {fileID: 11400000, guid: 01dde5a607c675d4c9cf5c58504811a1, type: 2}
+  - {fileID: 11400000, guid: 96886ae2ed1a2734c8c69b33289ee319, type: 2}
+  - {fileID: 11400000, guid: 96886ae2ed1a2734c8c69b33289ee319, type: 2}
+  - {fileID: 11400000, guid: 96886ae2ed1a2734c8c69b33289ee319, type: 2}
+  - {fileID: 11400000, guid: dfe1085e0af2a85428a0696a68398dc3, type: 2}
+  - {fileID: 11400000, guid: dfe1085e0af2a85428a0696a68398dc3, type: 2}
+  - {fileID: 11400000, guid: 048e7e7be9a182146841c59563f8b79b, type: 2}
+  - {fileID: 11400000, guid: 048e7e7be9a182146841c59563f8b79b, type: 2}
+  - {fileID: 11400000, guid: 2b7b39bdd0602bf45b910d38d8201eb0, type: 2}
+  - {fileID: 11400000, guid: 2b7b39bdd0602bf45b910d38d8201eb0, type: 2}
+  - {fileID: 11400000, guid: c96d7d7b4cfc59d4980848b942ba8251, type: 2}
+  - {fileID: 11400000, guid: 586b26f1f56d18043a35ae18266ad524, type: 2}
+  - {fileID: 11400000, guid: 586b26f1f56d18043a35ae18266ad524, type: 2}
+  - {fileID: 11400000, guid: 586b26f1f56d18043a35ae18266ad524, type: 2}
+  - {fileID: 11400000, guid: f87242d4791ce5b4ab06d57337a4cc33, type: 2}
+  - {fileID: 11400000, guid: f87242d4791ce5b4ab06d57337a4cc33, type: 2}
+  - {fileID: 11400000, guid: f87242d4791ce5b4ab06d57337a4cc33, type: 2}
+  - {fileID: 11400000, guid: bbee86bd16dce81419f5e4423848e49c, type: 2}
+  - {fileID: 11400000, guid: bbee86bd16dce81419f5e4423848e49c, type: 2}
+  - {fileID: 11400000, guid: bbee86bd16dce81419f5e4423848e49c, type: 2}
+  - {fileID: 11400000, guid: 22b9c47f106b1f949bd783b47b0f96bc, type: 2}
+  - {fileID: 11400000, guid: 22b9c47f106b1f949bd783b47b0f96bc, type: 2}
+  - {fileID: 11400000, guid: f55267d1ea54108449d62915a55b1537, type: 2}
+  - {fileID: 11400000, guid: f55267d1ea54108449d62915a55b1537, type: 2}
+  - {fileID: 11400000, guid: d3a64b1080485f9468a4147e0d87e239, type: 2}
   DeckNameInput: {fileID: 2118915634}
   ImportInput: {fileID: 1508114453}
   ScrollviewParent: {fileID: 785940653}
@@ -16503,7 +16507,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774983521}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: f629ebefb5edabb4eb129ec0778c314c, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -17894,7 +17898,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1074438853}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22040816
+  m_Size: 0.22040819
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

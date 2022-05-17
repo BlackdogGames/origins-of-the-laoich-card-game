@@ -18,8 +18,7 @@ MonoBehaviour:
   Attack: 2
   Health: 4
   CardImage: {fileID: 21300000, guid: f7611535c80db504ab373dedc6f672cc, type: 3}
-  Description: When played, the zone across deals 2 Damage, zones adjacent deal 1
-    Damage
+  Description: Zone across takes 2Damage, Zones adjacent take 1Damage
   IsMonster: 1
   AbilityTrigger: 1
   Ability:

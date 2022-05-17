@@ -18,7 +18,7 @@ MonoBehaviour:
   Attack: 0
   Health: 0
   CardImage: {fileID: 21300000, guid: 7ef9cd0f11f9d984e8bfffb8b1d53c57, type: 3}
-  Description: Heal 1 Ally to the right for +1HP
+  Description: Heal 1 Ally to the right for 1HP
   IsMonster: 0
   AbilityTrigger: 1
   Ability:

@@ -18,8 +18,8 @@ MonoBehaviour:
   Attack: 0
   Health: 0
   CardImage: {fileID: 21300000, guid: 1b6784360950e2248834014fe2a2fe0c, type: 3}
-  Description: Heal 1 Ally to the right for +1HP or, if the Boobrie is active, heal
-    it for +2HP
+  Description: Heal 1 Ally to the right for 1HP or, if the Boobrie is active, heal
+    it for 2HP
   IsMonster: 0
   AbilityTrigger: 1
   Ability:

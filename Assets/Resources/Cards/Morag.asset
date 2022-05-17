@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 4
   CardName: Morag
   ManaCost: 3
-  Attack: 1
+  Attack: 2
   Health: 2
   CardImage: {fileID: 21300000, guid: 1bc824cb4b407fb429300509b5fdab8e, type: 3}
   Description: When Played, Empower 1 Ally to the left 1HP/1Damage

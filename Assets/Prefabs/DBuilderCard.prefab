@@ -303,7 +303,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -73}
-  m_SizeDelta: {x: 105, y: 50}
+  m_SizeDelta: {x: 110, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1016902215511593454
 CanvasRenderer:
@@ -333,7 +333,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE ALL POWERFULL
+  m_text: "\"Howls, on end of player\u2019s turn, -1HP and -1Damage to enemies that
+    attacked.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e18e3e3f5b5ea654990951db38ad12db, type: 2}
   m_sharedMaterial: {fileID: 2362189530254848171, guid: e18e3e3f5b5ea654990951db38ad12db, type: 2}

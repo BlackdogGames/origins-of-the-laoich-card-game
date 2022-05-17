@@ -14,7 +14,7 @@ Id,Name,Mana Cost,Attack,Health,Card Image,Description,Effect,Ability Trigger,Is
 16,The Bean-Nighe,2,2,2,img_beannighe,,,,1
 17,Blue Men of the Minch,4,2,2,img_bluemen,"""When played, Summons 2 Blue Men, if there are free zones""",BlueMenAbility,OnPlayed,1
 18,The Ceasg,3,3,3,img_ceasg,"""When played, gives up to three Allies +1HP""",CeasgAbility,OnPlayed,1
-19,The Cu-Sith,5,3,6,img_cusith,"""Howls, end of the player’s turn, -1HP and -1Damage of enemies that attacked.""",CuSithAbility,OnTurnEnd,1
+19,The Cu-Sith,5,3,6,img_cusith,"""Howls, on end of player’s turn, -1HP and -1Damage to enemies that attacked.""",CuSithAbility,OnTurnEnd,1
 20,Coliunn Gun Cheann,5,5,6,img_coliunn,,,,1
 21,The Boobrie,3,3,4,img_boobrie,,,,1
 23,Stoor Worm,9,7,7,img_stoorworm,,,,1

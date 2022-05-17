@@ -15,8 +15,8 @@ MonoBehaviour:
   ID: 23
   CardName: Stoor Worm
   ManaCost: 9
-  Attack: 9
-  Health: 9
+  Attack: 7
+  Health: 7
   CardImage: {fileID: 21300000, guid: e2a9b0290d23c7f4eb6a8949a8409a51, type: 3}
   Description: 
   IsMonster: 1

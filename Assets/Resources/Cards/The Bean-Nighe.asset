@@ -16,7 +16,7 @@ MonoBehaviour:
   CardName: The Bean-Nighe
   ManaCost: 2
   Attack: 3
-  Health: 4
+  Health: 3
   CardImage: {fileID: 21300000, guid: e3ab19ac51e4a734a98446740ef614b3, type: 3}
   Description: 
   IsMonster: 1
